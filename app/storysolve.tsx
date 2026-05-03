@@ -22,7 +22,7 @@ const QUESTIONS: any[] = [
 
   { id: 2, domain: 'D1', difficulty: 'Hard', format: 'four-pills',
     question: 'John is 3 times as old as his son. In 12 years he will be twice as old. How old is John now?',
-    options: ['36', '24', '48', '30'], correct: 0,
+    options: ['24', '36', '48', '30'], correct: 1,
     explanation: 'Let S = son. J=3S. J+12=2(S+12) → 3S+12=2S+24 → S=12. J=36.' },
 
   { id: 3, domain: 'D1', difficulty: 'Medium', format: 'two-cards',
@@ -32,7 +32,7 @@ const QUESTIONS: any[] = [
 
   { id: 4, domain: 'D1', difficulty: 'Medium', format: 'four-pills',
     question: 'A bag has nickels and dimes totaling $2.50. There are 35 coins total. How many dimes?',
-    options: ['15', '20', '10', '25'], correct: 1,
+    options: ['15', '10', '25', '20'], correct: 3,
     explanation: 'N+D=35 and 5N+10D=250. Sub: 5(35-D)+10D=250 → 175+5D=250 → D=15. Wait: 5D=75, D=15.' },
 
   { id: 5, domain: 'D1', difficulty: 'Easy', format: 'two-cards',
@@ -42,7 +42,7 @@ const QUESTIONS: any[] = [
 
   { id: 6, domain: 'D1', difficulty: 'Hard', format: 'four-pills',
     question: 'A store sells adult tickets at $8 and child tickets at $5. 200 tickets sold for $1,300. How many adult tickets?',
-    options: ['75', '100', '50', '125'], correct: 1,
+    options: ['75', '50', '100', '125'], correct: 2,
     explanation: 'A+C=200 and 8A+5C=1300. Sub: 8A+5(200-A)=1300 → 3A=300 → A=100.' },
 
   { id: 7, domain: 'D1', difficulty: 'Medium', format: 'four-pills',
@@ -57,12 +57,12 @@ const QUESTIONS: any[] = [
 
   { id: 9, domain: 'D1', difficulty: 'Medium', format: 'two-cards',
     question: 'A company breaks even when revenue equals cost. Revenue = 50x, Cost = 30x + 800. At what quantity do they break even?',
-    cards: ['40 units', '20 units'], correct: 0,
+    cards: ['20 units', '40 units'], correct: 1,
     explanation: '50x = 30x+800 → 20x=800 → x=40 units.' },
 
   { id: 10, domain: 'D1', difficulty: 'Hard', format: 'four-pills',
     question: 'A mixture of 20% and 50% acid is combined to make 60L of 30% acid. How many liters of 20%?',
-    options: ['30L', '40L', '20L', '45L'], correct: 1,
+    options: ['30L', '20L', '45L', '40L'], correct: 3,
     explanation: '0.2x+0.5(60-x)=18 → 0.2x+30-0.5x=18 → -0.3x=-12 → x=40L.' },
 
   { id: 11, domain: 'D1', difficulty: 'Easy', format: 'four-pills',
@@ -93,7 +93,7 @@ const QUESTIONS: any[] = [
   // ── D2 ADVANCED MATH ──────────────────────────────────────────────────────
   { id: 16, domain: 'D2', difficulty: 'Medium', format: 'horizontal-scroll',
     question: 'Which equation models exponential DECAY?',
-    cards: ['y=100(0.85)ˣ', 'y=100(1.15)ˣ', 'y=100x+85', 'y=100(1.85)ˣ'], correct: 0,
+    cards: ['y=100(1.15)ˣ', 'y=100x+85', 'y=100(1.85)ˣ', 'y=100(0.85)ˣ'], correct: 3,
     explanation: 'Decay requires base between 0 and 1. Only 0.85 satisfies 0<b<1.' },
 
   { id: 17, domain: 'D2', difficulty: 'Hard', format: 'scroll-wheel',
@@ -118,7 +118,7 @@ const QUESTIONS: any[] = [
 
   { id: 21, domain: 'D2', difficulty: 'Hard', format: 'horizontal-scroll',
     question: 'Population doubles every 3 years, starts at 500. Which models it correctly?',
-    cards: ['P=500(2)^(t/3)', 'P=500(3)^t', 'P=500+2t', 'P=500(2t)'], correct: 0,
+    cards: ['P=500(3)^t', 'P=500+2t', 'P=500(2)^(t/3)', 'P=500(2t)'], correct: 2,
     explanation: 'Doubling every 3 years: exponent is t/3. P = 500×2^(t/3).' },
 
   { id: 22, domain: 'D2', difficulty: 'Medium', format: 'four-pills',
@@ -144,7 +144,7 @@ const QUESTIONS: any[] = [
   // ── D3 PROBLEM SOLVING ────────────────────────────────────────────────────
   { id: 26, domain: 'D3', difficulty: 'Medium', format: 'four-pills',
     question: 'A store marks up a $60 item by 40%, then discounts 20%. What is the final price?',
-    options: ['$67.20', '$64.00', '$72.00', '$60.00'], correct: 0,
+    options: ['$64.00', '$67.20', '$72.00', '$60.00'], correct: 1,
     explanation: 'Markup: 60×1.4=$84. Discount: 84×0.8=$67.20. Net = 12% above original.' },
 
   { id: 27, domain: 'D3', difficulty: 'Easy', format: 'scroll-wheel',
@@ -174,7 +174,7 @@ const QUESTIONS: any[] = [
 
   { id: 32, domain: 'D3', difficulty: 'Medium', format: 'four-pills',
     question: 'A car goes 240 miles using 8 gallons. At this rate, how far on 14 gallons?',
-    options: ['360 miles', '420 miles', '300 miles', '480 miles'], correct: 1,
+    options: ['360 miles', '300 miles', '420 miles', '480 miles'], correct: 2,
     explanation: 'Rate = 240/8 = 30 mpg. 14×30 = 420 miles.' },
 
   { id: 33, domain: 'D3', difficulty: 'Medium', format: 'two-cards',
@@ -184,7 +184,7 @@ const QUESTIONS: any[] = [
 
   { id: 34, domain: 'D3', difficulty: 'Hard', format: 'four-pills',
     question: 'Price drops 20% then increases 25%. Net change from original?',
-    options: ['0% change', '5% increase', '5% decrease', '10% increase'], correct: 0,
+    options: ['5% increase', '5% decrease', '0% change', '10% increase'], correct: 2,
     explanation: '0.8×1.25 = 1.00. Exactly back to original — 0% net change.' },
 
   { id: 35, domain: 'D3', difficulty: 'Easy', format: 'true-false',
@@ -245,7 +245,7 @@ const QUESTIONS: any[] = [
 
   { id: 46, domain: 'D4', difficulty: 'Hard', format: 'four-pills',
     question: 'Two similar triangles have sides in ratio 3:5. If smaller triangle area is 27m², larger area?',
-    options: ['45m²', '135m²', '75m²', '81m²'], correct: 2,
+    options: ['45m²', '135m²', '81m²', '75m²'], correct: 3,
     explanation: 'Area ratio = (3/5)² = 9/25. 27/(9/25) = 27×25/9 = 75m².' },
 
   { id: 47, domain: 'D4', difficulty: 'Hard', format: 'scroll-wheel',
@@ -482,7 +482,7 @@ export default function StorySolveScreen() {
   useEffect(() => {
     if (gameState !== 'results') return;
     playCelebration(finalScore);
-    saveGameResult(1, finalScore, xpEarned, 'rw_d1', speedyCount, lives < 0 ? 0 : lives, Date.now());
+    saveGameResult(14, finalScore, xpEarned, 'math_d1', speedyCount, lives < 0 ? 0 : lives, Date.now());
   }, [gameState]);
   
   if (gameState === 'results') {

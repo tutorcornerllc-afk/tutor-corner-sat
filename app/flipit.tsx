@@ -198,7 +198,7 @@ export default function FlipItScreen() {
   useEffect(() => {
     if (gameState !== 'results') return;
     playCelebration(finalScore);
-    saveGameResult(1, finalScore, xpEarned, 'rw_d1', speedyCount, lives < 0 ? 0 : lives, Date.now());
+    saveGameResult(2, finalScore, xpEarned, 'rw_d2', speedyCount, lives < 0 ? 0 : lives, Date.now());
   }, [gameState]);
   
   if (gameState === 'results') {

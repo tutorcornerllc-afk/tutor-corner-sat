@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Tutor Corner SAT",
+    "name": "Tutor Corner LLC® - SAT® Prep Games",
     "slug": "tutor-corner-sat",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -14,14 +14,16 @@
     },
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.tutorcornerllc.sat"
+      "bundleIdentifier": "com.tutorcornerllc.app",
+      "bundleName": "TC LLC® SAT® Prep"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#0F0F1A"
       },
-      "package": "com.tutorcornerllc.sat"
+      "package": "com.tutorcornerllc.app",
+      "versionCode": 1
     },
     "web": {
       "bundler": "metro",
@@ -32,7 +34,8 @@
       "expo-router"
     ],
     "experiments": {
-      "typedRoutes": true
+      "typedRoutes": true,
+      "baseUrl": "/SAT"
     },
     "extra": {
       "router": {},

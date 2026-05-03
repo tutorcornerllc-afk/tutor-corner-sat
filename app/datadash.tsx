@@ -36,20 +36,19 @@ const QUESTIONS = [
   { id: 18, domain: 'D3', difficulty: 'Medium', question: 'Class A: 20 students avg 85. Class B: 30 students avg 75. Combined average?', options: ['80', '79', '77', '82'], correct: 1, explanation: 'Weighted avg = (20×85+30×75)/50 = 3950/50 = 79.' },
   { id: 19, domain: 'D3', difficulty: 'Medium', question: 'Data: 2, 5, 6, 8, 9, 10, 14. What is the median?', options: ['7', '9', '8', '6'], correct: 2, explanation: '7 values — median is 4th value = 8.' },
   { id: 20, domain: 'D3', difficulty: 'Medium', question: 'P(A)=0.4, P(B)=0.3, independent. P(A and B)?', options: ['0.7', '0.1', '0.34', '0.12'], correct: 3, explanation: 'P(A and B) = 0.4 × 0.3 = 0.12.' },
-  { id: 21, domain: 'D3', difficulty: 'Medium', question: 'Population grew 8,000 to 10,000. Percent increase?', options: ['20%', '30%', '25%', '15%'], correct: 2, explanation: '(2000/8000) × 100 = 25%.' },
+  { id: 21, domain: 'D3', difficulty: 'Medium', question: 'Population grew 8,000 to 10,000. Percent increase?', options: ['25%', '20%', '30%', '15%'], correct: 0, explanation: '(2000/8000) × 100 = 25%.' },
   { id: 22, domain: 'D3', difficulty: 'Medium', question: 'Compound interest: $2000 at 10% for 2 years. Amount?', options: ['$2400', '$2420', '$2200', '$2440'], correct: 1, explanation: 'A = 2000(1.1)² = $2420.' },
   { id: 23, domain: 'D3', difficulty: 'Medium', question: 'Q1=7, Q3=9. What is the IQR?', options: ['5', '3', '7', '2'], correct: 3, explanation: 'IQR = Q3 - Q1 = 9 - 7 = 2.' },
   { id: 24, domain: 'D3', difficulty: 'Medium', question: '4 red, 6 blue. Pick 2 without replacement. P(both red)?', options: ['4/25', '2/15', '1/6', '2/9'], correct: 1, explanation: '4/10 × 3/9 = 12/90 = 2/15.' },
   { id: 25, domain: 'D3', difficulty: 'Medium', question: 'Train travels 300km in 2.5 hours. Speed in km/h?', options: ['100', '150', '120', '75'], correct: 2, explanation: 'Speed = 300/2.5 = 120 km/h.' },
   { id: 26, domain: 'D3', difficulty: 'Medium', question: 'Mon=12, Tue=18, Wed=15, Thu=21, Fri=9. Mean?', options: ['14', '16', '15', '18'], correct: 2, explanation: '(12+18+15+21+9)/5 = 15.' },
-  { id: 27, domain: 'D3', difficulty: 'Medium', question: 'Product costs $60. Marked up 40%. Selling price?', options: ['$80', '$84', '$90', '$96'], correct: 1, explanation: '40% of $60 = $24. $60 + $24 = $84.' },
+  { id: 27, domain: 'D3', difficulty: 'Medium', question: 'Product costs $60. Marked up 40%. Selling price?', options: ['$84', '$80', '$90', '$96'], correct: 0, explanation: '40% of $60 = $24. $60 + $24 = $84.' },
   { id: 28, domain: 'D3', difficulty: 'Medium', question: '20 girls total, 8 like math. P(math | girl)?', options: ['2/3', '1/3', '2/5', '4/15'], correct: 2, explanation: 'P = 8/20 = 2/5.' },
   { id: 29, domain: 'D3', difficulty: 'Medium', question: 'Mass=150g, volume=50cm³. Density?', options: ['5 g/cm³', '0.33 g/cm³', '7500', '3 g/cm³'], correct: 3, explanation: 'Density = 150/50 = 3 g/cm³.' },
   { id: 30, domain: 'D3', difficulty: 'Medium', question: 'Price dropped $80 to $60. Percent decrease?', options: ['20%', '33%', '25%', '15%'], correct: 2, explanation: '(20/80) × 100 = 25%.' },
   { id: 31, domain: 'D3', difficulty: 'Medium', question: '60 students, 45% prefer pizza. How many students?', options: ['25', '36', '30', '27'], correct: 3, explanation: '0.45 × 60 = 27.' },
   { id: 32, domain: 'D3', difficulty: 'Medium', question: '$500 at 8% simple interest for 4 years. Total?', options: ['$640', '$660', '$580', '$700'], correct: 1, explanation: 'I = 500×0.08×4 = $160. Total = $660.' },
-  { id: 33, domain: 'D3', difficulty: 'Medium', question: 'Box plot: Min=10, Max=80. What is the range?', options: ['35', '40', '50', '70'], correct: 3, explanation: 'Range = 80 - 10 = 70.' },
-
+  { id: 33, domain: 'D3', difficulty: 'Medium', question: 'Box plot: Min=10, Max=80. What is the range?', options: ['70', '35', '40', '50'], correct: 0, explanation: 'Range = 80 - 10 = 70.' },
   // ── D3 HARD ───────────────────────────────────────────────────────────────
   { id: 34, domain: 'D3', difficulty: 'Hard', question: 'Ages: 18,22,22,24,25,30,45. Outlier 45 most affects which measure?', options: ['Median', 'Mode', 'Mean', 'IQR'], correct: 2, explanation: 'Mean goes from ≈26.6 down significantly if 45 removed. Median barely changes.' },
   { id: 35, domain: 'D3', difficulty: 'Hard', question: 'Line of best fit: y = 2.5x + 10. Predict y when x=12.', options: ['35', '30', '45', '40'], correct: 3, explanation: 'y = 2.5(12)+10 = 30+10 = 40.' },
@@ -313,7 +312,7 @@ export default function DataDashScreen() {
   useEffect(() => {
     if (gameState !== 'results') return;
     playCelebration(finalScore);
-    saveGameResult(1, finalScore, xpEarned, 'rw_d1', speedyCount, lives < 0 ? 0 : lives, Date.now());
+    saveGameResult(12, finalScore, xpEarned, 'math_d3', speedyCount, lives < 0 ? 0 : lives, Date.now());
   }, [gameState]);
   
   if (gameState === 'results') {

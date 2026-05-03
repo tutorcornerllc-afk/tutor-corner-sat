@@ -15,13 +15,13 @@ import { playTapSound, playCorrectSound, playWrongSound, playCelebration } from 
 // ─── CHAIN BANK (10 chains shown, each 5 parts) ──────────────────────────────
 const CHAINS = [
   // ── CHAIN 1: Basic Fractions ──────────────────────────────────────────────
-  {
+{
     id: 1, title: 'Fraction Fundamentals', domain: 'D2', difficulty: 'Easy',
     parts: [
-      { story: 'Simplify: 12/18', options: ['2/4', '2/3', '3/4', '4/6'], correct: 1, explanation: 'GCD(12,18)=6. 12÷6=2, 18÷6=3. Answer: 2/3.' },
+      { story: 'Simplify: 12/18', options: ['2/3', '2/4', '3/4', '4/6'], correct: 0, explanation: 'GCD(12,18)=6. 12÷6=2, 18÷6=3. Answer: 2/3.' },
       { story: 'Add: 1/3 + 1/4 = ?', options: ['2/7', '7/12', '5/12', '2/12'], correct: 1, explanation: 'LCD=12. 4/12+3/12 = 7/12.' },
-      { story: 'Subtract: 3/4 − 2/5 = ?', options: ['1/20', '7/20', '5/9', '1/9'], correct: 1, explanation: 'LCD=20. 15/20−8/20 = 7/20.' },
-      { story: 'Multiply: (2/3) × (9/4) = ?', options: ['18/12', '3/2', '11/12', '6/7'], correct: 1, explanation: '(2×9)/(3×4) = 18/12 = 3/2.' },
+      { story: 'Subtract: 3/4 − 2/5 = ?', options: ['1/20', '5/9', '7/20', '1/9'], correct: 2, explanation: 'LCD=20. 15/20−8/20 = 7/20.' },
+      { story: 'Multiply: (2/3) × (9/4) = ?', options: ['18/12', '11/12', '6/7', '3/2'], correct: 3, explanation: '(2×9)/(3×4) = 18/12 = 3/2.' },
       { story: 'Divide: (5/6) ÷ (5/3) = ?', options: ['25/18', '1/2', '10/9', '3/6'], correct: 1, explanation: 'Flip second: (5/6)×(3/5) = 15/30 = 1/2.' },
     ],
   },
@@ -30,23 +30,23 @@ const CHAINS = [
   {
     id: 2, title: 'Factoring Chain', domain: 'D2', difficulty: 'Easy',
     parts: [
-      { story: 'Factor: x² + 5x + 6', options: ['(x+1)(x+6)', '(x+2)(x+3)', '(x−2)(x−3)', '(x+3)(x+2)'], correct: 1, explanation: 'Find two numbers that multiply to 6 and add to 5: 2 and 3.' },
-      { story: 'Factor: x² − 9', options: ['(x−3)²', '(x+9)(x−1)', '(x+3)(x−3)', '(x−9)(x+1)'], correct: 2, explanation: 'Difference of squares: a²−b² = (a+b)(a−b).' },
-      { story: 'Factor: 2x² + 7x + 3', options: ['(2x+1)(x+3)', '(2x−1)(x−3)', '(x+3)(2x+1)', '(2x+3)(x+1)'], correct: 0, explanation: 'AC method: 2×3=6. Find 6 and 1: (2x+1)(x+3).' },
-      { story: 'Factor: x³ − 8', options: ['(x−2)³', '(x+2)(x²−2x+4)', '(x−2)(x²+2x+4)', '(x−2)(x+2)²'], correct: 2, explanation: 'Difference of cubes: a³−b³=(a−b)(a²+ab+b²). a=x, b=2.' },
-      { story: 'Factor completely: 3x² − 12', options: ['3(x²−4)', '3(x−2)(x+2)', '(3x+6)(x−2)', '3(x−2)²'], correct: 1, explanation: 'Factor out 3: 3(x²−4). Then difference of squares: 3(x−2)(x+2).' },
+      { story: 'Factor: x² + 5x + 6', options: ['(x+2)(x+3)', '(x+1)(x+6)', '(x−2)(x−3)', '(x+5)(x+1)'], correct: 0, explanation: 'Find two numbers that multiply to 6 and add to 5: 2 and 3.' },
+      { story: 'Factor: x² − 9', options: ['(x−3)²', '(x+3)(x−3)', '(x+9)(x−1)', '(x−9)(x+1)'], correct: 1, explanation: 'Difference of squares: a²−b² = (a+b)(a−b).' },
+      { story: 'Factor: 2x² + 7x + 3', options: ['(2x−1)(x−3)', '(x+3)(2x+1)', '(2x+1)(x+3)', '(2x+3)(x+1)'], correct: 2, explanation: 'AC method: 2×3=6. Factors are 6 and 1: (2x+1)(x+3).' },
+      { story: 'Factor: x³ − 8', options: ['(x−2)³', '(x+2)(x²−2x+4)', '(x−2)(x+2)²', '(x−2)(x²+2x+4)'], correct: 3, explanation: 'Difference of cubes: a³−b³=(a−b)(a²+ab+b²). a=x, b=2.' },
+      { story: 'Factor completely: 3x² − 12', options: ['3(x−2)(x+2)', '3(x²−4)', '(3x+6)(x−2)', '3(x−2)²'], correct: 0, explanation: 'Factor out 3: 3(x²−4). Then difference of squares: 3(x−2)(x+2).' },
     ],
   },
 
   // ── CHAIN 3: Exponent Rules ───────────────────────────────────────────────
-  {
+{
     id: 3, title: 'Exponent Rules', domain: 'D2', difficulty: 'Easy',
     parts: [
       { story: 'Simplify: x³ · x⁴', options: ['x⁷', 'x¹²', 'x³⁴', 'x'], correct: 0, explanation: 'Multiply same base: add exponents. x^(3+4) = x⁷.' },
       { story: 'Simplify: (x²)³', options: ['x⁵', 'x⁶', 'x⁸', '3x²'], correct: 1, explanation: 'Power of power: multiply exponents. x^(2×3) = x⁶.' },
-      { story: 'Simplify: x⁵/x²', options: ['x³', 'x⁷', 'x¹⁰', '1/x³'], correct: 0, explanation: 'Divide same base: subtract exponents. x^(5−2) = x³.' },
-      { story: 'Simplify: (2x²y³)²', options: ['2x⁴y⁶', '4x⁴y⁶', '4x²y³', '2x⁴y⁵'], correct: 1, explanation: 'Square each factor: 2²=4, (x²)²=x⁴, (y³)²=y⁶.' },
-      { story: 'Simplify: (x⁻²)⁻³', options: ['x⁻⁶', 'x⁶', 'x⁻⁵', '1/x⁶'], correct: 1, explanation: 'Multiply exponents: (−2)(−3) = 6. Answer: x⁶.' },
+      { story: 'Simplify: x⁵/x²', options: ['x⁷', 'x¹⁰', 'x³', '1/x³'], correct: 2, explanation: 'Divide same base: subtract exponents. x^(5−2) = x³.' },
+      { story: 'Simplify: (2x²y³)²', options: ['2x⁴y⁶', '4x²y³', '2x⁴y⁵', '4x⁴y⁶'], correct: 3, explanation: 'Square each factor: 2²=4, (x²)²=x⁴, (y³)²=y⁶.' },
+      { story: 'Simplify: (x⁻²)⁻³', options: ['x⁶', 'x⁻⁶', 'x⁻⁵', '1/x⁶'], correct: 0, explanation: 'Multiply exponents: (−2)(−3) = 6. Answer: x⁶.' },
     ],
   },
 
@@ -54,23 +54,23 @@ const CHAINS = [
   {
     id: 4, title: 'Logarithm Laws', domain: 'D2', difficulty: 'Medium',
     parts: [
-      { story: 'Evaluate: log₂(8)', options: ['4', '2', '3', '8'], correct: 2, explanation: '2³=8, so log₂(8)=3.' },
+      { story: 'Evaluate: log₂(8)', options: ['2', '3', '4', '8'], correct: 1, explanation: '2³=8, so log₂(8)=3.' },
       { story: 'Simplify: log(2) + log(5)', options: ['log(7)', 'log(10)', '1', 'log(3)'], correct: 2, explanation: 'log(a)+log(b)=log(ab). log(10)=1.' },
       { story: 'Simplify: log(100) − log(10)', options: ['log(90)', '0', '10', '1'], correct: 3, explanation: 'log(a)−log(b)=log(a/b). log(10)=1.' },
       { story: 'Simplify: 3·log₂(4)', options: ['6', '12', '3', '8'], correct: 0, explanation: 'n·log(a)=log(aⁿ). log₂(4³)=log₂(64)=6.' },
-      { story: 'Solve: log₃(x) = 4', options: ['12', '64', '81', '34'], correct: 2, explanation: 'x = 3⁴ = 81.' },
+      { story: 'Solve: log₃(x) = 4', options: ['12', '81', '64', '34'], correct: 1, explanation: 'x = 3⁴ = 81.' },
     ],
   },
 
   // ── CHAIN 5: Trig Values ──────────────────────────────────────────────────
-  {
+{
     id: 5, title: 'Trig Chain', domain: 'D2', difficulty: 'Medium',
     parts: [
       { story: 'sin(135°) = ?', options: ['√3/2', '−√2/2', '√2/2', '1/2'], correct: 2, explanation: '135°=180°−45°. sin(135°)=sin(45°)=√2/2.' },
-      { story: 'cos(135°) = ?', options: ['√2/2', '−1/2', '√3/2', '−√2/2'], correct: 3, explanation: 'In Q2 cos is negative: −cos(45°)=−√2/2.' },
+      { story: 'cos(135°) = ?', options: ['−√2/2', '√2/2', '−1/2', '√3/2'], correct: 0, explanation: 'In Q2 cos is negative: −cos(45°)=−√2/2.' },
       { story: 'tan(135°) = sin/cos = ?', options: ['1', '−√3', '√3', '−1'], correct: 3, explanation: '(√2/2)/(−√2/2) = −1.' },
-      { story: 'Reference angle of 225°?', options: ['135°', '90°', '30°', '45°'], correct: 3, explanation: '225°−180°=45°.' },
-      { story: 'sin(225°) = ?', options: ['√2/2', '−1/2', '1/2', '−√2/2'], correct: 3, explanation: 'Q3: sin negative. ref angle 45°. −√2/2.' },
+      { story: 'Reference angle of 225°?', options: ['135°', '45°', '90°', '30°'], correct: 1, explanation: '225°−180°=45°.' },
+      { story: 'sin(225°) = ?', options: ['√2/2', '−1/2', '−√2/2', '1/2'], correct: 2, explanation: 'Q3: sin negative. ref angle 45°. −√2/2.' },
     ],
   },
 
@@ -80,9 +80,9 @@ const CHAINS = [
     parts: [
       { story: 'Class: 12 girls, 8 boys. P(first pick is girl)?', options: ['2/5', '3/5', '1/2', '12/20'], correct: 1, explanation: '12/20 = 3/5.' },
       { story: 'Given first was a girl (no replace). P(second is girl)?', options: ['12/19', '11/20', '3/5', '11/19'], correct: 3, explanation: '11 girls left from 19 students.' },
-      { story: 'P(both students are girls) = ?', options: ['11/38', '1/3', '33/95', '3/5'], correct: 2, explanation: '(12/20)×(11/19) = 132/380 = 33/95.' },
-      { story: 'P(at least one boy selected) = ?', options: ['33/95', '57/95', '1/2', '62/95'], correct: 3, explanation: '1 − P(both girls) = 1 − 33/95 = 62/95.' },
-      { story: 'Done 3 independent times. P(all 3 selections both girls)?', options: ['33/285', '(62/95)³', '1/27', '(33/95)³'], correct: 3, explanation: 'Independent: multiply. (33/95)³.' },
+      { story: 'P(both students are girls) = ?', options: ['1/3', '3/5', '33/95', '11/38'], correct: 2, explanation: '(12/20)×(11/19) = 132/380 = 33/95.' },
+      { story: 'P(at least one boy selected) = ?', options: ['62/95', '33/95', '57/95', '1/2'], correct: 0, explanation: '1 − P(both girls) = 1 − 33/95 = 62/95.' },
+      { story: 'Done 3 independent times. P(all 3 selections both girls)?', options: ['33/285', '(62/95)³', '(33/95)³', '1/27'], correct: 2, explanation: 'Independent: multiply. (33/95)³.' },
     ],
   },
 
@@ -90,23 +90,23 @@ const CHAINS = [
   {
     id: 7, title: 'Polynomial Roots', domain: 'D2', difficulty: 'Hard',
     parts: [
-      { story: 'p(x)=x³−6x²+11x−6. Test x=1: p(1)=?', options: ['2', '−2', '1', '0'], correct: 3, explanation: '1−6+11−6=0. So (x−1) is a factor.' },
+      { story: 'p(x)=x³−6x²+11x−6. Test x=1: p(1)=?', options: ['2', '−2', '0', '1'], correct: 2, explanation: '1−6+11−6=0. So (x−1) is a factor.' },
       { story: 'Divide x³−6x²+11x−6 by (x−1). Quotient?', options: ['x²+5x+6', 'x²−5x−6', 'x²+5x−6', 'x²−5x+6'], correct: 3, explanation: 'Synthetic division gives x²−5x+6.' },
-      { story: 'Factor x²−5x+6', options: ['(x+2)(x+3)', '(x−2)(x+3)', '(x+2)(x−3)', '(x−2)(x−3)'], correct: 3, explanation: 'Find: multiply 6, add −5 → −2 and −3.' },
-      { story: 'All roots of x³−6x²+11x−6?', options: ['1,−2,−3', '−1,2,3', '1,−2,3', '1,2,3'], correct: 3, explanation: '(x−1)(x−2)(x−3)=0 → x=1,2,3.' },
-      { story: 'Sum of all roots = ?', options: ['−6', '7', '5', '6'], correct: 3, explanation: '1+2+3=6. Or sum=−b/a=6.' },
+      { story: 'Factor x²−5x+6', options: ['(x−2)(x−3)', '(x+2)(x+3)', '(x−2)(x+3)', '(x+2)(x−3)'], correct: 0, explanation: 'Find: multiply 6, add −5 → −2 and −3.' },
+      { story: 'All roots of x³−6x²+11x−6?', options: ['1,−2,−3', '1,2,3', '−1,2,3', '1,−2,3'], correct: 1, explanation: '(x−1)(x−2)(x−3)=0 → x=1,2,3.' },
+      { story: 'Sum of all roots = ?', options: ['−6', '7', '6', '5'], correct: 2, explanation: '1+2+3=6. Or sum=−b/a=6.' },
     ],
   },
 
   // ── CHAIN 8: Derivatives ──────────────────────────────────────────────────
-  {
+{
     id: 8, title: 'Derivative Chain', domain: 'D2', difficulty: 'Hard',
     parts: [
-      { story: 'f(x)=x³−3x²+2. Find f\'(x)=?', options: ['3x²+6x', 'x²−6x', '3x−6', '3x²−6x'], correct: 3, explanation: 'Power rule: 3x²−6x.' },
-      { story: 'Set f\'(x)=0. Factor 3x²−6x=0', options: ['(3x−1)(x−2)=0', '3x(x+2)=0', 'x(3x−6)=0', '3x(x−2)=0'], correct: 3, explanation: 'Factor out 3x: 3x(x−2)=0.' },
-      { story: 'Critical points are x = ?', options: ['0 and −2', '1 and 2', '0 and 3', '0 and 2'], correct: 3, explanation: '3x=0→x=0; x−2=0→x=2.' },
+      { story: 'f(x)=x³−3x²+2. Find f\'(x)=?', options: ['3x²+6x', '3x²−6x', 'x²−6x', '3x−6'], correct: 1, explanation: 'Power rule: 3x²−6x.' },
+      { story: 'Set f\'(x)=0. Factor 3x²−6x=0', options: ['(3x−1)(x−2)=0', '3x(x+2)=0', '3x(x−2)=0', 'x(3x−6)=0'], correct: 2, explanation: 'Factor out 3x: 3x(x−2)=0.' },
+      { story: 'Critical points are x = ?', options: ['0 and 2', '0 and −2', '1 and 2', '0 and 3'], correct: 0, explanation: '3x=0→x=0; x−2=0→x=2.' },
       { story: 'f\'\'(x) = ?', options: ['6x+6', '3x−6', '6x', '6x−6'], correct: 3, explanation: 'Derivative of 3x²−6x = 6x−6.' },
-      { story: 'f\'\'(0)=−6<0. x=0 is a local ___?', options: ['inflection', 'undefined', 'minimum', 'maximum'], correct: 3, explanation: 'f\'\'(0)<0 means concave down → local maximum.' },
+      { story: 'f\'\'(0)=−6<0. x=0 is a local ___?', options: ['inflection', 'maximum', 'undefined', 'minimum'], correct: 1, explanation: 'f\'\'(0)<0 means concave down → local maximum.' },
     ],
   },
 
@@ -114,11 +114,11 @@ const CHAINS = [
   {
     id: 9, title: 'Combinations & Permutations', domain: 'D3', difficulty: 'Medium',
     parts: [
-      { story: '8 students compete for 1st, 2nd, 3rd. Arrangements?', options: ['56', '512', '24', '336'], correct: 3, explanation: 'P(8,3)=8×7×6=336.' },
-      { story: 'Same 8, choose 3 for committee (order irrelevant)?', options: ['336', '112', '24', '56'], correct: 3, explanation: 'C(8,3)=336/6=56.' },
-      { story: 'From committee of 3, choose a president. Ways?', options: ['9', '1', '6', '3'], correct: 3, explanation: 'Any of 3 committee members can be president.' },
-      { story: 'Total ways: pick committee AND president?', options: ['112', '336', '56', '168'], correct: 3, explanation: '56×3=168.' },
-      { story: 'P(Alex is on committee AND is president)?', options: ['3/168', '1/56', '1/8', '1/168'], correct: 3, explanation: 'Only 1 favorable outcome out of 168.' },
+      { story: '8 students compete for 1st, 2nd, 3rd. Arrangements?', options: ['56', '336', '512', '24'], correct: 1, explanation: 'P(8,3)=8×7×6=336.' },
+      { story: 'Same 8, choose 3 for committee (order irrelevant)?', options: ['56', '336', '112', '24'], correct: 0, explanation: 'C(8,3)=336/6=56.' },
+      { story: 'From committee of 3, choose a president. Ways?', options: ['9', '1', '3', '6'], correct: 2, explanation: 'Any of 3 committee members can be president.' },
+      { story: 'Total ways: pick committee AND president?', options: ['112', '168', '336', '56'], correct: 1, explanation: '56×3=168.' },
+      { story: 'P(Alex is on committee AND is president)?', options: ['1/168', '3/168', '1/56', '1/8'], correct: 0, explanation: 'Only 1 favorable outcome out of 168.' },
     ],
   },
 
@@ -126,50 +126,37 @@ const CHAINS = [
   {
     id: 10, title: 'Limits Chain', domain: 'D2', difficulty: 'Hard',
     parts: [
-      { story: 'lim(x→2) of (x²−4)/(x−2) = ?', options: ['2', '0', 'undefined', '4'], correct: 3, explanation: 'Factor: (x+2)(x−2)/(x−2)=x+2. At x=2: 4.' },
-      { story: 'lim(x→0) of sin(x)/x = ?', options: ['∞', '0', 'undefined', '1'], correct: 3, explanation: 'Famous limit. Always equals 1.' },
-      { story: 'lim(x→∞) of (3x²+2x)/(x²−5) = ?', options: ['2', '∞', '0', '3'], correct: 3, explanation: 'Leading coefficients: 3/1=3.' },
-      { story: 'Vertical asymptote of f(x)=1/(x²−4)?', options: ['x=4', 'x=−2', 'x=2', 'x=±2'], correct: 3, explanation: 'x²−4=0 → x=±2.' },
-      { story: 'Horizontal asymptote of f(x)=3x/(x²+1)?', options: ['none', 'y=1', 'y=3', 'y=0'], correct: 3, explanation: 'Degree denom > numerator → y=0.' },
+      { story: 'lim(x→2) of (x²−4)/(x−2) = ?', options: ['2', '0', '4', 'undefined'], correct: 2, explanation: 'Factor: (x+2)(x−2)/(x−2)=x+2. At x=2: 4.' },
+      { story: 'lim(x→0) of sin(x)/x = ?', options: ['∞', '1', '0', 'undefined'], correct: 1, explanation: 'Famous limit. Always equals 1.' },
+      { story: 'lim(x→∞) of (3x²+2x)/(x²−5) = ?', options: ['2', '∞', '3', '0'], correct: 2, explanation: 'Leading coefficients: 3/1=3.' },
+      { story: 'Vertical asymptote of f(x)=1/(x²−4)?', options: ['x=±2', 'x=4', 'x=−2', 'x=2'], correct: 0, explanation: 'x²−4=0 → x=±2.' },
+      { story: 'Horizontal asymptote of f(x)=3x/(x²+1)?', options: ['none', 'y=1', 'y=0', 'y=3'], correct: 2, explanation: 'Degree denom > numerator → y=0.' },
     ],
   },
 
   // ── CHAIN 11: Partial Fractions ───────────────────────────────────────────
   {
-    id: 11, title: 'Partial Fractions', domain: 'D2', difficulty: 'Hard',
+    id: 11, title: 'Linear Analysis', domain: 'D1', difficulty: 'Medium',
     parts: [
-      { story: 'Decompose: 1/[(x+1)(x−1)]. Form?', options: ['A/(x+1)+B/(x+1)', 'A/x+B/(x²−1)', 'Ax+B/(x²−1)', 'A/(x+1)+B/(x−1)'], correct: 3, explanation: 'Distinct linear factors: A/(x+1)+B/(x−1).' },
-      { story: 'Multiply both sides by (x+1)(x−1): 1=A(x−1)+B(x+1). Set x=1: B=?', options: ['1', '−1', '1/2', '2'], correct: 2, explanation: '1=A(0)+B(2) → B=1/2.' },
-      { story: 'Set x=−1 to find A: A=?', options: ['1', '1/2', '−1/2', '2'], correct: 2, explanation: '1=A(−2)+0 → A=−1/2.' },
-      { story: 'Full partial fraction decomposition?', options: ['1/(x+1)+1/(x−1)', '−1/2/(x+1)+1/2/(x−1)', '1/2/(x+1)+1/2/(x−1)', '1/2/(x+1)−1/2/(x−1)'], correct: 1, explanation: '−1/[2(x+1)] + 1/[2(x−1)].' },
-      { story: '∫[1/(x²−1)]dx using decomposition = ?', options: ['ln|x+1|−ln|x−1|+C', '(1/2)ln|(x−1)/(x+1)|+C', '(1/2)ln|(x+1)/(x−1)|+C', 'ln|x²−1|+C'], correct: 1, explanation: 'Integrate each part: (1/2)ln|x−1|−(1/2)ln|x+1|.' },
+      { story: 'Line A passes through (0, 2) and (4, 10). What is the slope?', options: ['1/2', '4', '2', '8'], correct: 2, explanation: 'm = (10-2)/(4-0) = 8/4 = 2.' },
+      { story: 'Line B is parallel to Line A and passes through (0, -5). Equation?', options: ['y = 2x - 5', 'y = -2x - 5', 'y = 1/2x - 5', 'y = 2x + 5'], correct: 0, explanation: 'Parallel lines have same slope (m=2). Intercept is -5.' },
+      { story: 'Line C is perpendicular to Line A. What is its slope?', options: ['2', '-2', '1/2', '-1/2'], correct: 3, explanation: 'Perpendicular slope is negative reciprocal of 2, which is -1/2.' },
+      { story: 'Where does Line A cross the x-axis?', options: ['(2, 0)', '(-1, 0)', '(0, -1)', '(1, 0)'], correct: 1, explanation: '0 = 2x + 2 -> 2x = -2 -> x = -1.' },
+      { story: 'What is the distance between (0, 2) and (4, 5)?', options: ['7', '25', '5', '√7'], correct: 2, explanation: 'd = √((4-0)² + (5-2)²) = √(16 + 9) = √25 = 5.' },
     ],
   },
 
-  // ── CHAIN 12: Integration ─────────────────────────────────────────────────
+  // ── CHAIN 12: Advanced Stats ──────────────────────────────────────────────
   {
-    id: 12, title: 'Integration Basics', domain: 'D2', difficulty: 'Hard',
+    id: 12, title: 'Statistical Inference', domain: 'D3', difficulty: 'Hard',
     parts: [
-      { story: '∫x³ dx = ?', options: ['3x²+C', 'x²/2+C', 'x⁴+C', 'x⁴/4+C'], correct: 3, explanation: 'Power rule: xⁿ⁺¹/(n+1)+C = x⁴/4+C.' },
-      { story: '∫(2x+3) dx = ?', options: ['2+C', 'x²+3+C', 'x²+3x+C', '2x²+3x+C'], correct: 2, explanation: 'Integrate term by term: x²+3x+C.' },
-      { story: '∫eˣ dx = ?', options: ['eˣ/x+C', 'xeˣ+C', '1/eˣ+C', 'eˣ+C'], correct: 3, explanation: 'eˣ is its own antiderivative.' },
-      { story: '∫(1/x) dx = ?', options: ['−1/x²+C', '1/x²+C', 'x⁰+C', 'ln|x|+C'], correct: 3, explanation: '∫(1/x)dx = ln|x|+C.' },
-      { story: '∫₀² x² dx = ?', options: ['4', '2', '8/3', '4/3'], correct: 2, explanation: '[x³/3]₀² = 8/3−0 = 8/3.' },
+      { story: 'A set has mean 100 and std dev 15. What is the z-score of 130?', options: ['1', '30', '1.5', '2'], correct: 3, explanation: 'z = (x - mean)/sd = (130-100)/15 = 30/15 = 2.' },
+      { story: 'What percentage of data falls below a z-score of 0 in a normal dist?', options: ['95%', '50%', '68%', '34%'], correct: 1, explanation: 'The normal distribution is symmetric; 50% falls on either side of the mean (z=0).' },
+      { story: 'In a normal dist, what % of data is within 1 std dev of mean?', options: ['95%', '99.7%', '68%', '50%'], correct: 2, explanation: 'Empirical rule: 68% within 1 SD, 95% within 2 SD, 99.7% within 3 SD.' },
+      { story: 'If n=100 and p=0.4, what is the standard deviation of the proportion?', options: ['0.049', '0.24', '4.9', '0.0024'], correct: 0, explanation: 'sd = √[p(1-p)/n] = √[0.4*0.6/100] = √0.0024 ≈ 0.049.' },
+      { story: 'As sample size (n) increases, what happens to the margin of error?', options: ['Decreases', 'Increases', 'Stays same', 'Becomes zero'], correct: 0, explanation: 'Larger samples provide more precision, reducing the standard error and margin of error.' },
     ],
   },
-
-  // ── CHAIN 13: Matrix Operations ───────────────────────────────────────────
-  {
-    id: 13, title: 'Matrix Chain', domain: 'D2', difficulty: 'Hard',
-    parts: [
-      { story: 'Matrix A=[1,2;3,4]. det(A)=?', options: ['14', '−14', '2', '−2'], correct: 3, explanation: 'det=[1×4−2×3]=4−6=−2.' },
-      { story: 'Matrix A=[2,0;0,3]. Eigenvalues?', options: ['2 and 0', '0 and 3', '1 and 6', '2 and 3'], correct: 3, explanation: 'Diagonal matrix: eigenvalues are diagonal entries.' },
-      { story: '[1,2;3,4]×[1;1] = ?', options: ['[1;7]', '[3;7]', '[2;4]', '[3;3]'], correct: 1, explanation: 'Row1×col: 1+2=3. Row2×col: 3+4=7. Result: [3;7].' },
-      { story: 'Transpose of [1,2;3,4] = ?', options: ['[1,3;2,4]', '[4,3;2,1]', '[1,2;3,4]', '[2,1;4,3]'], correct: 0, explanation: 'Transpose: rows become columns.' },
-      { story: 'Rank of [1,2;2,4] = ?', options: ['2', '0', '4', '1'], correct: 3, explanation: 'Row 2 = 2×Row 1. Only 1 independent row. Rank=1.' },
-    ],
-  },
-
   // ── CHAIN 14: Expanding / Simplifying ────────────────────────────────────
   {
     id: 14, title: 'Expand & Simplify', domain: 'D1', difficulty: 'Easy',
@@ -183,14 +170,14 @@ const CHAINS = [
   },
 
   // ── CHAIN 15: Differential Equations ─────────────────────────────────────
-  {
+ {
     id: 15, title: 'Diff. Equations', domain: 'D2', difficulty: 'Hard',
     parts: [
       { story: 'dy/dx = 2x. General solution y=?', options: ['2+C', '2x²+C', 'x+C', 'x²+C'], correct: 3, explanation: 'Integrate both sides: y=x²+C.' },
       { story: 'dy/dx = ky models? (k>0)', options: ['Linear decay', 'Quadratic growth', 'Exponential decay', 'Exponential growth'], correct: 3, explanation: 'Proportional to y → exponential growth.' },
       { story: 'Solution of dy/dx = ky is?', options: ['y=k+C', 'y=kx+C', 'y=Ceᵏˣ', 'y=Ce^x'], correct: 2, explanation: 'Separable ODE: y=Ce^(kx).' },
-      { story: 'y\'\'−y=0. Characteristic roots?', options: ['r=0,1', 'r=±i', 'r=1,−1', 'r=0,−1'], correct: 2, explanation: 'r²=1 → r=±1.' },
-      { story: 'General solution of y\'\'−y=0?', options: ['y=C₁sin(x)+C₂cos(x)', 'y=C₁x+C₂', 'y=C₁eˣ', 'y=C₁eˣ+C₂e⁻ˣ'], correct: 3, explanation: 'Real distinct roots: y=C₁e^x+C₂e^(-x).' },
+      { story: 'y\'\'−y=0. Characteristic roots?', options: ['r=1,−1', 'r=0,1', 'r=±i', 'r=0,−1'], correct: 0, explanation: 'r²=1 → r=±1.' },
+      { story: 'General solution of y\'\'−y=0?', options: ['y=C₁sin(x)+C₂cos(x)', 'y=C₁x+C₂', 'y=C₁eˣ+C₂e⁻ˣ', 'y=C₁eˣ'], correct: 2, explanation: 'Real distinct roots: y=C₁e^x+C₂e^(-x).' },
     ],
   },
 
@@ -198,11 +185,11 @@ const CHAINS = [
   {
     id: 16, title: 'Coterminal Angles', domain: 'D2', difficulty: 'Medium',
     parts: [
-      { story: '810° is coterminal with?', options: ['270°', '180°', '45°', '90°'], correct: 3, explanation: '810−2(360)=90°.' },
-      { story: 'sin(810°) = sin(90°) = ?', options: ['0', '√2/2', '−1', '1'], correct: 3, explanation: 'sin(90°)=1.' },
-      { story: '−π/6 radians in degrees?', options: ['60°', '−60°', '30°', '−30°'], correct: 3, explanation: '(−π/6)×(180/π)=−30°.' },
+      { story: '810° is coterminal with?', options: ['270°', '180°', '90°', '45°'], correct: 2, explanation: '810−2(360)=90°.' },
+      { story: 'sin(810°) = sin(90°) = ?', options: ['0', '1', '√2/2', '−1'], correct: 1, explanation: 'sin(90°)=1.' },
+      { story: '−π/6 radians in degrees?', options: ['−30°', '60°', '−60°', '30°'], correct: 0, explanation: '(−π/6)×(180/π)=−30°.' },
       { story: 'cos(−30°) = ?', options: ['−1/2', '1/2', '−√3/2', '√3/2'], correct: 3, explanation: 'cos is even: cos(−θ)=cos(θ). cos(30°)=√3/2.' },
-      { story: 'Reference angle of −30°?', options: ['150°', '330°', '−30°', '30°'], correct: 3, explanation: 'Reference angle always positive: 30°.' },
+      { story: 'Reference angle of −30°?', options: ['150°', '30°', '330°', '−30°'], correct: 1, explanation: 'Reference angle always positive: 30°.' },
     ],
   },
 
@@ -210,21 +197,20 @@ const CHAINS = [
   {
     id: 17, title: 'Graphs & Asymptotes', domain: 'D2', difficulty: 'Medium',
     parts: [
-      { story: 'f(x)=1/(x−3). Vertical asymptote?', options: ['x=0', 'x=1', 'x=−3', 'x=3'], correct: 3, explanation: 'Set denominator=0: x−3=0 → x=3.' },
-      { story: 'f(x)=(2x+1)/(x−3). Horizontal asymptote?', options: ['y=−1', 'y=0', 'y=3', 'y=2'], correct: 3, explanation: 'Same degree: ratio of leading coefficients=2/1=2.' },
-      { story: 'f(x)=x²/(x+1). Oblique asymptote?', options: ['y=x+1', 'y=x−1', 'y=x', 'y=x²'], correct: 1, explanation: 'Poly divide: x²÷(x+1)=x−1 remainder. Oblique: y=x−1.' },
+      { story: 'f(x)=1/(x−3). Vertical asymptote?', options: ['x=3', 'x=0', 'x=1', 'x=−3'], correct: 0, explanation: 'Set denominator=0: x−3=0 → x=3.' },
+      { story: 'f(x)=(2x+1)/(x−3). Horizontal asymptote?', options: ['y=−1', 'y=2', 'y=0', 'y=3'], correct: 1, explanation: 'Same degree: ratio of leading coefficients=2/1=2.' },
+      { story: 'f(x)=x²/(x+1). Oblique asymptote?', options: ['y=x+1', 'y=x', 'y=x²', 'y=x−1'], correct: 3, explanation: 'Poly divide: x²÷(x+1)=x−1 remainder. Oblique: y=x−1.' },
       { story: 'Which describes y=−x²+4?', options: ['Parabola up, vertex(0,4)', 'Line slope−1', 'Parabola down, vertex(0,4)', 'Parabola down, vertex(4,0)'], correct: 2, explanation: 'Negative leading coeff→opens down. Vertex at (0,4).' },
       { story: 'y=2sin(3x). Period = ?', options: ['3π', '2π/3', '6π', '2π'], correct: 1, explanation: 'Period = 2π/b = 2π/3.' },
     ],
   },
-
   // ── CHAIN 18: Partial Derivatives ─────────────────────────────────────────
   {
     id: 18, title: 'Partial Derivatives', domain: 'D2', difficulty: 'Hard',
     parts: [
       { story: 'f(x,y)=x²y+3xy². ∂f/∂x = ?', options: ['2xy+3y²', 'x²+6xy', '2x+3y', '2xy+3x'], correct: 0, explanation: 'Treat y as constant: 2xy+3y².' },
-      { story: 'f(x,y)=x²y+3xy². ∂f/∂y = ?', options: ['x²+6y', 'x²+6xy', '2x+6xy', 'x²y+3x'], correct: 1, explanation: 'Treat x as constant: x²+6xy.' },
-      { story: 'f(x,y)=eˣʸ. ∂f/∂x = ?', options: ['eˣʸ', 'yeˣ', 'xeˣʸ', 'yeˣʸ'], correct: 3, explanation: 'Chain rule: y·e^(xy).' },
+      { story: 'f(x,y)=x²y+3xy². ∂f/∂y = ?', options: ['x²+6y', '2x+6xy', 'x²+6xy', 'x²y+3x'], correct: 2, explanation: 'Treat x as constant: x²+6xy.' },
+      { story: 'f(x,y)=eˣʸ. ∂f/∂x = ?', options: ['eˣʸ', 'yeˣ', 'yeˣʸ', 'xeˣʸ'], correct: 2, explanation: 'Chain rule: y·e^(xy).' },
       { story: 'Critical point requires?', options: ['∂f/∂x=0 only', '∂f/∂x=∂f/∂y', 'f=0', '∂f/∂x=0 AND ∂f/∂y=0'], correct: 3, explanation: 'Both partials must equal zero simultaneously.' },
       { story: 'f(x,y)=x²+y². ∇f = ?', options: ['[2x,2y]', '[x²,y²]', '[2,2]', '[x,y]'], correct: 0, explanation: 'Gradient: [∂f/∂x, ∂f/∂y] = [2x, 2y].' },
     ],
@@ -237,7 +223,7 @@ const CHAINS = [
       { story: 'Simplify: i² = ?', options: ['i', '1', '2i', '−1'], correct: 3, explanation: 'By definition i²=−1.' },
       { story: 'Simplify: i³ = ?', options: ['−i', '1', 'i', '−1'], correct: 0, explanation: 'i³=i²·i=−i.' },
       { story: 'Add: (3+2i)+(1−5i) = ?', options: ['4+7i', '4−3i', '3−3i', '4+3i'], correct: 1, explanation: '(3+1)+(2−5)i = 4−3i.' },
-      { story: 'Multiply: (2+i)(2−i) = ?', options: ['4−i²', '3', '4+1', '5'], correct: 3, explanation: '4−i²=4−(−1)=5.' },
+      { story: 'Multiply: (2+i)(2−i) = ?', options: ['4−i²', '3', '5', '4+1'], correct: 2, explanation: '4−i²=4−(−1)=5.' },
       { story: '|3+4i| = ?', options: ['7', '1', '25', '5'], correct: 3, explanation: 'Modulus=√(3²+4²)=√25=5.' },
     ],
   },
@@ -246,10 +232,10 @@ const CHAINS = [
   {
     id: 20, title: 'Continuity Chain', domain: 'D2', difficulty: 'Hard',
     parts: [
-      { story: 'f(x)=x² at x=2. f(2)=?', options: ['2', '8', '16', '4'], correct: 3, explanation: '2²=4.' },
+      { story: 'f(x)=x² at x=2. f(2)=?', options: ['2', '8', '4', '16'], correct: 2, explanation: '2²=4.' },
       { story: 'lim(x→2) x² = ?', options: ['2', '8', '16', '4'], correct: 3, explanation: 'Polynomial continuous: limit = f(2) = 4.' },
-      { story: 'f is continuous at x=2 if lim=f(2). Is x² continuous at x=2?', options: ['No, hole', 'No, jump', 'Cannot tell', 'Yes'], correct: 3, explanation: 'lim=4=f(2). All three conditions met.' },
-      { story: 'f(x)=1/x at x=0. Is it continuous?', options: ['Yes, limit=0', 'Yes, f(0)=0', 'Yes, defined', 'No, undefined'], correct: 3, explanation: 'f(0) undefined. Not continuous at x=0.' },
+      { story: 'f is continuous at x=2 if lim=f(2). Is x² continuous at x=2?', options: ['Yes', 'No, hole', 'No, jump', 'Cannot tell'], correct: 0, explanation: 'lim=4=f(2). All three conditions met.' },
+      { story: 'f(x)=1/x at x=0. Is it continuous?', options: ['Yes, limit=0', 'No, undefined', 'Yes, f(0)=0', 'Yes, defined'], correct: 1, explanation: 'f(0) undefined. Not continuous at x=0.' },
       { story: 'Removable discontinuity means?', options: ['Vertical asymptote', 'Jump in values', 'Not differentiable', 'Hole that can be filled'], correct: 3, explanation: 'A hole: limit exists but f(x) not defined there.' },
     ],
   },
@@ -568,7 +554,7 @@ export default function ChainReactionScreen() {
   useEffect(() => {
     if (gameState !== 'results') return;
     playCelebration(finalScore);
-    saveGameResult(1, finalScore, xpEarned, 'rw_d1', speedyCount, lives < 0 ? 0 : lives, Date.now());
+    saveGameResult(16, finalScore, xpEarned, 'math_d2', speedyCount, lives < 0 ? 0 : lives, Date.now());
   }, [gameState]);
   
   if (gameState === 'results') {

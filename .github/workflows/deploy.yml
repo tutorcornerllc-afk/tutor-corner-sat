@@ -1,0 +1,57 @@
+# Builds the Expo web export and publishes the dist/ folder
+# to the `gh-pages` branch on every push to main/master.
+#
+# GitHub Pages serves the gh-pages branch at:
+#   https://<your-username>.github.io/<repo-name>/
+# We then put Cloudflare in front of it so it appears as
+#   https://tutorcornerllc.com/SAT/
+name: Build & Deploy SAT app
+
+on:
+  push:
+    branches: [master, main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build static web export
+        run: npx expo export --platform web
+
+      # GitHub Pages doesn't like underscores in some files; also we need a
+      # 404.html that re-serves index.html so client-side routing works.
+      - name: Add SPA fallback (404.html)
+        run: |
+          if [ -f dist/index.html ]; then cp dist/index.html dist/404.html; fi
+
+      # Disable Jekyll so files starting with _ aren't ignored
+      - name: Disable Jekyll
+        run: touch dist/.nojekyll
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          force_orphan: true

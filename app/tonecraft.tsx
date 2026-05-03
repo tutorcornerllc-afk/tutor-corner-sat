@@ -25,6 +25,10 @@ const WORD_BANK: Record<string, { perfect: string[]; good: string[]; basic: stri
       'unprecedented','disastrous','calamitous','tragedy-stricken','violent',
       'explosive','seismic','shattering','crippling','gut-wrenching',
       'bone-chilling','soul-crushing','paralyzing','torrential','unrelenting',
+      'catastrophic-scale','epoch-defining','earth-rending','devastation-level',
+      'apocalypse-like','system-collapsing','reality-shattering','existence-ending',
+      'world-altering','civilization-breaking','irreversible','unstoppable',
+      'overpowering','breakdown-inducing','collapse-driven','impactful-to-the-core'
     ],
     good: [
       'terrible','horrible','dreadful','alarming','intense',
@@ -33,12 +37,19 @@ const WORD_BANK: Record<string, { perfect: string[]; good: string[]; basic: stri
       'troubling','frightening','dangerous','unstable','fierce',
       'drastic','extreme','wild','major','significant',
       'enormous','massive','heavy','urgent','escalating',
+      'rough','turbulent','pressurized','strained','volatile',
+      'tense','unsettling','alarming-level','high-stakes','risk-heavy',
+      'emotionally-charged','fast-moving','breaking','critical-level','heightened',
+      'serious-toned','impact-heavy','danger-laden','unstable-situation','distressing'
     ],
     basic: [
       'bad','awful','hard','tough','rough',
       'sad','difficult','unfortunate','upsetting','dark',
       'messy','ugly','poor','wrong','weak',
-      'sad','grim','off','low','not great',
+      'grim','off','low','not great','unpleasant',
+      'badly','hardly','barely','mess','problematic',
+      'inconvenient','meh','subpar','lacking','inferior',
+      'negative','down','poorly','struggling','flawed'
     ],
   },
   formal: {
@@ -47,8 +58,12 @@ const WORD_BANK: Record<string, { perfect: string[]; good: string[]; basic: stri
       'refined','dignified','ceremonious','decorous','stately',
       'impeccable','illustrious','prestigious','erudite','cultivated',
       'meticulous','scholarly','polished','venerable','accomplished',
-      'eminent','distinguished','revered','astute','composed',
-      'judicious','magnanimous','articulate','discerning','immaculate',
+      'eminent','revered','astute','composed','judicious',
+      'magnanimous','articulate','discerning','immaculate','laudable',
+      'august','noble','grandiloquent','high-minded','rhetorical',
+      'sage','learned','intellectual','thoughtful','analytical',
+      'exemplary','commanding','regal','principled','masterful',
+      'admirable','noteworthy','well-regarded','upright','civilized'
     ],
     good: [
       'professional','proper','composed','measured','precise',
@@ -56,11 +71,18 @@ const WORD_BANK: Record<string, { perfect: string[]; good: string[]; basic: stri
       'organized','credible','serious','capable','qualified',
       'efficient','focused','prepared','logical','confident',
       'strong','reliable','experienced','skilled','thorough',
+      'competent','balanced','orderly','articulate','steady',
+      'consistent','controlled','responsible','respectful','formal',
+      'systematic','reasonable','capable-minded','well-prepared','effective',
+      'accurate','reputable','sound','deliberate','coherent'
     ],
     basic: [
       'nice','good','neat','clean','calm',
       'smart','fine','steady','correct','ok',
       'decent','simple','plain','normal','fair',
+      'okay','average','basic','standard','okayish',
+      'polite','okay-level','acceptable','passable','mild',
+      'ordinary','regular','typical','safe','neutral'
     ],
   },
   sad: {
@@ -71,6 +93,10 @@ const WORD_BANK: Record<string, { perfect: string[]; good: string[]; basic: stri
       'hopeless','distraught','forsaken','melancholic','lamenting',
       'despondent','bereaved','crestfallen','woeful','forlorn',
       'disconsolate','afflicted','agonized','dejected','somber',
+      'ruined','devastated-to-the-core','emotionally-broken','spirit-crushed','utterly-heartbroken',
+      'life-shattered','grief-laden','pain-ridden','tear-ravaged','loss-stricken',
+      'emptiness-consumed','hopelessly-lost','broken-hearted','anguish-filled','soul-broken',
+      'irreparably-damaged','emotionally-destroyed','deeply-mourning','sorrow-drenched','pain-devoured'
     ],
     good: [
       'miserable','gloomy','melancholy','grieving','distressed',
@@ -78,11 +104,16 @@ const WORD_BANK: Record<string, { perfect: string[]; good: string[]; basic: stri
       'lonely','regretful','disappointed','empty','hurt',
       'unhappy','blue','low','bitter','resigned',
       'lost','weary','broken','pained','sullen',
+      'hurtful','stressed','downhearted','unsettled','emotionally-low',
+      'sad-looking','depressed','hurt-feeling','withdrawn','troubled-mind',
+      'weakened','deflated','discouraged','drained','low-spirited'
     ],
     basic: [
       'upset','unhappy','down','bad','grim',
       'blue','glum','meh','off','tired',
       'weak','flat','rough','sad','hurt',
+      'low','downer','blah','not-good','unwell',
+      'meh-feeling','slightly-sad','kind-of-bad','off-feeling','low-energy'
     ],
   },
   positive: {
@@ -93,6 +124,10 @@ const WORD_BANK: Record<string, { perfect: string[]; good: string[]; basic: stri
       'exceptional','supreme','electrifying','uplifting','astounding',
       'awe-inspiring','incomparable','marvelous','resplendent','dazzling',
       'luminous','miraculous','legendary','iconic','unforgettable',
+      'euphoric','joy-exploding','limitless','jaw-dropping','mind-blowing',
+      'celebratory','victorious','overjoyed','blissful','elated',
+      'peak-performance','gold-standard','heavenly','perfected','flawless',
+      'radiance-filled','life-affirming','soul-lifting','world-class','next-level'
     ],
     good: [
       'wonderful','excellent','fantastic','outstanding','remarkable',
@@ -100,11 +135,18 @@ const WORD_BANK: Record<string, { perfect: string[]; good: string[]; basic: stri
       'solid','awesome','cheerful','lovely','pleasing',
       'successful','energetic','vibrant','dynamic','powerful',
       'effective','impactful','meaningful','memorable','great',
+      'pleasant','happy','bright','positive','optimistic',
+      'upbeat','encouraging','satisfying','warm','friendly',
+      'supportive','motivated','confident','capable','capable-performing',
+      'well-done','good-quality','high-level','strong-performing','well-balanced'
     ],
     basic: [
       'good','nice','fine','happy','fun',
       'glad','bright','warm','cool','ok',
       'decent','better','solid','easy','light',
+      'okay','okayish','alright','pleasant','fair',
+      'simple','clean','soft','friendly','mild',
+      'basic-positive','slightly-good','pretty-good','not-bad','okay-feeling'
     ],
   },
   negative: {
@@ -115,6 +157,10 @@ const WORD_BANK: Record<string, { perfect: string[]; good: string[]; basic: stri
       'repugnant','loathsome','diabolical','wicked','barbaric',
       'insidious','treacherous','corrupt','venomous','predatory',
       'savage','ruthless','destructive','toxic','malicious',
+      'abominable','dreadful','horrific','unforgivable','unspeakable',
+      'heinous-level','evil-spiraled','morally-bankrupt','soul-corrupting','systemically-evil',
+      'utterly-repulsive','deeply-corrupt','morally-depraved','psychologically-damaging','cruelty-driven',
+      'inhumane','brutalizing','devastation-causing','malice-filled','hate-fueled'
     ],
     good: [
       'terrible','dreadful','appalling','disgraceful','shameful',
@@ -122,11 +168,16 @@ const WORD_BANK: Record<string, { perfect: string[]; good: string[]; basic: stri
       'dirty','nasty','cold','brutal','harsh',
       'wrong','unjust','destructive','harmful','damaging',
       'reckless','irresponsible','negligent','dishonest','corrupt',
+      'negative','hurtful','painful','unpleasant','dangerous',
+      'unstable','offensive','problematic','stressful','agitated',
+      'conflicted','tense','unethical','low-quality','badly-handled'
     ],
     basic: [
       'bad','wrong','mean','rude','ugly',
       'dark','cold','rough','off','poor',
       'messy','fake','dirty','weak','low',
+      'awful','meh','not-good','okay-bad','unpleasant',
+      'average-bad','simple-bad','slightly-bad','kind-of-bad','off-feeling'
     ],
   },
   urgent: {
@@ -137,6 +188,10 @@ const WORD_BANK: Record<string, { perfect: string[]; good: string[]; basic: stri
       'life-or-death','time-sensitive','mandatory','essential','unavoidable',
       'uncompromising','inescapable','emergency','high-priority','acute',
       'noncompliance-free','deadline-driven','last-chance','non-deferrable','absolute',
+      'urgent-level','breaking-point','catastrophic-timing','seconds-count','zero-delay',
+      'must-act-now','instant-required','priority-one','mission-critical','system-critical',
+      'no-delay-possible','failure-risk','rapid-response','immediate-action','critical-window',
+      'time-lock','final-warning','deadline-imminent','emergency-level','unstoppable-need'
     ],
     good: [
       'essential','serious','important','necessary','significant',
@@ -144,11 +199,16 @@ const WORD_BANK: Record<string, { perfect: string[]; good: string[]; basic: stri
       'fast','rapid','priority','high-stakes','tight',
       'quick','prompt','pressing','demanding','critical',
       'time-critical','short-deadline','overdue','undelayable','pressing',
+      'urgent','fast-moving','time-sensitive','high-priority','alert',
+      'rushed','accelerated','priority-based','important-level','needs-attention',
+      'quick-turnaround','soon-needed','expedited','active','focused'
     ],
     basic: [
       'needed','fast','quick','soon','now',
       'main','real','big','major','rush',
       'hurry','stop','go','move','act',
+      'asap','today','immediate','right-now','quickly',
+      'short','brief','light','simple','basic-urgent'
     ],
   },
   hopeful: {
@@ -159,6 +219,11 @@ const WORD_BANK: Record<string, { perfect: string[]; good: string[]; basic: stri
       'forward-looking','life-affirming','renewing','golden','revitalizing',
       'liberating','empowering','blossoming','flourishing','invigorating',
       'enlightening','healing','catalytic','regenerative','pioneering',
+      'hope-filled','future-ready','breakthrough','turning-point','awakening',
+      'reborn','resurgent','thriving','expanding','ascending',
+      'sunlit','clear-sky','horizon-opening','possibility-rich','destiny-shaping',
+      'uplift-driven','growth-defining','limit-breaking','path-forging','possibility-expanding',
+      'new-era','positive-shift','life-changing-positive','dream-igniting','possibility-driven'
     ],
     good: [
       'inspiring','positive','reassuring','comforting','bright',
@@ -166,11 +231,16 @@ const WORD_BANK: Record<string, { perfect: string[]; good: string[]; basic: stri
       'improving','strong','stable','safe','calm',
       'encouraged','motivated','cheerful','growing','rising',
       'recovering','progressing','building','advancing','opening',
+      'hopeful','encouraging','steady','secure','balanced',
+      'optimistic-leaning','forward-moving','gradual-growth','soft-improvement','positive-signs',
+      'developing','strengthening','settling','easing','stabilizing'
     ],
     basic: [
       'good','nice','okay','better','fine',
       'glad','warm','safe','calm','clear',
       'hopeful','light','easy','soft','decent',
+      'alright','okayish','not-bad','kind','simple',
+      'mild','gentle','neutral','steady','basic-good'
     ],
   },
   angry: {
@@ -181,6 +251,10 @@ const WORD_BANK: Record<string, { perfect: string[]; good: string[]; basic: stri
       'aggrieved','volatile','ranting','rage-filled','bellicose',
       'hostile','combative','antagonistic','retaliatory','fierce',
       'escalating','confrontational','militant','unforgiving','unrelenting',
+      'fury-driven','rage-consumed','anger-overflowing','temper-flaring','emotionally-volatile',
+      'blind-rage','blood-boiling','rage-unstoppable','seething-mad','controlled-chaos',
+      'venom-spitting','rage-fueled','detonation-ready','emotionally-explosive','rage-heavy',
+      'warpath-level','conflict-driven','no-mercy','all-consuming-anger','unstable-fury'
     ],
     good: [
       'angry','frustrated','bitter','resentful','heated',
@@ -188,11 +262,16 @@ const WORD_BANK: Record<string, { perfect: string[]; good: string[]; basic: stri
       'tense','upset','cross','snappy','sharp',
       'intense','inflamed','provoked','offended','disturbed',
       'bothered','riled','aggravated','stoked','charged',
+      'irked','snappy-toned','emotionally-hot','triggered','tense-minded',
+      'on-edge','slightly-raging','worked-up-state','heated-up','emotionally-reactive',
+      'reactive','provoked-state','agitation-heavy','stress-activated','emotionally-pressed'
     ],
     basic: [
       'mad','upset','annoyed','cross','harsh',
       'mean','cold','sharp','tough','bad',
       'irritated','off','snappy','loud','short',
+      'bothered','grumpy','moody','rough','offended',
+      'slightly-mad','kind-of-angry','not-happy','low-temper','basic-angry'
     ],
   },
   peaceful: {
@@ -203,6 +282,10 @@ const WORD_BANK: Record<string, { perfect: string[]; good: string[]; basic: stri
       'untroubled','pure','restorative','dreamlike','undisturbed',
       'pristine','wholesome','unblemished','crystalline','hushed',
       'sacred','blissful','graceful','timeless','gentle',
+      'angelic','nirvana-like','stillness-filled','gravity-free','soft-lit',
+      'moonlit-calm','horizon-still','breath-like','ocean-smooth','windless',
+      'unbroken-calm','deep-stillness','pure-equilibrium','serenity-core','peace-absolute',
+      'flow-state','silent-perfect','harmonic-balance','infinite-calm','unshaken'
     ],
     good: [
       'calming','soothing','quiet','restful','composed',
@@ -210,11 +293,16 @@ const WORD_BANK: Record<string, { perfect: string[]; good: string[]; basic: stri
       'steady','cool','fresh','clean','mild',
       'undisturbed','unruffled','unhurried','leisurely','smooth',
       'tranquil','comforting','reassuring','safe','warm',
+      'peaceful','quieted','settled','balanced','low-stress',
+      'softened','eased','gentle-flow','mellowed','slow-paced',
+      'stable','non-chaotic','quiet-state','emotionally-calm','light-hearted-calm'
     ],
     basic: [
       'calm','nice','slow','easy','fine',
       'safe','light','clean','free','good',
       'quiet','soft','plain','simple','mellow',
+      'okay','neutral','steady','still','okay-feeling',
+      'low-energy','basic-calm','slightly-calm','not-loud','not-busy'
     ],
   },
   humorous: {
@@ -222,9 +310,13 @@ const WORD_BANK: Record<string, { perfect: string[]; good: string[]; basic: stri
       'hilarious','uproarious','sidesplitting','whimsical','farcical',
       'absurdist','comedic','satirical','witty','ludicrous',
       'rib-tickling','laugh-out-loud','ingenious','clever','zany',
-      'offbeat','ironic','playfully absurd','outrageous','madcap',
+      'offbeat','ironic','playfully-absurd','outrageous','madcap',
       'wacky','tongue-in-cheek','deadpan','irreverent','slapstick',
-      'farcically ridiculous','delightfully odd','dryly comic','absurdly funny','cheeky',
+      'farcically-ridiculous','delightfully-odd','dryly-comic','absurdly-funny','cheeky',
+      'comedy-gold','masterfully-funny','brilliantly-witty','comically-perfect','humor-rich',
+      'laugh-uncontrollable','joke-level-genius','satire-heavy','comedy-driven','punchline-perfect',
+      'timing-perfect','laugh-storm','comic-brilliance','witty-chaos','genius-humor',
+      'next-level-funny','elevated-comedy','high-comedy','artful-humor','precision-comedy'
     ],
     good: [
       'funny','amusing','playful','silly','quirky',
@@ -232,11 +324,16 @@ const WORD_BANK: Record<string, { perfect: string[]; good: string[]; basic: stri
       'goofy','odd','weird','joking','laughable',
       'fun','bright','witty','punny','chuckle-worthy',
       'snappy','bubbly','breezy','light','clever',
+      'humorous','smiley','jovial','jokey','playful-tone',
+      'light-comedy','soft-funny','easy-humor','casual-funny','slightly-witty',
+      'pleasantly-funny','amusing-tone','smirk-worthy','low-key-funny','mild-comedy'
     ],
     basic: [
       'fun','odd','weird','goofy','wacky',
       'wild','cool','cute','nice','random',
       'silly','dumb','light','soft','chill',
+      'okay-funny','kinda-funny','light-fun','basic-funny','mildly-funny',
+      'simple-joke','soft-humor','small-funny','tiny-funny','casual'
     ],
   },
 };
@@ -406,7 +503,10 @@ export default function ToneCraftScreen() {
 
   // Try Word — checks and adds to matched list, DOES NOT end question
   function handleTryWord() {
-    const word = typedWord.trim().toLowerCase();
+    const word = typedWord
+      .toLowerCase()
+      .replace(/[^\w\s]/g, '')
+      .trim();
     if (!word || submitted) return;
 
     const result = checkWord(word);
@@ -443,36 +543,62 @@ export default function ToneCraftScreen() {
     const speedBonus = isSpeedy ? Math.max(3, Math.round((8 - timeTaken) * 2)) : 0;
     const bank = WORD_BANK[q.tone];
 
+    // Normalize helper
+    const normalize = (str: string) =>
+      str.toLowerCase().trim().replace(/[^\w\s]/g, '');
+
+    // Flexible matcher
+    const matchesAny = (word: string, list: string[]) => {
+      const cleanWord = normalize(word);
+
+      return list.some(item => {
+        const cleanItem = normalize(item);
+
+        return (
+          cleanWord === cleanItem ||
+          cleanWord.includes(cleanItem) ||
+          cleanItem.includes(cleanWord)
+        );
+      });
+    };
+
     // Find best word from matched list
     let bestResult: 'perfect' | 'good' | 'basic' | 'none' = 'none';
     let bestWord = '';
 
-    for (const w of matchedWords) {
-      if (bank.perfect.some(p => p === w || w.includes(p) || p.includes(w))) {
-        bestResult = 'perfect'; bestWord = w; break;
+    for (const rawWord of matchedWords) {
+      const w = normalize(rawWord);
+
+      if (matchesAny(w, bank.perfect)) {
+        bestResult = 'perfect';
+        bestWord = rawWord;
+        break;
       }
-    }
-    if (bestResult === 'none') {
-      for (const w of matchedWords) {
-        if (bank.good.some(g => g === w || w.includes(g) || g.includes(w))) {
-          bestResult = 'good'; bestWord = w; break;
-        }
+
+      if (bestResult === 'none' && matchesAny(w, bank.good)) {
+        bestResult = 'good';
+        bestWord = rawWord;
       }
-    }
-    if (bestResult === 'none') {
-      for (const w of matchedWords) {
-        if (bank.basic.some(b => b === w || w.includes(b) || b.includes(w))) {
-          bestResult = 'basic'; bestWord = w; break;
-        }
+
+      if (bestResult === 'none' && matchesAny(w, bank.basic)) {
+        bestResult = 'basic';
+        bestWord = rawWord;
       }
     }
 
     // Also check current typed word if not timed out
     if (bestResult === 'none' && typedWord.trim() && !timedOut) {
-      const lastCheck = checkWord(typedWord.trim());
-      if (lastCheck !== 'none') {
-        bestResult = lastCheck;
-        bestWord = typedWord.trim().toLowerCase();
+      const cleanTyped = normalize(typedWord);
+
+      if (matchesAny(cleanTyped, bank.perfect)) {
+        bestResult = 'perfect';
+        bestWord = typedWord.trim();
+      } else if (matchesAny(cleanTyped, bank.good)) {
+        bestResult = 'good';
+        bestWord = typedWord.trim();
+      } else if (matchesAny(cleanTyped, bank.basic)) {
+        bestResult = 'basic';
+        bestWord = typedWord.trim();
       }
     }
 
@@ -568,7 +694,7 @@ export default function ToneCraftScreen() {
   useEffect(() => {
     if (gameState !== 'results') return;
     playCelebration(finalScore);
-    saveGameResult(1, finalScore, xpEarned, 'rw_d1', speedyCount, lives < 0 ? 0 : lives, Date.now());
+    saveGameResult(8, finalScore, xpEarned, 'rw_d1', speedyCount, lives < 0 ? 0 : lives, Date.now());
   }, [gameState]);
 
   // ─── RESULTS ───────────────────────────────────────────────────────────────

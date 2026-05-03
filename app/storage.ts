@@ -1,7 +1,138 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Device from 'expo-device';
+
+// ─── GOOGLE SHEETS CONNECTION ─────────────────────────────────────────────────
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbys36yf4TYLrTwlL6hJ9d5qG8sGXifqGxhQpPQuvLVeO8RIdalwAn68gnXTDm1d3ryZ/exec';
+
+export async function getDeviceId(): Promise<string> {
+  try {
+    const stored = await AsyncStorage.getItem('device_id');
+    if (stored) return stored;
+    const id = Device.modelName + '-' +
+      Math.random().toString(36).substring(2, 10).toUpperCase();
+    await AsyncStorage.setItem('device_id', id);
+    return id;
+  } catch {
+    return 'unknown-device';
+  }
+}
+
+export async function validateAccessCode(code: string): Promise<{
+  valid: boolean;
+  plan?: string;
+  expiry?: string;
+  reason?: string;
+  message?: string;
+}> {
+  try {
+    const deviceId = await getDeviceId();
+    const response = await fetch(SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action:   'validate_code',
+        code:     code.trim().toUpperCase(),
+        deviceId: deviceId,
+      }),
+    });
+    const result = await response.json();
+    if (result.valid) {
+      await AsyncStorage.setItem('access_code', code.trim().toUpperCase());
+      await AsyncStorage.setItem('access_plan', result.plan || '');
+      await AsyncStorage.setItem('access_expiry', result.expiry || '');
+      await AsyncStorage.setItem('last_validated', Date.now().toString());
+      await setSubscribed(result.plan || 'website');
+    }
+    return result;
+  } catch (e) {
+    // Offline fallback
+    const cached = await AsyncStorage.getItem('access_code');
+    const lastCheck = await AsyncStorage.getItem('last_validated');
+    if (cached && lastCheck) {
+      const daysSince = (Date.now() - parseInt(lastCheck)) / 86400000;
+      if (daysSince < 7) {
+        return { valid: true, plan: 'offline', message: 'Offline — using cached access' };
+      }
+    }
+    return { valid: false, reason: 'network', message: 'No internet connection. Try again.' };
+  }
+}
+
+export async function checkSubscriptionOnline(): Promise<void> {
+  try {
+    const code = await AsyncStorage.getItem('access_code');
+    if (!code) return;
+    const deviceId = await getDeviceId();
+    const response = await fetch(SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action:   'validate_code',
+        code:     code,
+        deviceId: deviceId,
+      }),
+    });
+    const result = await response.json();
+    if (result.valid) {
+      await AsyncStorage.setItem('last_validated', Date.now().toString());
+      await setSubscribed(result.plan || 'website');
+    } else {
+      if (result.reason === 'expired') {
+        await AsyncStorage.removeItem('access_code');
+        const sub = { status: 'expired', plan: '', date: Date.now() };
+        await AsyncStorage.setItem('subscription', JSON.stringify(sub));
+      }
+      if (result.reason === 'blocked' || result.reason === 'wrong_device') {
+        await AsyncStorage.removeItem('access_code');
+        const sub = { status: 'expired', plan: '', date: Date.now() };
+        await AsyncStorage.setItem('subscription', JSON.stringify(sub));
+      }
+    }
+  } catch (e) {
+    // Offline — keep existing status, 7 day grace period
+    const lastCheck = await AsyncStorage.getItem('last_validated');
+    if (lastCheck) {
+      const daysSince = (Date.now() - parseInt(lastCheck)) / 86400000;
+      if (daysSince > 7) {
+        const sub = { status: 'expired', plan: '', date: Date.now() };
+        await AsyncStorage.setItem('subscription', JSON.stringify(sub));
+      }
+    }
+  }
+}
+
+export async function sendUserDataToSheets(userData: {
+  type: string;
+  email?: string;
+  phone?: string;
+  totalXP?: number;
+  gamesPlayed?: number;
+  streak?: number;
+  subStatus?: string;
+  ageConfirmed?: boolean;
+  agreedTerms?: boolean;
+  wantsMarketing?: boolean;
+  backupCode?: string;
+  accessCode?: string;
+}): Promise<void> {
+  try {
+    const deviceId = await getDeviceId();
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action:   'save_user',
+        deviceId: deviceId,
+        appVersion: '1.0.0',
+        ...userData,
+      }),
+    });
+  } catch (e) {
+    console.log('Sheets sync failed silently');
+  }
+}
 
 // ─── PROMO CODES ─────────────────────────────────────────────────────────────
-// Owner can update these anytime
 const PROMO_CODES: Record<string, string> = {
   'WELCOME2024': 'monthly',
   'TEACHER': 'yearly',
@@ -48,24 +179,20 @@ export async function saveGameResult(
     const history: GameResult[] = existing ? JSON.parse(existing) : [];
     const newResult: GameResult = { gameId, score, xp, domain, speedy, lives, date };
     history.push(newResult);
-    // Keep last 50 results per game
     if (history.length > 50) history.splice(0, history.length - 50);
     await AsyncStorage.setItem(key, JSON.stringify(history));
 
-    // Update domain XP
     const domainKey = `domain_xp_${domain}`;
     const currentDomainXP = await AsyncStorage.getItem(domainKey);
     const newDomainXP = (currentDomainXP ? parseInt(currentDomainXP) : 0) + xp;
     await AsyncStorage.setItem(domainKey, String(newDomainXP));
 
-    // Update today's XP
     const today = new Date().toISOString().split('T')[0];
     const todayKey = `today_xp_${today}`;
     const currentTodayXP = await AsyncStorage.getItem(todayKey);
     const newTodayXP = (currentTodayXP ? parseInt(currentTodayXP) : 0) + xp;
     await AsyncStorage.setItem(todayKey, String(newTodayXP));
 
-    // Update streak
     await updateStreak();
   } catch (e) {
     console.error('saveGameResult error:', e);
@@ -147,7 +274,6 @@ export async function getTodayXP(): Promise<number> {
   }
 }
 
-// ─── ALL GAME XP MAP ──────────────────────────────────────────────────────────
 export async function getAllGameXPMap(): Promise<Record<number, number>> {
   try {
     const gameIds = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
@@ -183,18 +309,14 @@ export async function updateStreak(): Promise<void> {
     const today = new Date().toISOString().split('T')[0];
     const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
     const data = await AsyncStorage.getItem('streak_data');
-    let streak: StreakData = data ? JSON.parse(data) : { currentStreak: 0, lastPlayedDate: '' };
+    let streak: StreakData = data
+      ? JSON.parse(data)
+      : { currentStreak: 0, lastPlayedDate: '' };
 
-    if (streak.lastPlayedDate === today) {
-      // Already updated today
-      return;
-    } else if (streak.lastPlayedDate === yesterday) {
-      // Extend streak
-      streak.currentStreak += 1;
-    } else {
-      // Streak broken
-      streak.currentStreak = 1;
-    }
+    if (streak.lastPlayedDate === today) return;
+    else if (streak.lastPlayedDate === yesterday) streak.currentStreak += 1;
+    else streak.currentStreak = 1;
+
     streak.lastPlayedDate = today;
     await AsyncStorage.setItem('streak_data', JSON.stringify(streak));
   } catch (e) {
@@ -216,8 +338,9 @@ export async function generateBackupCodeIfNeeded(): Promise<string> {
   try {
     const existing = await AsyncStorage.getItem('backup_code');
     if (existing) return existing;
-    const code = Math.random().toString(36).substring(2, 6).toUpperCase() +
-                 Math.random().toString(36).substring(2, 6).toUpperCase();
+    const code =
+      Math.random().toString(36).substring(2, 6).toUpperCase() +
+      Math.random().toString(36).substring(2, 6).toUpperCase();
     await AsyncStorage.setItem('backup_code', code);
     return code;
   } catch {
@@ -304,7 +427,6 @@ export async function redeemPromoCode(code: string): Promise<boolean> {
     const plan = checkPromoCode(code);
     if (!plan) return false;
     await setSubscribed(plan);
-    // Mark code as used
     await AsyncStorage.setItem(`promo_used_${code.toUpperCase()}`, '1');
     return true;
   } catch {
@@ -337,8 +459,6 @@ export async function getDailyGames(): Promise<number[]> {
     const key = `daily_games_${today}`;
     const existing = await AsyncStorage.getItem(key);
     if (existing) return JSON.parse(existing);
-
-    // Generate 4 games using today's date as seed
     const rwGames = [1, 2, 3, 4, 5, 6, 7, 8];
     const mathGames = [9, 10, 11, 12, 13, 14, 15, 16];
     const seed = today.replace(/-/g, '');
@@ -347,7 +467,12 @@ export async function getDailyGames(): Promise<number[]> {
     const rw2 = rwGames[(n + 3) % 8];
     const m1 = mathGames[n % 8];
     const m2 = mathGames[(n + 5) % 8];
-    const games = [rw1, rw2 === rw1 ? rwGames[(n+4)%8] : rw2, m1, m2 === m1 ? mathGames[(n+6)%8] : m2];
+    const games = [
+      rw1,
+      rw2 === rw1 ? rwGames[(n + 4) % 8] : rw2,
+      m1,
+      m2 === m1 ? mathGames[(n + 6) % 8] : m2,
+    ];
     await AsyncStorage.setItem(key, JSON.stringify(games));
     return games;
   } catch {
@@ -359,7 +484,6 @@ export async function markDailyComplete(): Promise<void> {
   try {
     const today = new Date().toISOString().split('T')[0];
     await AsyncStorage.setItem(`daily_complete_${today}`, '1');
-    // Bonus XP for completing daily
     const todayKey = `today_xp_${today}`;
     const current = await AsyncStorage.getItem(todayKey);
     const newVal = (current ? parseInt(current) : 0) + 20;
@@ -379,7 +503,23 @@ export async function isDailyComplete(): Promise<boolean> {
   }
 }
 
-// ─── BADGE DATA ───────────────────────────────────────────────────────────────
+// ─── FIRST LAUNCH ─────────────────────────────────────────────────────────────
+export async function isFirstLaunch(): Promise<boolean> {
+  try {
+    const seen = await AsyncStorage.getItem('has_seen_welcome');
+    return !seen;
+  } catch {
+    return false;
+  }
+}
+
+export async function markWelcomeSeen(): Promise<void> {
+  try {
+    await AsyncStorage.setItem('has_seen_welcome', '1');
+  } catch {}
+}
+
+// ─── BADGES ───────────────────────────────────────────────────────────────────
 export interface BadgeStatus {
   id: string;
   unlocked: boolean;
@@ -396,30 +536,31 @@ export async function checkAndUnlockBadges(): Promise<string[]> {
     }
     const gamesPlayed = allHistory.length;
     const uniqueGames = new Set(allHistory.map(r => r.gameId)).size;
-    const topScore = allHistory.length > 0 ? Math.max(...allHistory.map(r => r.score)) : 0;
+    const topScore = allHistory.length > 0
+      ? Math.max(...allHistory.map(r => r.score)) : 0;
     const totalSpeedy = allHistory.reduce((s, r) => s + (r.speedy || 0), 0);
     const perfectScores = allHistory.filter(r => r.score >= 100).length;
 
     const newlyUnlocked: string[] = [];
-    const badgeChecks: Array<{ id: string; condition: boolean }> = [
-      { id: 'first_step', condition: gamesPlayed >= 1 },
+    const badgeChecks = [
+      { id: 'first_step',    condition: gamesPlayed >= 1 },
       { id: 'game_explorer', condition: uniqueGames >= 8 },
-      { id: 'game_master', condition: uniqueGames >= 16 },
-      { id: 'rising_star', condition: totalXP >= 100 },
-      { id: 'scholar', condition: totalXP >= 500 },
-      { id: 'honor_roll', condition: totalXP >= 1000 },
-      { id: 'champion', condition: totalXP >= 2000 },
-      { id: 'elite', condition: totalXP >= 3300 },
-      { id: 'legendary', condition: totalXP >= 4700 },
-      { id: 'spark', condition: streak >= 3 },
-      { id: 'blazing', condition: streak >= 7 },
-      { id: 'inferno', condition: streak >= 14 },
-      { id: 'quick_draw', condition: totalSpeedy >= 3 },
-      { id: 'speed_demon', condition: totalSpeedy >= 25 },
-      { id: 'lightning', condition: totalSpeedy >= 100 },
-      { id: 'sharp', condition: topScore >= 80 },
+      { id: 'game_master',   condition: uniqueGames >= 16 },
+      { id: 'rising_star',   condition: totalXP >= 100 },
+      { id: 'scholar',       condition: totalXP >= 500 },
+      { id: 'honor_roll',    condition: totalXP >= 1000 },
+      { id: 'champion',      condition: totalXP >= 2000 },
+      { id: 'elite',         condition: totalXP >= 3300 },
+      { id: 'legendary',     condition: totalXP >= 4700 },
+      { id: 'spark',         condition: streak >= 3 },
+      { id: 'blazing',       condition: streak >= 7 },
+      { id: 'inferno',       condition: streak >= 14 },
+      { id: 'quick_draw',    condition: totalSpeedy >= 3 },
+      { id: 'speed_demon',   condition: totalSpeedy >= 25 },
+      { id: 'lightning',     condition: totalSpeedy >= 100 },
+      { id: 'sharp',         condition: topScore >= 80 },
       { id: 'perfectionist', condition: perfectScores >= 1 },
-      { id: 'flawless', condition: perfectScores >= 5 },
+      { id: 'flawless',      condition: perfectScores >= 5 },
     ];
 
     for (const badge of badgeChecks) {
@@ -446,27 +587,59 @@ export async function getBadgeUnlocked(badgeId: string): Promise<boolean> {
   }
 }
 
-// ─── PERCENTILE ───────────────────────────────────────────────────────────────
+// ─── PERCENTILE & LEVEL ───────────────────────────────────────────────────────
 export function getPercentile(totalXP: number): string {
-  if (totalXP >= 4700) return 'Top 5%';
-  if (totalXP >= 4001) return 'Top 10%';
-  if (totalXP >= 3301) return 'Top 25%';
-  if (totalXP >= 2001) return 'Top 40%';
-  if (totalXP >= 1001) return 'Top 60%';
+  if (totalXP >= 9000) return 'Top 5%';
+  if (totalXP >= 8000) return 'Top 10%';
+  if (totalXP >= 6500) return 'Top 25%';
+  if (totalXP >= 4000) return 'Top 40%';
+  if (totalXP >= 1000) return 'Top 60%';
   if (totalXP >= 500)  return 'Top 75%';
   return 'Top 90%';
 }
 
 export function getLevel(xp: number): string {
-  if (xp >= 4701) return 'Master';
-  if (xp >= 4001) return 'Elite';
-  if (xp >= 3301) return 'Expert';
-  if (xp >= 2001) return 'Advanced';
-  if (xp >= 1001) return 'Intermediate';
-  return 'Beginner';
+  if (xp >= 9000) return 'Prodigy';
+  if (xp >= 8000) return 'Elite';
+  if (xp >= 6500) return 'Academic';
+  if (xp >= 4000) return 'Scholar';
+  if (xp >= 1000) return 'Thinker';
+  return 'Learner';
 }
 
-// ─── CLEAR ALL DATA (for dev/testing) ────────────────────────────────────────
+// ─── ONBOARDING ───────────────────────────────────────────────────────────────
+export async function sendOnboardingData(data: {
+  name: string;
+  email: string;
+  phone: string;
+  agreedAge: boolean;
+  agreedTerms: boolean;
+  agreedPrivacy: boolean;
+  agreedRefund: boolean;
+  agreedLiability: boolean;
+  agreedSat: boolean;
+  marketing: boolean;
+  skipped: boolean;
+}): Promise<void> {
+  try {
+    const deviceId   = await getDeviceId();
+    const backupCode = await generateBackupCodeIfNeeded();
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action:     'save_backup',
+        deviceId:   deviceId,
+        backupCode: backupCode,
+        ...data,
+      }),
+    });
+  } catch (e) {
+    console.log('Onboarding sync failed silently');
+  }
+}
+
+// ─── CLEAR ALL DATA ───────────────────────────────────────────────────────────
 export async function clearAllData(): Promise<void> {
   try {
     await AsyncStorage.clear();
@@ -474,3 +647,5 @@ export async function clearAllData(): Promise<void> {
     console.error('clearAllData error:', e);
   }
 }
+
+export default {};

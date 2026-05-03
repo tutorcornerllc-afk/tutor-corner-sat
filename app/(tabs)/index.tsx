@@ -1,14 +1,15 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useRef, useState } from 'react';
 import { useRouter } from 'expo-router';
-import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { DeviceEventEmitter, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import {
   getDailyGames,
   getTodayXP,
   getStreak,
-  getPercentile,
   getAllGamesTotalXP,
+  getGameHistory,
   isDailyComplete,
 } from '../storage';
+import { scheduleAllNotifications } from '../notifications';
 
 const ALL_GAMES: Record<number, { id: number; name: string; emoji: string; color: string; desc: string; domain: string; section: 'rw' | 'math' }> = {
   1:  { id: 1,  name: 'Word Duel',      emoji: '⚔️',  color: '#2563EB', desc: 'Vocab in context',           domain: 'D1', section: 'rw' },
@@ -36,15 +37,31 @@ const GAME_ROUTES: Record<number, string> = {
   13: '/rapidfire', 14: '/storysolve', 15: '/mathmemory', 16: '/chainreaction',
 };
 
+function getPrecision(allHistory: any[]): string {
+  if (allHistory.length === 0) return '--%';
+  const avg = allHistory.reduce((sum, r) => sum + r.score, 0) / allHistory.length;
+  return `${Math.round(avg)}%`;
+}
+
 export default function HomeScreen() {
   const router = useRouter();
+  const scrollRef = useRef<any>(null);
   const [dailyGameIds, setDailyGameIds] = useState<number[]>([]);
   const [todayXP, setTodayXP] = useState(0);
   const [streak, setStreak] = useState(0);
-  const [rank, setRank] = useState('--');
+  const [precision, setPrecision] = useState('--%');
   const [dailyDone, setDailyDone] = useState(false);
   const [nextGameIndex, setNextGameIndex] = useState(0);
 
+  // Scroll to top on tab tap
+  useEffect(() => {
+    const sub = DeviceEventEmitter.addListener('scrollToTop_home', () => {
+      scrollRef.current?.scrollTo({ y: 0, animated: true });
+    });
+    return () => sub.remove();
+  }, []);
+
+  // Reload data every time tab is focused (real-time updates)
   useEffect(() => {
     loadData();
   }, []);
@@ -59,14 +76,17 @@ export default function HomeScreen() {
     const s = await getStreak();
     setStreak(s);
 
-    const totalXP = await getAllGamesTotalXP();
-    setRank(getPercentile(totalXP));
+    // Calculate precision from all game history
+    const allHistory: any[] = [];
+    for (let i = 1; i <= 16; i++) {
+      const h = await getGameHistory(i);
+      allHistory.push(...h);
+    }
+    setPrecision(getPrecision(allHistory));
 
     const done = await isDailyComplete();
     setDailyDone(done);
 
-    // Figure out which game is next
-    // Check which daily games have been played today
     const today = new Date().toISOString().split('T')[0];
     const { default: AsyncStorage } = await import('@react-native-async-storage/async-storage');
     let nextIdx = 0;
@@ -81,6 +101,7 @@ export default function HomeScreen() {
   function handleStartChallenge() {
     if (dailyDone) return;
     if (dailyGameIds.length === 0) return;
+    scheduleAllNotifications();
     const idx = Math.min(nextGameIndex, dailyGameIds.length - 1);
     const gameId = dailyGameIds[idx];
     const route = GAME_ROUTES[gameId];
@@ -98,19 +119,29 @@ export default function HomeScreen() {
   const rwGames = dailyGameIds.map(id => ALL_GAMES[id]).filter(g => g?.section === 'rw');
   const mathGames = dailyGameIds.map(id => ALL_GAMES[id]).filter(g => g?.section === 'math');
 
+  const hour = new Date().getHours();
+  const greeting = hour < 12 ? 'Good Morning' : hour < 17 ? 'Good Afternoon' : 'Good Evening';
+  const greetEmoji = hour < 12 ? '🌅' : hour < 17 ? '☀️' : '🌙';
+
   return (
     <SafeAreaView style={styles.safe}>
-      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+      <ScrollView ref={scrollRef} style={styles.container} showsVerticalScrollIndicator={false}>
 
         {/* Header */}
         <View style={styles.header}>
           <View>
-            <Text style={styles.headerTitle}>Tutor Corner LLC</Text>
-            <Text style={styles.headerSub}>SAT Prep</Text>
+            <Text style={styles.headerTitle}>Tutor Corner LLC®</Text>
+            <Text style={styles.headerSub}>SAT® Prep Games</Text>
           </View>
           <View style={styles.headerBadge}>
             <Text style={styles.headerBadgeText}>🔥 {streak}</Text>
           </View>
+        </View>
+
+        {/* Hello Message */}
+        <View style={styles.helloCard}>
+          <Text style={styles.helloText}>{greetEmoji} {greeting}!</Text>
+          <Text style={styles.helloSub}>Are you ready for today's challenges? 💪</Text>
         </View>
 
         {/* Daily Challenge Banner */}
@@ -131,17 +162,13 @@ export default function HomeScreen() {
               <Text style={styles.sectionEmoji}>📖</Text>
               <Text style={styles.sectionTitle}>Reading & Writing</Text>
             </View>
-            {rwGames.map((game, index) => {
+            {rwGames.map((game) => {
               if (!game) return null;
               const globalIndex = dailyGameIds.indexOf(game.id);
               const isCompleted = globalIndex < nextGameIndex;
               const isCurrent = globalIndex === nextGameIndex && !dailyDone;
               return (
-                <View key={game.id} style={[
-                  styles.dailyCard,
-                  { borderLeftColor: game.color },
-                  isCompleted && styles.dailyCardDone,
-                ]}>
+                <View key={game.id} style={[styles.dailyCard, { borderLeftColor: game.color }, isCompleted && styles.dailyCardDone]}>
                   <View style={[styles.dailyEmoji, { backgroundColor: game.color + '20' }]}>
                     <Text style={styles.emojiText}>{isCompleted ? '✅' : game.emoji}</Text>
                   </View>
@@ -153,9 +180,7 @@ export default function HomeScreen() {
                     <View style={[styles.domainBadge, { backgroundColor: game.color + '25' }]}>
                       <Text style={[styles.domainText, { color: game.color }]}>{game.domain}</Text>
                     </View>
-                    <View style={[styles.dailyBadge, {
-                      backgroundColor: isCompleted ? '#10B981' : isCurrent ? game.color : '#2D2D44',
-                    }]}>
+                    <View style={[styles.dailyBadge, { backgroundColor: isCompleted ? '#10B981' : isCurrent ? game.color : '#2D2D44' }]}>
                       <Text style={styles.dailyNum}>{globalIndex + 1}</Text>
                     </View>
                   </View>
@@ -172,17 +197,13 @@ export default function HomeScreen() {
               <Text style={styles.sectionEmoji}>🔢</Text>
               <Text style={styles.sectionTitle}>Math</Text>
             </View>
-            {mathGames.map((game, index) => {
+            {mathGames.map((game) => {
               if (!game) return null;
               const globalIndex = dailyGameIds.indexOf(game.id);
               const isCompleted = globalIndex < nextGameIndex;
               const isCurrent = globalIndex === nextGameIndex && !dailyDone;
               return (
-                <View key={game.id} style={[
-                  styles.dailyCard,
-                  { borderLeftColor: game.color },
-                  isCompleted && styles.dailyCardDone,
-                ]}>
+                <View key={game.id} style={[styles.dailyCard, { borderLeftColor: game.color }, isCompleted && styles.dailyCardDone]}>
                   <View style={[styles.dailyEmoji, { backgroundColor: game.color + '20' }]}>
                     <Text style={styles.emojiText}>{isCompleted ? '✅' : game.emoji}</Text>
                   </View>
@@ -194,9 +215,7 @@ export default function HomeScreen() {
                     <View style={[styles.domainBadge, { backgroundColor: game.color + '25' }]}>
                       <Text style={[styles.domainText, { color: game.color }]}>{game.domain}</Text>
                     </View>
-                    <View style={[styles.dailyBadge, {
-                      backgroundColor: isCompleted ? '#10B981' : isCurrent ? game.color : '#2D2D44',
-                    }]}>
+                    <View style={[styles.dailyBadge, { backgroundColor: isCompleted ? '#10B981' : isCurrent ? game.color : '#2D2D44' }]}>
                       <Text style={styles.dailyNum}>{globalIndex + 1}</Text>
                     </View>
                   </View>
@@ -216,7 +235,7 @@ export default function HomeScreen() {
             {dailyDone
               ? '✅ Challenge Complete!'
               : nextGameIndex === 0
-              ? 'Start Today\'s Challenge 🚀'
+              ? "Start Today's Challenge 🚀"
               : `Continue Challenge (${nextGameIndex + 1}/4) 🚀`}
           </Text>
         </TouchableOpacity>
@@ -232,8 +251,8 @@ export default function HomeScreen() {
             <Text style={styles.statLabel}>Streak 🔥</Text>
           </View>
           <View style={styles.statBox}>
-            <Text style={styles.statNum}>{rank}</Text>
-            <Text style={styles.statLabel}>Rank</Text>
+            <Text style={styles.statNum}>{precision}</Text>
+            <Text style={styles.statLabel}>Precision 🎯</Text>
           </View>
         </View>
 
@@ -245,42 +264,23 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: '#0F0F1A' },
   container: { flex: 1, paddingHorizontal: 20 },
-  header: {
-    paddingTop: 50, paddingBottom: 16,
-    flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
-  },
-  headerTitle: { fontSize: 32, fontWeight: '800', color: '#FFFFFF' },
+  header: { paddingTop: 50, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+  headerTitle: { fontSize: 24, fontWeight: '800', color: '#FFFFFF' },
   headerSub: { fontSize: 14, color: '#2563EB', fontWeight: '600' },
-  headerBadge: {
-    backgroundColor: '#1A1A2E', borderRadius: 20,
-    paddingHorizontal: 14, paddingVertical: 8,
-    borderWidth: 1, borderColor: '#F9731630',
-  },
+  headerBadge: { backgroundColor: '#1A1A2E', borderRadius: 20, paddingHorizontal: 14, paddingVertical: 8, borderWidth: 1, borderColor: '#F9731630' },
   headerBadgeText: { color: '#F97316', fontWeight: '700', fontSize: 14 },
-  banner: {
-    backgroundColor: '#1A1A2E', borderRadius: 16,
-    padding: 16, marginBottom: 20,
-    borderWidth: 1, borderColor: '#2563EB30',
-  },
+  helloCard: { backgroundColor: '#1A1A2E', borderRadius: 14, padding: 14, marginBottom: 16, borderWidth: 1, borderColor: '#2563EB20' },
+  helloText: { fontSize: 20, fontWeight: '800', color: '#FFFFFF' },
+  helloSub: { fontSize: 13, color: '#9CA3AF', marginTop: 4 },
+  banner: { backgroundColor: '#1A1A2E', borderRadius: 16, padding: 16, marginBottom: 20, borderWidth: 1, borderColor: '#2563EB30' },
   bannerTitle: { fontSize: 18, fontWeight: '700', color: '#FFFFFF' },
   bannerSub: { fontSize: 12, color: '#9CA3AF', marginTop: 4 },
-  completedBanner: {
-    backgroundColor: '#10B98120', borderRadius: 10,
-    padding: 10, marginTop: 10, borderWidth: 1, borderColor: '#10B981',
-  },
+  completedBanner: { backgroundColor: '#10B98120', borderRadius: 10, padding: 10, marginTop: 10, borderWidth: 1, borderColor: '#10B981' },
   completedBannerText: { color: '#10B981', fontSize: 13, fontWeight: '600' },
-  sectionHeader: {
-    flexDirection: 'row', alignItems: 'center',
-    gap: 8, marginBottom: 12,
-    backgroundColor: '#1A1A2E', borderRadius: 12, padding: 10,
-  },
+  sectionHeader: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 12, backgroundColor: '#1A1A2E', borderRadius: 12, padding: 10 },
   sectionEmoji: { fontSize: 18 },
   sectionTitle: { fontSize: 16, fontWeight: '700', color: '#FFFFFF' },
-  dailyCard: {
-    flexDirection: 'row', alignItems: 'center',
-    backgroundColor: '#1A1A2E', borderRadius: 16,
-    padding: 14, marginBottom: 10, borderLeftWidth: 4,
-  },
+  dailyCard: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#1A1A2E', borderRadius: 16, padding: 14, marginBottom: 10, borderLeftWidth: 4 },
   dailyCardDone: { opacity: 0.6 },
   dailyEmoji: { width: 44, height: 44, borderRadius: 12, justifyContent: 'center', alignItems: 'center' },
   emojiText: { fontSize: 22 },
@@ -290,24 +290,13 @@ const styles = StyleSheet.create({
   dailyRight: { alignItems: 'center', gap: 6 },
   domainBadge: { paddingHorizontal: 8, paddingVertical: 3, borderRadius: 6 },
   domainText: { fontSize: 11, fontWeight: '700' },
-  dailyBadge: {
-    width: 26, height: 26, borderRadius: 13,
-    justifyContent: 'center', alignItems: 'center',
-  },
+  dailyBadge: { width: 26, height: 26, borderRadius: 13, justifyContent: 'center', alignItems: 'center' },
   dailyNum: { color: '#FFFFFF', fontWeight: '700', fontSize: 13 },
-  startButton: {
-    backgroundColor: '#2563EB', borderRadius: 16,
-    padding: 18, alignItems: 'center', marginTop: 20,
-    shadowColor: '#2563EB', shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3, shadowRadius: 8, elevation: 4,
-  },
+  startButton: { backgroundColor: '#2563EB', borderRadius: 16, padding: 18, alignItems: 'center', marginTop: 20, shadowColor: '#2563EB', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.3, shadowRadius: 8, elevation: 4 },
   startButtonDone: { backgroundColor: '#10B981' },
   startButtonText: { color: '#FFFFFF', fontSize: 16, fontWeight: '700' },
   statsRow: { flexDirection: 'row', gap: 12, marginTop: 20, marginBottom: 32 },
-  statBox: {
-    flex: 1, backgroundColor: '#1A1A2E',
-    borderRadius: 16, padding: 16, alignItems: 'center',
-  },
+  statBox: { flex: 1, backgroundColor: '#1A1A2E', borderRadius: 16, padding: 16, alignItems: 'center' },
   statBoxMiddle: { borderWidth: 2, borderColor: '#F9731620' },
   statNum: { fontSize: 24, fontWeight: '800', color: '#2563EB' },
   statLabel: { fontSize: 12, color: '#9CA3AF', marginTop: 4 },

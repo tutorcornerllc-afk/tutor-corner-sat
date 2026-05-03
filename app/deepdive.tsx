@@ -1055,7 +1055,7 @@ export default function DeepDiveScreen() {
   useEffect(() => {
     if (gameState !== 'results') return;
     playCelebration(finalScore);
-    saveGameResult(1, finalScore, xpEarned, 'rw_d1', speedyCount, lives < 0 ? 0 : lives, Date.now());
+    saveGameResult(7, finalScore, xpEarned, 'rw_d2', speedyCount, lives < 0 ? 0 : lives, Date.now());
   }, [gameState]);
   
   if (gameState === 'results') {

@@ -185,7 +185,7 @@ export default function PolishUpScreen() {
   useEffect(() => {
     if (gameState !== 'results') return;
     playCelebration(finalScore);
-    saveGameResult(1, finalScore, xpEarned, 'rw_d1', speedyCount, lives < 0 ? 0 : lives, Date.now());
+    saveGameResult(4, finalScore, xpEarned, 'rw_d4', speedyCount, lives < 0 ? 0 : lives, Date.now());
   }, [gameState]);
   
 

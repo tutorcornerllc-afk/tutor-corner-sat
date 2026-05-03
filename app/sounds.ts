@@ -102,3 +102,5 @@ export async function preloadSounds(): Promise<void> {
     });
   } catch {}
 }
+
+export default {};

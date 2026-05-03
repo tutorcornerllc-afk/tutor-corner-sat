@@ -25,8 +25,8 @@ const PASSAGES = [
       questions: [
         {
           question: 'What causes ocean currents in the passage?',
-          options: ['Wind only', 'Temperature and salinity differences', 'Earthquakes', 'Tides'],
-          correct: 1,
+          options: ['Temperature and salinity differences', 'Wind only', 'Earthquakes', 'Tides'],
+          correct: 0,
           explanation: 'The passage states currents are driven by temperature and salinity differences.'
         },
         {
@@ -37,8 +37,8 @@ const PASSAGES = [
         },
         {
           question: 'What is the result of this movement?',
-          options: ['Wave formation', 'Climate regulation', 'Ice melting', 'Fish migration'],
-          correct: 1,
+          options: ['Wave formation', 'Ice melting', 'Fish migration', 'Climate regulation'],
+          correct: 3,
           explanation: 'The passage says it helps regulate global climate.'
         }
       ]
@@ -106,8 +106,8 @@ const PASSAGES = [
       questions: [
         {
           question: 'What is the placebo effect?',
-          options: ['A harmful drug reaction', 'A belief-driven improvement', 'A surgical method', 'A diagnostic error'],
-          correct: 1,
+          options: ['A harmful drug reaction', 'A surgical method', 'A diagnostic error', 'A belief-driven improvement'],
+          correct: 3,
           explanation: 'It refers to improvement caused by belief.'
         },
         {
@@ -133,8 +133,8 @@ const PASSAGES = [
       questions: [
         {
           question: 'What did the printing press do?',
-          options: ['Reduced reading', 'Destroyed books', 'Made books widely available', 'Limited knowledge'],
-          correct: 2,
+          options: ['Made books widely available', 'Reduced reading', 'Destroyed books', 'Limited knowledge'],
+          correct: 0,
           explanation: 'It made books widely available.'
         },
         {
@@ -160,8 +160,8 @@ const PASSAGES = [
       questions: [
         {
           question: 'What is photosynthesis?',
-          options: ['Breathing', 'Energy conversion', 'Digestion', 'Movement'],
-          correct: 1,
+          options: ['Breathing', 'Digestion', 'Energy conversion', 'Movement'],
+          correct: 2,
           explanation: 'It converts sunlight into energy.'
         },
         {
@@ -187,8 +187,8 @@ const PASSAGES = [
       questions: [
         {
           question: 'What does democracy depend on?',
-          options: ['Leaders only', 'Individual choices', 'Wealth', 'Technology'],
-          correct: 1,
+          options: ['Leaders only', 'Wealth', 'Technology', 'Individual choices'],
+          correct: 3,
           explanation: 'It relies on individual decisions.'
         },
         {
@@ -214,14 +214,14 @@ const PASSAGES = [
       questions: [
         {
           question: 'What is the microbiome?',
-          options: ['Human cells', 'Bacteria in the body', 'Organs', 'Blood'],
-          correct: 1,
+          options: ['Bacteria in the body', 'Human cells', 'Organs', 'Blood'],
+          correct: 0,
           explanation: 'It refers to bacteria in the body.'
         },
         {
           question: 'What do these bacteria do?',
-          options: ['Destroy cells', 'Aid digestion', 'Stop breathing', 'Cause sleep'],
-          correct: 1,
+          options: ['Aid digestion', 'Destroy cells', 'Stop breathing', 'Cause sleep'],
+          correct: 0,
           explanation: 'They help digestion and health.'
         },
         {
@@ -253,8 +253,8 @@ const PASSAGES = [
         },
         {
           question: 'What can eruptions do?',
-          options: ['Destroy air', 'Create land', 'Stop oceans', 'Remove soil'],
-          correct: 1,
+          options: ['Destroy air', 'Stop oceans', 'Remove soil', 'Create land'],
+          correct: 3,
           explanation: 'They can create new land.'
         }
       ]
@@ -274,8 +274,8 @@ const PASSAGES = [
         },
         {
           question: 'What issue can arise?',
-          options: ['Weather changes', 'Power imbalances', 'Technology failure', 'Population growth'],
-          correct: 1,
+          options: ['Power imbalances', 'Weather changes', 'Technology failure', 'Population growth'],
+          correct: 0,
           explanation: 'Power imbalances can create controversy.'
         },
         {
@@ -300,8 +300,8 @@ const PASSAGES = [
       },
       {
         question: 'What do glaciers do to land?',
-        options: ['Flatten it instantly', 'Carve valleys', 'Heat the ground', 'Grow plants'],
-        correct: 1,
+        options: ['Flatten it instantly', 'Heat the ground', 'Grow plants', 'Carve valleys'],
+        correct: 3,
         explanation: 'They carve valleys and reshape landscapes.'
       },
       {
@@ -333,8 +333,8 @@ const PASSAGES = [
       },
       {
         question: 'What do switches do?',
-        options: ['Create energy', 'Store electricity', 'Control the flow', 'Destroy circuits'],
-        correct: 2,
+        options: ['Control the flow', 'Create energy', 'Store electricity', 'Destroy circuits'],
+        correct: 0,
         explanation: 'Switches open or close the circuit.'
       }
     ]
@@ -348,8 +348,8 @@ const PASSAGES = [
     questions: [
       {
         question: 'Why are cities warmer?',
-        options: ['More wind', 'Less sunlight', 'Heat absorption by surfaces', 'More water'],
-        correct: 2,
+        options: ['More wind', 'Less sunlight', 'More water', 'Heat absorption by surfaces'],
+        correct: 3,
         explanation: 'Buildings and pavement retain heat.'
       },
       {
@@ -360,8 +360,8 @@ const PASSAGES = [
       },
       {
         question: 'What materials contribute to this?',
-        options: ['Trees', 'Water', 'Buildings and pavement', 'Ice'],
-        correct: 2,
+        options: ['Trees', 'Water', 'Ice', 'Buildings and pavement'],
+        correct: 3,
         explanation: 'These materials absorb heat.'
       }
     ]
@@ -402,8 +402,8 @@ const PASSAGES = [
     questions: [
       {
         question: 'What are renewable sources?',
-        options: ['Coal and oil', 'Solar and wind', 'Gas and wood', 'Metal and water'],
-        correct: 1,
+        options: ['Coal and oil', 'Gas and wood', 'Metal and water', 'Solar and wind'],
+        correct: 3,
         explanation: 'Solar and wind are renewable sources.'
       },
       {
@@ -435,8 +435,8 @@ const PASSAGES = [
       },
       {
         question: 'What happens during boiling?',
-        options: ['Water freezes', 'Water becomes vapor', 'Water disappears', 'Water cools'],
-        correct: 1,
+        options: ['Water becomes vapor', 'Water freezes', 'Water disappears', 'Water cools'],
+        correct: 0,
         explanation: 'It changes into vapor.'
       },
       {
@@ -456,14 +456,14 @@ const PASSAGES = [
     questions: [
       {
         question: 'What is inflation?',
-        options: ['Falling prices', 'Rising prices', 'Stable prices', 'No prices'],
-        correct: 1,
+        options: ['Falling prices', 'Stable prices', 'No prices', 'Rising prices'],
+        correct: 3,
         explanation: 'Inflation refers to rising prices.'
       },
       {
         question: 'What happens to purchasing power?',
-        options: ['It increases', 'It stays the same', 'It decreases', 'It doubles'],
-        correct: 2,
+        options: ['It increases', 'It stays the same', 'It doubles', 'It decreases'],
+        correct: 3,
         explanation: 'It decreases over time.'
       },
       {
@@ -483,20 +483,20 @@ const PASSAGES = [
     questions: [
       {
         question: 'What do antibiotics treat?',
-        options: ['Viruses', 'Bacteria', 'Fungi', 'All diseases'],
-        correct: 1,
+        options: ['Bacteria', 'Viruses', 'Fungi', 'All diseases'],
+        correct: 0,
         explanation: 'They treat bacterial infections.'
       },
       {
         question: 'What do they not work against?',
-        options: ['Bacteria', 'Viruses', 'Cells', 'Water'],
-        correct: 1,
+        options: ['Viruses', 'Bacteria', 'Cells', 'Water'],
+        correct: 0,
         explanation: 'They do not work against viruses.'
       },
       {
         question: 'What can misuse cause?',
-        options: ['Faster healing', 'Resistance', 'Stronger medicine', 'Lower cost'],
-        correct: 1,
+        options: ['Faster healing', 'Stronger medicine', 'Lower cost', 'Resistance'],
+        correct: 3,
         explanation: 'Misuse leads to resistance.'
       }
     ]
@@ -537,14 +537,14 @@ const PASSAGES = [
     questions: [
       {
         question: 'What is a strength of AI?',
-        options: ['Slow analysis', 'Fast data analysis', 'Human emotions', 'Memory loss'],
-        correct: 1,
+        options: ['Slow analysis', 'Human emotions', 'Memory loss', 'Fast data analysis'],
+        correct: 3,
         explanation: 'AI analyzes data quickly.'
       },
       {
         question: 'What does AI depend on?',
-        options: ['Electricity only', 'Data quality', 'User mood', 'Hardware color'],
-        correct: 1,
+        options: ['Electricity only', 'Data quality', 'User mood', 'Data quality'],
+        correct: 3,
         explanation: 'It depends on data quality.'
       },
       {
@@ -590,7 +590,7 @@ const PASSAGES = [
     questions: [
       {
         question: 'How does sound travel?',
-        options: ['As particles', 'As waves', 'As light', 'As heat'],
+        options: ['As waves', 'As particles', 'As light', 'As heat'],
         correct: 1,
         explanation: 'Sound travels in waves.'
       },
@@ -617,20 +617,20 @@ const PASSAGES = [
     questions: [
       {
         question: 'What determines market prices?',
-        options: ['Government only', 'Supply and demand', 'Weather', 'Population'],
-        correct: 1,
+        options: ['Government only', 'Weather', 'Supply and demand', 'Population'],
+        correct: 2,
         explanation: 'Prices are determined by supply and demand.'
       },
       {
         question: 'What happens when demand increases?',
-        options: ['Prices fall', 'Prices rise', 'No change', 'Supply disappears'],
-        correct: 1,
+        options: ['Prices fall', 'No change', 'Supply disappears', 'Prices rise'],
+        correct: 3,
         explanation: 'Higher demand leads to higher prices.'
       },
       {
         question: 'What happens with excess supply?',
-        options: ['Prices increase', 'Prices decrease', 'Demand increases', 'Nothing changes'],
-        correct: 1,
+        options: ['Prices decrease', 'Prices increase', 'Demand increases', 'Nothing changes'],
+        correct: 0,
         explanation: 'Excess supply lowers prices.'
       }
     ]
@@ -671,20 +671,20 @@ const PASSAGES = [
     questions: [
       {
         question: 'What is friction?',
-        options: ['A pushing force', 'A resisting force', 'A magnetic force', 'A pulling force'],
-        correct: 1,
+        options: ['A pushing force', 'A magnetic force', 'A pulling force', 'A resisting force'],
+        correct: 3,
         explanation: 'Friction resists motion.'
       },
       {
         question: 'What does friction do?',
-        options: ['Speeds objects up', 'Creates energy', 'Slows or stops motion', 'Removes mass'],
-        correct: 2,
+        options: ['Slows or stops motion', 'Speeds objects up', 'Creates energy', 'Removes mass'],
+        correct: 0,
         explanation: 'It slows or stops objects.'
       },
       {
         question: 'What would happen without friction?',
-        options: ['Better control', 'No movement', 'Uncontrolled movement', 'More gravity'],
-        correct: 2,
+        options: ['Uncontrolled movement', 'Better control', 'No movement', 'More gravity'],
+        correct: 0,
         explanation: 'Movement would be hard to control.'
       }
     ]
@@ -725,8 +725,8 @@ const PASSAGES = [
     questions: [
       {
         question: 'What is a scientific theory?',
-        options: ['A guess', 'A tested explanation', 'An opinion', 'A fact without proof'],
-        correct: 1,
+        options: ['A guess', 'An opinion', 'A tested explanation', 'A fact without proof'],
+        correct: 2,
         explanation: 'Theories are well-tested explanations.'
       },
       {
@@ -737,8 +737,8 @@ const PASSAGES = [
       },
       {
         question: 'Can theories change?',
-        options: ['No', 'Only rarely', 'Yes, with new evidence', 'Only in science fiction'],
-        correct: 2,
+        options: ['Yes, with new evidence', 'No', 'Only rarely', 'Only in science fiction'],
+        correct: 0,
         explanation: 'They can be revised with new evidence.'
       }
     ]
@@ -752,8 +752,8 @@ const PASSAGES = [
     questions: [
       {
         question: 'What is migration?',
-        options: ['Random movement', 'Seasonal movement', 'Daily travel', 'Permanent relocation'],
-        correct: 1,
+        options: ['Random movement', 'Daily travel', 'Permanent relocation', 'Seasonal movement'],
+        correct: 3,
         explanation: 'Migration is seasonal movement.'
       },
       {
@@ -779,8 +779,8 @@ const PASSAGES = [
     questions: [
       {
         question: 'What do plants need?',
-        options: ['Metal', 'Water, sunlight, nutrients', 'Animals', 'Air only'],
-        correct: 1,
+        options: ['Water, sunlight, nutrients', 'Metal', 'Animals', 'Air only'],
+        correct: 0,
         explanation: 'These are required for growth.'
       },
       {
@@ -791,8 +791,8 @@ const PASSAGES = [
       },
       {
         question: 'What affects growth?',
-        options: ['Luck', 'Environment', 'Time only', 'Color'],
-        correct: 1,
+        options: ['Environment', 'Luck',, 'Time only', 'Color'],
+        correct: 0,
         explanation: 'Growth depends on environmental conditions.'
       }
     ]
@@ -806,8 +806,8 @@ const PASSAGES = [
     questions: [
       {
         question: 'What do ethical decisions involve?',
-        options: ['Simple answers', 'Balancing values', 'Following rules only', 'Ignoring outcomes'],
-        correct: 1,
+        options: ['Simple answers', 'Following rules only', 'Ignoring outcomes', 'Balancing values'],
+        correct: 3,
         explanation: 'They involve balancing competing values.'
       },
       {
@@ -832,14 +832,14 @@ const PASSAGES = [
       questions: [
         {
           question: 'What are atoms?',
-          options: ['Energy sources', 'Basic units of matter', 'Types of molecules', 'Forms of light'],
-          correct: 1,
+          options: ['Basic units of matter', 'Energy sources', 'Types of molecules', 'Forms of light'],
+          correct: 0,
           explanation: 'Atoms are described as the basic units of matter.'
         },
         {
           question: 'What do atoms form?',
-          options: ['Cells', 'Energy', 'Molecules', 'Waves'],
-          correct: 2,
+          options: ['Cells', 'Energy', 'Waves', 'Molecules'],
+          correct: 3,
           explanation: 'Atoms combine to form molecules.'
         },
         {
@@ -859,8 +859,8 @@ const PASSAGES = [
       questions: [
         {
           question: 'What causes day and night?',
-          options: ['Earth’s orbit', 'Earth’s rotation', 'The moon', 'Clouds'],
-          correct: 1,
+          options: ['Earth’s rotation', 'Earth’s orbit', 'The moon', 'Clouds'],
+          correct: 0,
           explanation: 'Rotation causes day and night.'
         },
         {
@@ -871,8 +871,8 @@ const PASSAGES = [
         },
         {
           question: 'Why do places experience day at different times?',
-          options: ['Different climates', 'Different sunlight exposure', 'Wind patterns', 'Ocean currents'],
-          correct: 1,
+          options: ['Different climates', 'Wind patterns', 'Ocean currents', 'Different sunlight exposure'],
+          correct: 3,
           explanation: 'Different areas receive sunlight at different times.'
         }
       ]
@@ -886,8 +886,8 @@ const PASSAGES = [
       questions: [
         {
           question: 'What is competition?',
-          options: ['Cooperation', 'Shared resources', 'Struggle for limited resources', 'Migration'],
-          correct: 2,
+          options: ['Cooperation', 'Shared resources', 'Migration', 'Struggle for limited resources'],
+          correct: 3,
           explanation: 'Competition is the struggle for limited resources.'
         },
         {
@@ -919,8 +919,8 @@ const PASSAGES = [
         },
         {
           question: 'What can increased efficiency lead to?',
-          options: ['Less complexity', 'Unintended consequences', 'No change', 'Fewer innovations'],
-          correct: 1,
+          options: ['Unintended consequences', 'Less complexity', 'No change', 'Fewer innovations'],
+          correct: 0,
           explanation: 'Efficiency can cause unintended consequences.'
         },
         {
@@ -940,20 +940,20 @@ const PASSAGES = [
       questions: [
         {
           question: 'What is the water cycle?',
-          options: ['Static water', 'Movement through stages', 'Ocean currents', 'Rain only'],
-          correct: 1,
+          options: ['Movement through stages', 'Static water', 'Ocean currents', 'Rain only'],
+          correct: 0,
           explanation: 'Water moves through evaporation, condensation, and precipitation.'
         },
         {
           question: 'What does it distribute?',
-          options: ['Energy', 'Water', 'Air', 'Soil'],
-          correct: 1,
+          options: ['Energy', 'Air', 'Water', 'Soil'],
+          correct: 2,
           explanation: 'It distributes water across Earth.'
         },
         {
           question: 'Why is it important?',
-          options: ['It controls weather only', 'It supports life', 'It creates heat', 'It stops evaporation'],
-          correct: 1,
+          options: ['It controls weather only', 'It creates heat', 'It stops evaporation', 'It supports life'],
+          correct: 3,
           explanation: 'It is essential for life.'
         }
       ]
@@ -973,8 +973,8 @@ const PASSAGES = [
         },
         {
           question: 'Why do plants grow toward light?',
-          options: ['Avoid heat', 'Maximize energy intake', 'Reduce size', 'Change color'],
-          correct: 1,
+          options: ['Avoid heat', 'Reduce size', 'Change color', 'Maximize energy intake'],
+          correct: 3,
           explanation: 'It helps maximize energy intake.'
         },
         {
@@ -994,20 +994,20 @@ const PASSAGES = [
       questions: [
         {
           question: 'What is bias?',
-          options: ['Logical thinking', 'Unconscious influence', 'Scientific method', 'Random behavior'],
-          correct: 1,
+          options: ['Logical thinking', 'Scientific method', 'Random behavior', 'Unconscious influence'],
+          correct: 3,
           explanation: 'Bias influences decisions unconsciously.'
         },
         {
           question: 'What do people often believe?',
-          options: ['They are biased', 'They are objective', 'They are uninformed', 'They are correct'],
-          correct: 1,
+          options: ['They are biased', 'They are objective', 'They are uninformed', 'They are correct', 'They are objective'],
+          correct: 3,
           explanation: 'People often believe they are objective.'
         },
         {
           question: 'What reduces bias?',
-          options: ['Ignoring it', 'Recognizing it', 'Avoiding decisions', 'Following others'],
-          correct: 1,
+          options: ['Ignoring it', 'Avoiding decisions', 'Following others', 'Recognizing it'],
+          correct: 3,
           explanation: 'Recognizing bias helps reduce it.'
         }
       ]
@@ -1048,20 +1048,20 @@ const PASSAGES = [
       questions: [
         {
           question: 'What causes wind?',
-          options: ['Temperature only', 'Air pressure differences', 'Water flow', 'Gravity'],
-          correct: 1,
+          options: ['Air pressure differences', 'Temperature only', 'Water flow', 'Gravity'],
+          correct: 0,
           explanation: 'Wind is caused by pressure differences.'
         },
         {
           question: 'How does air move?',
-          options: ['Low to high', 'High to low', 'Sideways only', 'Up only'],
-          correct: 1,
+          options: ['High to low', 'Low to high', 'Sideways only', 'Up only'],
+          correct: 0,
           explanation: 'Air moves from high to low pressure.'
         },
         {
           question: 'What is wind?',
-          options: ['Heat', 'Moving air', 'Water vapor', 'Light'],
-          correct: 1,
+          options: ['Moving air', 'Heat', 'Water vapor', 'Light'],
+          correct: 0,
           explanation: 'Wind is moving air.'
         }
       ]
@@ -1101,14 +1101,14 @@ const PASSAGES = [
       questions: [
         {
           question: 'What do sound waves need to travel?',
-          options: ['Light', 'A medium', 'Vacuum', 'Heat'],
-          correct: 1,
+          options: ['Light', 'Vacuum', 'Heat', 'A medium'],
+          correct: 3,
           explanation: 'Sound waves need a medium like air or water.'
         },
         {
           question: 'Can sound travel through empty space?',
-          options: ['Yes', 'No', 'Only sometimes', 'Only in water'],
-          correct: 1,
+          options: ['Yes', 'Only sometimes', 'No', 'Only in water'],
+          correct: 2,
           explanation: 'The passage states sound cannot travel through a vacuum.'
         },
         {
@@ -1134,8 +1134,8 @@ const PASSAGES = [
         },
         {
           question: 'What does the water cycle do?',
-          options: ['Destroys water', 'Recycles water', 'Stops rainfall', 'Creates oceans'],
-          correct: 1,
+          options: ['Recycles water', 'Destroys water', 'Stops rainfall', 'Creates oceans'],
+          correct: 0,
           explanation: 'It continuously recycles water.'
         },
         {
@@ -1155,20 +1155,20 @@ const PASSAGES = [
       questions: [
         {
           question: 'What are fossils?',
-          options: ['Living organisms', 'Ancient remains or traces', 'Rocks only', 'Plants only'],
-          correct: 1,
+          options: ['Living organisms', 'Rocks only', 'Plants only', 'Ancient remains or traces'],
+          correct: 3,
           explanation: 'Fossils are preserved remains or traces.'
         },
         {
           question: 'What do fossils show?',
-          options: ['Future life', 'Past life', 'Weather patterns', 'Ocean depth'],
-          correct: 1,
+          options: ['Future life', 'Weather patterns', 'Past life', 'Ocean depth'],
+          correct: 2,
           explanation: 'They provide evidence of past life.'
         },
         {
           question: 'How are fossils used?',
-          options: ['To predict weather', 'To study evolution', 'To create energy', 'To grow plants'],
-          correct: 1,
+          options: ['To study evolution', 'To predict weather', 'To create energy', 'To grow plants'],
+          correct: 0,
           explanation: 'Scientists use them to study evolution.'
         }
       ]
@@ -1188,8 +1188,8 @@ const PASSAGES = [
         },
         {
           question: 'What is a drawback?',
-          options: ['Better accuracy', 'Misinformation spread', 'Less usage', 'No content'],
-          correct: 1,
+          options: ['Misinformation spread', 'Better accuracy', 'Less usage', 'No content'],
+          correct: 0,
           explanation: 'It can spread misinformation.'
         },
         {
@@ -1209,20 +1209,20 @@ const PASSAGES = [
       questions: [
         {
           question: 'What are cells?',
-          options: ['Energy units', 'Building blocks of life', 'Tissues only', 'Organs'],
-          correct: 1,
+          options: ['Energy units', 'Tissues only', 'Organs', 'Building blocks of life'],
+          correct: 3,
           explanation: 'Cells are the basic building blocks of life.'
         },
         {
           question: 'What are organisms made of?',
-          options: ['Atoms only', 'One or more cells', 'Proteins only', 'Air'],
-          correct: 1,
+          options: ['Atoms only', 'Proteins only', 'One or more cells', 'Air'],
+          correct: 2,
           explanation: 'All organisms are made of cells.'
         },
         {
           question: 'What do cells do?',
-          options: ['Stop growth', 'Carry out life functions', 'Block energy', 'Create weather'],
-          correct: 1,
+          options: ['Stop growth', 'Block energy', 'Carry out life functions', 'Create weather'],
+          correct: 2,
           explanation: 'They perform essential life functions.'
         }
       ]
@@ -1236,14 +1236,14 @@ const PASSAGES = [
       questions: [
         {
           question: 'Which travels faster?',
-          options: ['Sound', 'Light', 'Both equal', 'Neither'],
-          correct: 1,
+          options: ['Light', 'Sound', 'Both equal', 'Neither'],
+          correct: 0,
           explanation: 'Light travels faster than sound.'
         },
         {
           question: 'Why do we see lightning first?',
-          options: ['Sound is blocked', 'Light is faster', 'Thunder is delayed intentionally', 'Rain hides sound'],
-          correct: 1,
+          options: ['Sound is blocked', 'Thunder is delayed intentionally', 'Rain hides sound', 'Light is faster'],
+          correct: 3,
           explanation: 'Light reaches us faster than sound.'
         },
         {
@@ -1263,8 +1263,8 @@ const PASSAGES = [
       questions: [
         {
           question: 'What causes climate change in the passage?',
-          options: ['Wind patterns', 'Greenhouse gas emissions', 'Earth’s rotation', 'Ocean currents'],
-          correct: 1,
+          options: ['Wind patterns', 'Earth’s rotation', 'Ocean currents', 'Greenhouse gas emissions'],
+          correct: 3,
           explanation: 'It is driven by greenhouse gas emissions.'
         },
         {
@@ -1290,14 +1290,14 @@ const PASSAGES = [
       questions: [
         {
           question: 'What are conductors?',
-          options: ['Materials that block electricity', 'Materials that allow electricity to flow', 'Gases', 'Liquids only'],
-          correct: 1,
+          options: ['Materials that block electricity', 'Gases', 'Materials that allow electricity to flow', 'Liquids only'],
+          correct: 2,
           explanation: 'Conductors allow electricity to flow.'
         },
         {
           question: 'What are insulators?',
-          options: ['Heat producers', 'Materials that resist electricity', 'Metals only', 'Charged particles'],
-          correct: 1,
+          options: ['Materials that resist electricity', 'Heat producers', 'Metals only', 'Charged particles'],
+          correct: 0,
           explanation: 'Insulators resist electrical flow.'
         },
         {
@@ -1317,20 +1317,20 @@ const PASSAGES = [
       questions: [
         {
           question: 'What does the moon do?',
-          options: ['Produces light', 'Orbits Earth', 'Creates heat', 'Stops tides'],
-          correct: 1,
+          options: ['Produces light', 'Creates heat', 'Orbits Earth', 'Stops tides'],
+          correct: 2,
           explanation: 'The moon orbits Earth.'
         },
         {
           question: 'Where does moonlight come from?',
-          options: ['Moon itself', 'Sunlight reflection', 'Earth', 'Stars'],
-          correct: 1,
+          options: ['Moon itself', 'Earth', 'Stars', 'Sunlight reflection'],
+          correct: 3,
           explanation: 'It reflects sunlight.'
         },
         {
           question: 'What changes over time?',
-          options: ['Moon’s size', 'Moon phases', 'Gravity', 'Orbit speed'],
-          correct: 1,
+          options: ['Moon phases', 'Moon’s size', 'Gravity', 'Orbit speed'],
+          correct: 0,
           explanation: 'The moon appears to change phases.'
         }
       ]
@@ -1350,14 +1350,14 @@ const PASSAGES = [
         },
         {
           question: 'What can AI inherit?',
-          options: ['Weather patterns', 'Biases', 'Gravity', 'Memory loss'],
-          correct: 1,
+          options: ['Weather patterns', 'Gravity', 'Biases', 'Memory loss'],
+          correct: 2,
           explanation: 'It can inherit biases from data.'
         },
         {
           question: 'What is a limitation?',
-          options: ['Perfect accuracy', 'Bias in output', 'No predictions', 'No data usage'],
-          correct: 1,
+          options: ['Perfect accuracy', 'No predictions', 'No data usage', 'Bias in output'],
+          correct: 3,
           explanation: 'Bias can affect outputs.'
         }
       ]
@@ -1622,7 +1622,7 @@ export default function SpeedReadScreen() {
   useEffect(() => {
     if (gameState !== 'results') return;
     playCelebration(finalScore);
-    saveGameResult(1, finalScore, xpEarned, 'rw_d1', speedyCount, lives < 0 ? 0 : lives, Date.now());
+    saveGameResult(6, finalScore, xpEarned, 'rw_d2', speedyCount, lives < 0 ? 0 : lives, Date.now());
   }, [gameState]);
   
   if (gameState === 'results') {
