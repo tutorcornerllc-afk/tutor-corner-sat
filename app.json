@@ -34,8 +34,7 @@
       "expo-router"
     ],
     "experiments": {
-      "typedRoutes": true,
-      "baseUrl": "/SAT"
+      "typedRoutes": true
     },
     "extra": {
       "router": {},

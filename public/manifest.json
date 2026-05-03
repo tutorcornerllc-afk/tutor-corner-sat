@@ -2,21 +2,21 @@
   "name": "Tutor Corner LLC® - SAT® Prep Games",
   "short_name": "SAT Prep",
   "description": "Free SAT® prep mini-games from Tutor Corner LLC. 16 quick games to train your brain.",
-  "start_url": "/SAT/",
-  "scope": "/SAT/",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#0F0F1A",
   "theme_color": "#0F0F1A",
   "icons": [
     {
-      "src": "/SAT/icon-192.png",
+      "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/SAT/icon-512.png",
+      "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
