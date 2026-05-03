@@ -98,6 +98,21 @@ export default function HomeScreen() {
     setNextGameIndex(Math.min(nextIdx, ids.length));
   }
 
+  function handleGameTap(gameId: number, index: number) {
+    if (dailyDone) return;
+    scheduleAllNotifications();
+    const route = GAME_ROUTES[gameId];
+    if (!route) return;
+    router.push({
+      pathname: route as any,
+      params: {
+        isDailyChallenge: '1',
+        dailyGames: dailyGameIds.join(','),
+        currentIndex: String(index),
+      },
+    });
+  }
+
   function handleStartChallenge() {
     if (dailyDone) return;
     if (dailyGameIds.length === 0) return;
@@ -130,8 +145,8 @@ export default function HomeScreen() {
         {/* Header */}
         <View style={styles.header}>
           <View>
-            <Text style={styles.headerTitle}>Tutor Corner LLC®</Text>
-            <Text style={styles.headerSub}>SAT® Prep Games</Text>
+            <Text style={styles.headerTitle}>CornerBrain</Text>
+            <Text style={styles.headerSub}>Tutor Corner LLC®</Text>
           </View>
           <View style={styles.headerBadge}>
             <Text style={styles.headerBadgeText}>🔥 {streak}</Text>
@@ -168,7 +183,13 @@ export default function HomeScreen() {
               const isCompleted = globalIndex < nextGameIndex;
               const isCurrent = globalIndex === nextGameIndex && !dailyDone;
               return (
-                <View key={game.id} style={[styles.dailyCard, { borderLeftColor: game.color }, isCompleted && styles.dailyCardDone]}>
+                <TouchableOpacity
+                  key={game.id}
+                  style={[styles.dailyCard, { borderLeftColor: game.color }, isCompleted && styles.dailyCardDone]}
+                  onPress={() => handleGameTap(game.id, globalIndex)}
+                  activeOpacity={isCompleted ? 1 : 0.7}
+                  disabled={isCompleted}
+                >
                   <View style={[styles.dailyEmoji, { backgroundColor: game.color + '20' }]}>
                     <Text style={styles.emojiText}>{isCompleted ? '✅' : game.emoji}</Text>
                   </View>
@@ -184,7 +205,7 @@ export default function HomeScreen() {
                       <Text style={styles.dailyNum}>{globalIndex + 1}</Text>
                     </View>
                   </View>
-                </View>
+                </TouchableOpacity>
               );
             })}
           </>
@@ -203,7 +224,13 @@ export default function HomeScreen() {
               const isCompleted = globalIndex < nextGameIndex;
               const isCurrent = globalIndex === nextGameIndex && !dailyDone;
               return (
-                <View key={game.id} style={[styles.dailyCard, { borderLeftColor: game.color }, isCompleted && styles.dailyCardDone]}>
+                <TouchableOpacity
+                  key={game.id}
+                  style={[styles.dailyCard, { borderLeftColor: game.color }, isCompleted && styles.dailyCardDone]}
+                  onPress={() => handleGameTap(game.id, globalIndex)}
+                  activeOpacity={isCompleted ? 1 : 0.7}
+                  disabled={isCompleted}
+                >
                   <View style={[styles.dailyEmoji, { backgroundColor: game.color + '20' }]}>
                     <Text style={styles.emojiText}>{isCompleted ? '✅' : game.emoji}</Text>
                   </View>
@@ -219,7 +246,7 @@ export default function HomeScreen() {
                       <Text style={styles.dailyNum}>{globalIndex + 1}</Text>
                     </View>
                   </View>
-                </View>
+                </TouchableOpacity>
               );
             })}
           </>

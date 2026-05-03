@@ -433,7 +433,17 @@ export default function GraphMatchScreen() {
   const [answers, setAnswers] = useState<any[]>([]);
   const [questionStartTime, setQuestionStartTime] = useState(Date.now());
   const [questionsAnswered, setQuestionsAnswered] = useState(0);
-  const [shuffledQ] = useState(() => [...QUESTIONS].sort(() => Math.random() - 0.5).slice(0, 10));
+  const [shuffledQ] = useState(() => {
+    const picked = [...QUESTIONS].sort(() => Math.random() - 0.5).slice(0, 10);
+    return picked.map(orig => {
+      // Always take the correct option + 2 random wrong ones, then shuffle.
+      const correctText = orig.options[orig.correct];
+      const wrongs = orig.options.filter((_, i) => i !== orig.correct);
+      const pickedWrong = wrongs.sort(() => Math.random() - 0.5).slice(0, 2);
+      const newOpts = [correctText, ...pickedWrong].sort(() => Math.random() - 0.5);
+      return { ...orig, options: newOpts, correct: newOpts.indexOf(correctText) };
+    });
+  });
   const [bubbleKey, setBubbleKey] = useState(0);
   const [topReachedCount, setTopReachedCount] = useState(0);
 
@@ -498,22 +508,29 @@ export default function GraphMatchScreen() {
     if (answered) return;
     setTopReachedCount(c => {
       const next = c + 1;
+      // Now there are exactly 3 bubbles; once all 3 have popped off, give the user
+      // a 5-second grace window before counting the question as missed.
       if (next >= 3) {
-        // All bubbles reached top
-        setAnswered(true);
-        setLives(l => { const n = l - 1; if (n <= 0) setTimeout(() => endGame(), 1500); return n; });
-        shakeScreen();
-        const q = shuffledQ[currentQ];
-        setAnswers(prev => [...prev, {
-          question: q.question, domain: q.domain,
-          userAnswer: '(missed)', correctAnswer: q.options[q.correct],
-          isCorrect: false, isSpeedy: false, pts: 0, explanation: q.explanation,
-        }]);
-        setQuestionsAnswered(n => n + 1);
         setTimeout(() => {
-          if (currentQ + 1 >= shuffledQ.length) { endGame(); return; }
-          advanceQuestion();
-        }, 1500);
+          // Re-check: if user tapped during the grace window, answered will be true; bail.
+          setAnswered(prevAnswered => {
+            if (prevAnswered) return prevAnswered;
+            setLives(l => { const n = l - 1; if (n <= 0) setTimeout(() => endGame(), 1500); return n; });
+            shakeScreen();
+            const q = shuffledQ[currentQ];
+            setAnswers(prev => [...prev, {
+              question: q.question, domain: q.domain,
+              userAnswer: '(missed)', correctAnswer: q.options[q.correct],
+              isCorrect: false, isSpeedy: false, pts: 0, explanation: q.explanation,
+            }]);
+            setQuestionsAnswered(n => n + 1);
+            setTimeout(() => {
+              if (currentQ + 1 >= shuffledQ.length) { endGame(); return; }
+              advanceQuestion();
+            }, 1500);
+            return true;
+          });
+        }, 5000);
       }
       return next;
     });

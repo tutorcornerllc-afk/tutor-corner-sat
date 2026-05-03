@@ -1,7 +1,7 @@
 {
-  "name": "Tutor Corner LLC® - SAT® Prep Games",
-  "short_name": "SAT Prep",
-  "description": "Free SAT® prep mini-games from Tutor Corner LLC. 16 quick games to train your brain.",
+  "name": "CornerMind",
+  "short_name": "CornerMind",
+  "description": "SAT prep mini-games from Tutor Corner LLC.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

@@ -12,7 +12,7 @@ export default function Root({ children }: PropsWithChildren) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
         />
 
-        <title>Tutor Corner LLC® - SAT® Prep Games</title>
+        <title>CornerMind</title>
         <meta
           name="description"
           content="Free SAT® prep mini-games from Tutor Corner LLC. 16 quick games to train your brain."
@@ -29,7 +29,7 @@ export default function Root({ children }: PropsWithChildren) {
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="SAT Prep" />
+        <meta name="apple-mobile-web-app-title" content="CornerMind" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 

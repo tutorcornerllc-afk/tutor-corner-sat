@@ -790,10 +790,8 @@ export default function MathMemoryScreen() {
             <View style={styles.lineBottomLeft} />
             <View style={styles.lineBottomRight} />
 
-            {/* Brain hemispheres */}
-            <Animated.View style={[styles.leftHemisphere, { borderColor: brainBorderColor }]} />
-            <Animated.View style={[styles.rightHemisphere, { borderColor: brainBorderColor }]} />
-            <View style={styles.centerLine} />
+            {/* Giant brain silhouette */}
+            <Animated.Text style={[styles.brainEmoji, { opacity: 0.55 }]}>🧠</Animated.Text>
 
             {/* Brain content */}
             <Animated.View style={[styles.brainContent, { opacity: contentOpacity }]}>
@@ -921,6 +919,16 @@ const styles = StyleSheet.create({
   nodeText: { fontSize: 13, fontWeight: '800', textAlign: 'center' },
   nodeCheck: { fontSize: 12, marginTop: 2 },
   nodeX: { fontSize: 12, marginTop: 2 },
+
+  // Giant brain silhouette emoji
+  brainEmoji: {
+    position: 'absolute',
+    fontSize: 220,
+    textAlign: 'center',
+    textShadowColor: '#7C3AED',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 24,
+  },
 
   // Brain wrapper
   brainWrapper: {

@@ -1365,8 +1365,26 @@ const PASSAGES = [
   
 ];
 
-const TIMER_DURATION = 45;
-const BASE_WPM = 100;
+const TIMER_DURATION = 90;
+const BASE_WPM = 150;
+const MAX_LIVES = 3;
+
+// Per-passage WPM progression (from french app)
+function getNextWPM(currentWPM: number, correct: number, total: number): number {
+  if (total === 0) return currentWPM;
+  if (correct === total) return Math.max(50, currentWPM + 250);
+  if (correct === total - 1) return Math.max(50, currentWPM + 150);
+  if (correct >= 1) return Math.max(50, currentWPM + 50);
+  return Math.max(50, currentWPM - 50);
+}
+
+// Per-passage score (from french app)
+function calcScore(wpm: number, livesLeft: number, maxLives: number): number {
+  const base = 4;
+  const speedBonus = Math.round((wpm / 500) * 2);
+  const livesBonus = Math.round((livesLeft / maxLives) * 2);
+  return base + speedBonus + livesBonus;
+}
 
 export default function SpeedReadScreen() {
   const router = useRouter();
@@ -1404,6 +1422,7 @@ export default function SpeedReadScreen() {
   const [score, setScore] = useState(0);
   const [speedyCount, setSpeedyCount] = useState(0);
   const [questionsAnswered, setQuestionsAnswered] = useState(0);
+  const [passageCorrect, setPassageCorrect] = useState(0);
 
   // Animations
   const timerRef = useRef<any>(null);
@@ -1478,24 +1497,27 @@ export default function SpeedReadScreen() {
   }
 
   function goToNextPassage() {
-    const nextIndex = passageIndex + 1;
+    // Award passage-completion bonus using french-style calcScore.
+    const passageTotal = passage.questions.length;
+    const passageBonus = calcScore(wpm, lives, MAX_LIVES);
+    setScore(s => s + passageBonus);
 
+    // Update WPM for next passage based on correct count.
+    const newWpm = getNextWPM(wpm, passageCorrect, passageTotal);
+    setWpm(newWpm);
+    setPassageCorrect(0);
+
+    const nextIndex = passageIndex + 1;
     if (nextIndex >= PASSAGES.length) {
       endGame();
       return;
     }
-
     setPassageIndex(nextIndex);
-
     setCurrentWordIndex(0);
     setReadingComplete(false);
-
     setQuestionIndex(0);
     setAnswered(false);
     setSelectedAnswer(null);
-
-    setWpm(w => Math.min(w + 15, 300));
-
     setGameState('reading');
   }
 
@@ -1519,7 +1541,7 @@ export default function SpeedReadScreen() {
       pts = 8 + speedBonus;
       if (isSpeedy) setSpeedyCount(s => s + 1);
       setScore(s => s + pts);
-      setWpm(w => Math.min(w + 20, 300));
+      setPassageCorrect(c => c + 1);
       showFloatingScore(`+${pts}${isSpeedy ? ` ⚡+${speedBonus}` : ''}`);
     } else {
       setLives(l => {
@@ -1527,7 +1549,6 @@ export default function SpeedReadScreen() {
         if (n <= 0) setTimeout(() => endGame(), 1500);
         return n;
       });
-      setWpm(w => Math.max(w - 15, 60));
       shakeScreen();
     }
 
@@ -1606,6 +1627,7 @@ export default function SpeedReadScreen() {
     setScore(0);
     setTimeLeft(TIMER_DURATION);
     setSpeedyCount(0);
+    setPassageCorrect(0);
     setQuestionStartTime(Date.now());
     setGameState('reading');
   }

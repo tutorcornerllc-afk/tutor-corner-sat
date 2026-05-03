@@ -356,7 +356,7 @@ export default function StorySolveScreen() {
       Animated.timing(questionFade, { toValue: 1, duration: 400, useNativeDriver: true }),
       Animated.timing(questionSlide, { toValue: 0, duration: 400, useNativeDriver: true }),
     ]).start();
-    setWheelValue(shuffledQ[currentQ]?.correctValue ?? 0);
+    setWheelValue(0);
   }, [currentQ]);
 
   useEffect(() => {

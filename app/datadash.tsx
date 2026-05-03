@@ -172,7 +172,7 @@ function RaceCar({
       {/* Animated race car */}
       <Animated.View style={[
         styles.carWrapper,
-        { transform: [{ translateX: carX }, { translateY: wobbleY }, { scale: scaleAnim }] },
+        { transform: [{ translateX: carX }, { translateY: wobbleY }, { scale: scaleAnim }, { scaleX: -1 }] },
       ]}>
         <Text style={styles.carEmoji}>{emoji}</Text>
         {answered && isSelected && !isCorrect && <Text style={styles.brokenIcon}>🔧</Text>}

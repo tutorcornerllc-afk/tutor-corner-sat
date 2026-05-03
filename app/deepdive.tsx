@@ -1240,7 +1240,14 @@ export default function DeepDiveScreen() {
               </View>
               <Text style={styles.passageReadLabel}>READ CAREFULLY</Text>
               <Text style={styles.passageBody}>{passage.text}</Text>
-              <Text style={styles.passageHint}>⏱ Questions appear when timer ends · Scroll to read all</Text>
+              <Text style={styles.passageHint}>📖 Tap below when you're done reading</Text>
+              <TouchableOpacity
+                style={styles.passageContinueBtn}
+                onPress={() => setGameState('questions')}
+                activeOpacity={0.85}
+              >
+                <Text style={styles.passageContinueText}>Continue to Questions →</Text>
+              </TouchableOpacity>
             </View>
           </ScrollView>
         )}
@@ -1408,6 +1415,20 @@ const styles = StyleSheet.create({
   passageBody: {
     fontSize: 17, color: '#E2E8F0', lineHeight: 30,
   },
+  passageContinueBtn: {
+    marginTop: 18,
+    backgroundColor: '#2563EB',
+    borderRadius: 14,
+    paddingVertical: 14,
+    paddingHorizontal: 18,
+    alignItems: 'center',
+    shadowColor: '#2563EB',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  passageContinueText: { color: '#FFFFFF', fontSize: 16, fontWeight: '800' },
   passageHint: {
     fontSize: 12, color: '#38BDF880', marginTop: 16,
     textAlign: 'center', fontStyle: 'italic',
