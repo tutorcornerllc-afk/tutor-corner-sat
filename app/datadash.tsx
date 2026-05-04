@@ -363,27 +363,9 @@ export default function DataDashScreen() {
             <Text style={styles.historyRank}>Race #1 — Score: {finalScore}</Text>
           </View>
           {isDailyChallenge ? (
-            <>
-              {!isLastGame && (
-                <TouchableOpacity style={styles.continueBtn} onPress={() => {
-                  const nextId = dailyGames[currentIndex + 1];
-                  const routes: Record<number,string> = {1:'/wordduel',2:'/flipit',3:'/errorhunt',4:'/polishup',5:'/bridgeit',6:'/speedread',7:'/deepdive',8:'/tonecraft',9:'/shapesnap',10:'/formulaforge',11:'/graphmatch',12:'/datadash',13:'/rapidfire',14:'/storysolve',15:'/mathmemory',16:'/chainreaction'};
-                  router.replace({ pathname: routes[nextId] as any, params: { isDailyChallenge: '1', dailyGames: dailyGames.join(','), currentIndex: String(currentIndex + 1) } });
-                }}>
-                  <Text style={styles.continueBtnText}>Next Challenge ({currentIndex + 2}/4) →</Text>
-                </TouchableOpacity>
-              )}
-              {isLastGame && (
-                <TouchableOpacity style={styles.continueBtn} onPress={() => {
-                  router.replace({ pathname: '/dailycomplete' as any, params: { dailyGames: dailyGames.join(','), scores: '' } });
-                }}>
-                  <Text style={styles.continueBtnText}>See Results 🏆</Text>
-                </TouchableOpacity>
-              )}
-              <TouchableOpacity style={styles.quitBtn} onPress={() => router.replace('/(tabs)' as any)}>
-                <Text style={styles.quitBtnText}>← Back to Home</Text>
-              </TouchableOpacity>
-            </>
+            <TouchableOpacity style={styles.continueBtn} onPress={() => router.replace('/(tabs)' as any)}>
+              <Text style={styles.continueBtnText}>Done ✓</Text>
+            </TouchableOpacity>
           ) : (
             <>
               <TouchableOpacity style={styles.continueBtn} onPress={restartGame}>

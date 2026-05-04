@@ -31,11 +31,11 @@ export async function scheduleAllNotifications(): Promise<void> {
   try {
     await Notifications.cancelAllScheduledNotificationsAsync();
 
-    // 1. Daily 8am — challenges ready
+    // 1. Daily 8am - challenges ready
     await Notifications.scheduleNotificationAsync({
       content: {
-        title: '🌟 Daily Challenges Are Ready!',
-        body:  'Train your brain today — 4 quick SAT® games are waiting for you!',
+        title: 'CornerMind - Today\'s Challenges Are Ready!',
+        body:  'Train your brain today - 4 quick games are waiting for you!',
       },
       trigger: {
         type:    Notifications.SchedulableTriggerInputTypes.DAILY,
@@ -44,11 +44,11 @@ export async function scheduleAllNotifications(): Promise<void> {
       },
     });
 
-    // 2. Daily 8pm — don't lose streak
+    // 2. Daily 8pm - don't lose streak
     await Notifications.scheduleNotificationAsync({
       content: {
-        title: '🔥 Don\'t Lose Your Streak!',
-        body:  'Today\'s challenges are still waiting. Takes less than a minute each — go!',
+        title: 'CornerMind - Don\'t Lose Your Streak!',
+        body:  'Today\'s challenges are still waiting. Takes less than a minute each - go!',
       },
       trigger: {
         type:    Notifications.SchedulableTriggerInputTypes.DAILY,
@@ -82,16 +82,16 @@ export async function checkAndNotifyInactive(): Promise<void> {
     if (diffDays === 1) {
       await Notifications.scheduleNotificationAsync({
         content: {
-          title: '😅 Streak Broken — That\'s OK!',
-          body:  'Everyone needs a break. Let\'s get back at it today — your brain will thank you! 💪',
+          title: 'CornerMind - Streak Broken? That\'s OK!',
+          body:  'Everyone needs a break. Let\'s get back at it today - your brain will thank you!',
         },
         trigger: null,
       });
     } else if (diffDays >= 3) {
       await Notifications.scheduleNotificationAsync({
         content: {
-          title: '💪 Miss Us? Come Back!',
-          body:  'Each game takes under a minute but adds big value to your SAT® knowledge. Let\'s go! 🚀',
+          title: 'CornerMind - Miss Us? Come Back!',
+          body:  'Each game takes under a minute. Let\'s go!',
         },
         trigger: null,
       });

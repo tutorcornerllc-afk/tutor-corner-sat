@@ -8,6 +8,7 @@ import {
     ScrollView,
     StyleSheet,
     Text,
+    TextInput,
     TouchableOpacity,
     View,
 } from 'react-native';
@@ -322,7 +323,7 @@ export default function StorySolveScreen() {
   const [questionStartTime, setQuestionStartTime] = useState(Date.now());
   const [questionsAnswered, setQuestionsAnswered] = useState(0);
   const [shuffledQ] = useState(() => [...QUESTIONS].sort(() => Math.random() - 0.5).slice(0, 10));
-  const [wheelValue, setWheelValue] = useState(0);
+  const [wheelValue, setWheelValue] = useState<string>('');
   const [resultLabel, setResultLabel] = useState<'solved' | 'wrong' | null>(null);
 
   const timerRef = useRef<any>(null);
@@ -356,7 +357,7 @@ export default function StorySolveScreen() {
       Animated.timing(questionFade, { toValue: 1, duration: 400, useNativeDriver: true }),
       Animated.timing(questionSlide, { toValue: 0, duration: 400, useNativeDriver: true }),
     ]).start();
-    setWheelValue(0);
+    setWheelValue('');
   }, [currentQ]);
 
   useEffect(() => {
@@ -533,27 +534,9 @@ export default function StorySolveScreen() {
             <Text style={styles.historyRank}>Story #1 — Score: {finalScore}</Text>
           </View>
           {isDailyChallenge ? (
-            <>
-              {!isLastGame && (
-                <TouchableOpacity style={styles.continueBtn} onPress={() => {
-                  const nextId = dailyGames[currentIndex + 1];
-                  const routes: Record<number,string> = {1:'/wordduel',2:'/flipit',3:'/errorhunt',4:'/polishup',5:'/bridgeit',6:'/speedread',7:'/deepdive',8:'/tonecraft',9:'/shapesnap',10:'/formulaforge',11:'/graphmatch',12:'/datadash',13:'/rapidfire',14:'/storysolve',15:'/mathmemory',16:'/chainreaction'};
-                  router.replace({ pathname: routes[nextId] as any, params: { isDailyChallenge: '1', dailyGames: dailyGames.join(','), currentIndex: String(currentIndex + 1) } });
-                }}>
-                  <Text style={styles.continueBtnText}>Next Challenge ({currentIndex + 2}/4) →</Text>
-                </TouchableOpacity>
-              )}
-              {isLastGame && (
-                <TouchableOpacity style={styles.continueBtn} onPress={() => {
-                  router.replace({ pathname: '/dailycomplete' as any, params: { dailyGames: dailyGames.join(','), scores: '' } });
-                }}>
-                  <Text style={styles.continueBtnText}>See Results 🏆</Text>
-                </TouchableOpacity>
-              )}
-              <TouchableOpacity style={styles.quitBtn} onPress={() => router.replace('/(tabs)' as any)}>
-                <Text style={styles.quitBtnText}>← Back to Home</Text>
-              </TouchableOpacity>
-            </>
+            <TouchableOpacity style={styles.continueBtn} onPress={() => router.replace('/(tabs)' as any)}>
+              <Text style={styles.continueBtnText}>Done ✓</Text>
+            </TouchableOpacity>
           ) : (
             <>
               <TouchableOpacity style={styles.continueBtn} onPress={restartGame}>
@@ -687,48 +670,44 @@ export default function StorySolveScreen() {
     }
 
     if (q.format === 'scroll-wheel') {
+      const isCorrect = wheelValue !== '' && Number(wheelValue) === q.correctValue;
       return (
         <View style={styles.wheelContainer}>
-          <Text style={styles.wheelLabel}>Enter your answer:</Text>
-          <View style={styles.wheelBox}>
-            <TouchableOpacity
-              style={styles.wheelBtn}
-              onPress={() => !answered && setWheelValue(v => v + 1)}
-              disabled={answered}
-            >
-              <Text style={styles.wheelBtnText}>▲</Text>
-            </TouchableOpacity>
-            <Text style={[styles.wheelValue, {
-              color: answered
-                ? (Number(wheelValue) === q.correctValue ? '#10B981' : '#EF4444')
-                : '#FEF3C7'
-            }]}>{wheelValue}</Text>
-            <TouchableOpacity
-              style={styles.wheelBtn}
-              onPress={() => !answered && setWheelValue(v => Math.max(0, v - 1))}
-              disabled={answered}
-            >
-              <Text style={styles.wheelBtnText}>▼</Text>
-            </TouchableOpacity>
-          </View>
-          {answered && Number(wheelValue) !== q.correctValue && (
+          <Text style={styles.wheelLabel}>Type your answer:</Text>
+          <TextInput
+            style={[styles.wheelInput, {
+              borderColor: answered ? (isCorrect ? '#10B981' : '#EF4444') : '#F97316',
+              color: answered ? (isCorrect ? '#10B981' : '#EF4444') : '#FEF3C7',
+            }]}
+            value={wheelValue}
+            onChangeText={(t) => !answered && setWheelValue(t.replace(/[^0-9.\-]/g, ''))}
+            keyboardType="numeric"
+            placeholder=""
+            placeholderTextColor="#6B7280"
+            editable={!answered}
+            autoFocus={true}
+            textAlign="center"
+            maxLength={10}
+          />
+          {answered && !isCorrect && (
             <Text style={styles.wheelCorrect}>Correct answer: {q.correctValue}</Text>
           )}
           {!answered && (
             <TouchableOpacity
-              style={styles.wheelSubmit}
-              onPress={() => handleAnswer(wheelValue)}
+              style={[styles.wheelSubmit, wheelValue === '' && { opacity: 0.5 }]}
+              onPress={() => wheelValue !== '' && handleAnswer(wheelValue)}
+              disabled={wheelValue === ''}
             >
               <Text style={styles.wheelSubmitText}>📖 Submit Answer</Text>
             </TouchableOpacity>
           )}
           {answered && (
             <View style={[styles.wheelResult, {
-              backgroundColor: Number(wheelValue) === q.correctValue ? '#10B98120' : '#EF444420',
-              borderColor: Number(wheelValue) === q.correctValue ? '#10B981' : '#EF4444',
+              backgroundColor: isCorrect ? '#10B98120' : '#EF444420',
+              borderColor: isCorrect ? '#10B981' : '#EF4444',
             }]}>
-              <Text style={{ color: Number(wheelValue) === q.correctValue ? '#10B981' : '#EF4444', fontWeight: '800', fontSize: 16 }}>
-                {Number(wheelValue) === q.correctValue ? '✅ CORRECT!' : '❌ INCORRECT'}
+              <Text style={{ color: isCorrect ? '#10B981' : '#EF4444', fontWeight: '800', fontSize: 16 }}>
+                {isCorrect ? '✅ CORRECT!' : '❌ INCORRECT'}
               </Text>
             </View>
           )}
@@ -964,6 +943,7 @@ const styles = StyleSheet.create({
   wheelBtn: { width: 48, height: 48, backgroundColor: '#4A3020', borderRadius: 12, alignItems: 'center', justifyContent: 'center' },
   wheelBtnText: { fontSize: 22, color: '#D97706', fontWeight: '900' },
   wheelValue: { fontSize: 48, fontWeight: '900', minWidth: 80, textAlign: 'center' },
+  wheelInput: { fontSize: 48, fontWeight: '900', minWidth: 200, textAlign: 'center', backgroundColor: '#1A1A2E', borderWidth: 3, borderRadius: 16, paddingVertical: 12, paddingHorizontal: 20, marginVertical: 12 },
   wheelCorrect: { fontSize: 14, color: '#10B981', fontWeight: '700' },
   wheelSubmit: { backgroundColor: '#D97706', borderRadius: 50, paddingVertical: 14, paddingHorizontal: 28 },
   wheelSubmitText: { color: '#12080A', fontSize: 16, fontWeight: '900' },

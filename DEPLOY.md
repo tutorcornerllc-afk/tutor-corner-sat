@@ -125,7 +125,7 @@ You don't need to change anything in Squarespace beyond the nameserver swap. You
 
 **Android (Chrome):**
 1. Visit `tutorcornerllc.com/SAT`
-2. Chrome shows a banner: "Add Tutor Corner SAT Prep to Home screen" — tap it
+2. Chrome shows a banner: "Add Tutor Corner CornerBrain to Home screen" — tap it
 3. (Or menu → "Install app")
 
 **Desktop:**

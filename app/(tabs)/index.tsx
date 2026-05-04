@@ -1,5 +1,5 @@
-import {useEffect, useRef, useState } from 'react';
-import { useRouter } from 'expo-router';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useFocusEffect, useRouter } from 'expo-router';
 import { DeviceEventEmitter, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import {
   getDailyGames,
@@ -8,6 +8,7 @@ import {
   getAllGamesTotalXP,
   getGameHistory,
   isDailyComplete,
+  markDailyComplete,
 } from '../storage';
 import { scheduleAllNotifications } from '../notifications';
 
@@ -51,7 +52,7 @@ export default function HomeScreen() {
   const [streak, setStreak] = useState(0);
   const [precision, setPrecision] = useState('--%');
   const [dailyDone, setDailyDone] = useState(false);
-  const [nextGameIndex, setNextGameIndex] = useState(0);
+  const [playedIds, setPlayedIds] = useState<Set<number>>(new Set());
 
   // Scroll to top on tab tap
   useEffect(() => {
@@ -62,9 +63,7 @@ export default function HomeScreen() {
   }, []);
 
   // Reload data every time tab is focused (real-time updates)
-  useEffect(() => {
-    loadData();
-  }, []);
+  useFocusEffect(useCallback(() => { loadData(); }, []));
 
   async function loadData() {
     const ids = await getDailyGames();
@@ -89,17 +88,22 @@ export default function HomeScreen() {
 
     const today = new Date().toISOString().split('T')[0];
     const { default: AsyncStorage } = await import('@react-native-async-storage/async-storage');
-    let nextIdx = 0;
-    for (let i = 0; i < ids.length; i++) {
-      const played = await AsyncStorage.getItem(`daily_played_${today}_${ids[i]}`);
-      if (played) nextIdx = i + 1;
-      else break;
+    const played = new Set<number>();
+    for (const id of ids) {
+      const v = await AsyncStorage.getItem(`daily_played_${today}_${id}`);
+      if (v) played.add(id);
     }
-    setNextGameIndex(Math.min(nextIdx, ids.length));
+    setPlayedIds(played);
+    // Auto-mark daily complete once all 4 are played
+    if (ids.length > 0 && played.size === ids.length && !done) {
+      await markDailyComplete();
+      setDailyDone(true);
+    }
   }
 
   function handleGameTap(gameId: number, index: number) {
     if (dailyDone) return;
+    if (playedIds.has(gameId)) return;
     scheduleAllNotifications();
     const route = GAME_ROUTES[gameId];
     if (!route) return;
@@ -109,24 +113,6 @@ export default function HomeScreen() {
         isDailyChallenge: '1',
         dailyGames: dailyGameIds.join(','),
         currentIndex: String(index),
-      },
-    });
-  }
-
-  function handleStartChallenge() {
-    if (dailyDone) return;
-    if (dailyGameIds.length === 0) return;
-    scheduleAllNotifications();
-    const idx = Math.min(nextGameIndex, dailyGameIds.length - 1);
-    const gameId = dailyGameIds[idx];
-    const route = GAME_ROUTES[gameId];
-    if (!route) return;
-    router.push({
-      pathname: route as any,
-      params: {
-        isDailyChallenge: '1',
-        dailyGames: dailyGameIds.join(','),
-        currentIndex: String(idx),
       },
     });
   }
@@ -145,7 +131,7 @@ export default function HomeScreen() {
         {/* Header */}
         <View style={styles.header}>
           <View>
-            <Text style={styles.headerTitle}>CornerBrain</Text>
+            <Text style={styles.headerTitle}>CornerMind</Text>
             <Text style={styles.headerSub}>Tutor Corner LLC®</Text>
           </View>
           <View style={styles.headerBadge}>
@@ -180,8 +166,8 @@ export default function HomeScreen() {
             {rwGames.map((game) => {
               if (!game) return null;
               const globalIndex = dailyGameIds.indexOf(game.id);
-              const isCompleted = globalIndex < nextGameIndex;
-              const isCurrent = globalIndex === nextGameIndex && !dailyDone;
+              const isCompleted = playedIds.has(game.id);
+              const isCurrent = !isCompleted && !dailyDone;
               return (
                 <TouchableOpacity
                   key={game.id}
@@ -221,8 +207,8 @@ export default function HomeScreen() {
             {mathGames.map((game) => {
               if (!game) return null;
               const globalIndex = dailyGameIds.indexOf(game.id);
-              const isCompleted = globalIndex < nextGameIndex;
-              const isCurrent = globalIndex === nextGameIndex && !dailyDone;
+              const isCompleted = playedIds.has(game.id);
+              const isCurrent = !isCompleted && !dailyDone;
               return (
                 <TouchableOpacity
                   key={game.id}
@@ -251,21 +237,6 @@ export default function HomeScreen() {
             })}
           </>
         )}
-
-        {/* Start Button */}
-        <TouchableOpacity
-          style={[styles.startButton, dailyDone && styles.startButtonDone]}
-          onPress={handleStartChallenge}
-          disabled={dailyDone}
-        >
-          <Text style={styles.startButtonText}>
-            {dailyDone
-              ? '✅ Challenge Complete!'
-              : nextGameIndex === 0
-              ? "Start Today's Challenge 🚀"
-              : `Continue Challenge (${nextGameIndex + 1}/4) 🚀`}
-          </Text>
-        </TouchableOpacity>
 
         {/* Stats Row */}
         <View style={styles.statsRow}>

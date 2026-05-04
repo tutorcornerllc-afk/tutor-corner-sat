@@ -1,13 +1,13 @@
 {
   "name": "CornerMind",
   "short_name": "CornerMind",
-  "description": "SAT prep mini-games from Tutor Corner LLC.",
+  "description": "Quick brain-training mini-games. Free daily challenges from Tutor Corner.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#0F0F1A",
-  "theme_color": "#0F0F1A",
+  "theme_color": "#2563EB",
   "icons": [
     {
       "src": "/icon-192.png",
@@ -21,5 +21,6 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
-  ]
+  ],
+  "lang": "en"
 }

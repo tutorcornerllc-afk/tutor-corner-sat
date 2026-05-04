@@ -15,7 +15,7 @@ export default function Root({ children }: PropsWithChildren) {
         <title>CornerMind</title>
         <meta
           name="description"
-          content="Free SAT® prep mini-games from Tutor Corner LLC. 16 quick games to train your brain."
+          content="CornerMind from Tutor Corner - 16 quick brain-training games. Free daily challenges. Installable web app, no App Store needed."
         />
         <meta name="theme-color" content="#0F0F1A" />
 
@@ -36,6 +36,7 @@ export default function Root({ children }: PropsWithChildren) {
         <link rel="apple-touch-startup-image" href="/splash.png" />
 
         <ScrollViewStyleReset />
+        <script dangerouslySetInnerHTML={{ __html: "if ('serviceWorker' in navigator) { window.addEventListener('load', function() { navigator.serviceWorker.register('/sw.js').catch(function(e){ console.warn('SW failed', e); }); }); }" }} />
 
         <style dangerouslySetInnerHTML={{ __html: responsiveBackground }} />
       </head>
