@@ -62,6 +62,14 @@ export default function HomeScreen() {
     return () => sub.remove();
   }, []);
 
+  // Reload when any game saves its daily_played key (guarantees grayed-out updates).
+  useEffect(() => {
+    const sub = DeviceEventEmitter.addListener('daily_played_changed', () => {
+      loadData();
+    });
+    return () => sub.remove();
+  }, []);
+
   // Reload data every time tab is focused (real-time updates)
   useFocusEffect(useCallback(() => { loadData(); }, []));
 
