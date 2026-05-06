@@ -1,3 +1,4 @@
+import { track } from './track';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Device from 'expo-device';
 
@@ -173,6 +174,7 @@ export async function saveGameResult(
   lives: number,
   date: number
 ): Promise<void> {
+  track('sat', 'game_played', { game_id: gameId });
   try {
     const key = `game_history_${gameId}`;
     const existing = await AsyncStorage.getItem(key);
@@ -406,6 +408,7 @@ export async function setSubscribed(plan: string): Promise<void> {
       date: Date.now(),
     };
     await AsyncStorage.setItem('subscription', JSON.stringify(sub));
+    track('sat', 'subscribe', { plan });
   } catch (e) {
     console.error('setSubscribed error:', e);
   }
@@ -481,6 +484,7 @@ export async function getDailyGames(): Promise<number[]> {
 }
 
 export async function markDailyComplete(): Promise<void> {
+  track('sat', 'daily_done');
   try {
     const today = new Date().toISOString().split('T')[0];
     await AsyncStorage.setItem(`daily_complete_${today}`, '1');

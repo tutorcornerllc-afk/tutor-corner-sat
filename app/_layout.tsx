@@ -4,9 +4,12 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import InstallPrompt from './InstallPrompt';
 import 'react-native-reanimated';
+import { useEffect } from 'react';
+import { bootstrapTracking } from './track';
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
+  useEffect(() => { bootstrapTracking('sat'); }, []);
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
