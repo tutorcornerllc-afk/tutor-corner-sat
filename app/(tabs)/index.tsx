@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useFocusEffect, useRouter } from 'expo-router';
-import { DeviceEventEmitter, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { DeviceEventEmitter, Platform, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import {
   getDailyGames,
   getTodayXP,
@@ -72,6 +72,29 @@ export default function HomeScreen() {
 
   // Reload data every time tab is focused (real-time updates)
   useFocusEffect(useCallback(() => { loadData(); }, []));
+
+  // Web: useFocusEffect can miss tab-internal route changes, so listen to
+  // browser focus/visibility/storage events AND poll while the page is visible.
+  // Belt-and-suspenders so the daily-played gray-out always updates.
+  useEffect(() => {
+    if (Platform.OS !== 'web' || typeof window === 'undefined') return;
+    const reload = () => loadData();
+    const onVisibility = () => { if (!document.hidden) loadData(); };
+    window.addEventListener('focus', reload);
+    window.addEventListener('storage', reload);
+    window.addEventListener('daily_played_changed', reload as any);
+    document.addEventListener('visibilitychange', onVisibility);
+    const interval = setInterval(() => {
+      if (!document.hidden) loadData();
+    }, 1500);
+    return () => {
+      window.removeEventListener('focus', reload);
+      window.removeEventListener('storage', reload);
+      window.removeEventListener('daily_played_changed', reload as any);
+      document.removeEventListener('visibilitychange', onVisibility);
+      clearInterval(interval);
+    };
+  }, []);
 
   async function loadData() {
     const ids = await getDailyGames();

@@ -226,7 +226,15 @@ export default function WordDuelScreen() {
             <Text style={styles.historyRank}>Game #1 — Score: {finalScore}</Text>
           </View>
           {isDailyChallenge ? (
-            <TouchableOpacity style={styles.continueBtn} onPress={() => router.replace('/(tabs)' as any)}>
+            <TouchableOpacity style={styles.continueBtn} onPress={async () => {
+              const today = new Date().toISOString().split('T')[0];
+              const { default: AsyncStorage } = await import('@react-native-async-storage/async-storage');
+              await AsyncStorage.setItem(`daily_played_${today}_${dailyGames[currentIndex]}`, '1');
+              const { DeviceEventEmitter } = await import('react-native');
+              DeviceEventEmitter.emit('daily_played_changed');
+              if (typeof window !== 'undefined' && typeof Event === 'function') window.dispatchEvent(new Event('daily_played_changed'));
+              router.replace('/(tabs)' as any);
+            }}>
               <Text style={styles.continueBtnText}>Done ✓</Text>
             </TouchableOpacity>
           ) : (
@@ -364,6 +372,7 @@ export default function WordDuelScreen() {
                 await AsyncStorage.setItem(`daily_played_${today}_${dailyGames[currentIndex]}`, '1');
                 const { DeviceEventEmitter } = await import('react-native');
                 DeviceEventEmitter.emit('daily_played_changed');
+                if (typeof window !== 'undefined' && typeof Event === 'function') window.dispatchEvent(new Event('daily_played_changed'));
                 router.replace('/(tabs)' as any);
               } else {
                 router.back();

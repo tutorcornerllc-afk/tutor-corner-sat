@@ -543,7 +543,7 @@ const PASSAGES = [
       },
       {
         question: 'What does AI depend on?',
-        options: ['Electricity only', 'Data quality', 'User mood', 'Data quality'],
+        options: ['Electricity only', 'Hardware speed', 'User mood', 'Data quality'],
         correct: 3,
         explanation: 'It depends on data quality.'
       },
@@ -1000,8 +1000,8 @@ const PASSAGES = [
         },
         {
           question: 'What do people often believe?',
-          options: ['They are biased', 'They are objective', 'They are uninformed', 'They are correct', 'They are objective'],
-          correct: 3,
+          options: ['They are biased', 'They are objective', 'They are uninformed', 'They are emotional'],
+          correct: 1,
           explanation: 'People often believe they are objective.'
         },
         {
@@ -1694,7 +1694,15 @@ export default function SpeedReadScreen() {
             <Text style={styles.historyRank}>Game #1 — Score: {finalScore}</Text>
           </View>
           {isDailyChallenge ? (
-            <TouchableOpacity style={styles.continueBtn} onPress={() => router.replace('/(tabs)' as any)}>
+            <TouchableOpacity style={styles.continueBtn} onPress={async () => {
+              const today = new Date().toISOString().split('T')[0];
+              const { default: AsyncStorage } = await import('@react-native-async-storage/async-storage');
+              await AsyncStorage.setItem(`daily_played_${today}_${dailyGames[currentIndex]}`, '1');
+              const { DeviceEventEmitter } = await import('react-native');
+              DeviceEventEmitter.emit('daily_played_changed');
+              if (typeof window !== 'undefined' && typeof Event === 'function') window.dispatchEvent(new Event('daily_played_changed'));
+              router.replace('/(tabs)' as any);
+            }}>
               <Text style={styles.continueBtnText}>Done ✓</Text>
             </TouchableOpacity>
           ) : (
@@ -1874,6 +1882,7 @@ export default function SpeedReadScreen() {
                 await AsyncStorage.setItem(`daily_played_${today}_${dailyGames[currentIndex]}`, '1');
                 const { DeviceEventEmitter } = await import('react-native');
                 DeviceEventEmitter.emit('daily_played_changed');
+                if (typeof window !== 'undefined' && typeof Event === 'function') window.dispatchEvent(new Event('daily_played_changed'));
                 router.replace('/(tabs)' as any);
               } else {
                 router.back();
