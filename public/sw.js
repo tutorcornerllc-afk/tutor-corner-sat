@@ -1,5 +1,5 @@
 // CornerMind service worker.
-const CACHE = 'cornermind-v3';
+const CACHE = 'cornermind-v4';
 const APP_SHELL = ['/', '/manifest.json', '/favicon.ico'];
 
 self.addEventListener('install', (event) => {

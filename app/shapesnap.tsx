@@ -94,6 +94,12 @@ const QUESTIONS = [
   { id: 73, domain: 'D4', difficulty: 'Easy', formula: 'Complementary angles sum to 90°', question: 'One angle is 34°. Its complement is?', options: ['146°', '56°', '66°', '46°'], correct: 1, explanation: '90 − 34 = 56°.' },
   { id: 74, domain: 'D4', difficulty: 'Easy', formula: 'Supplementary angles sum to 180°', question: 'One angle is 115°. Its supplement is?', options: ['75°', '65°', '55°', '85°'], correct: 1, explanation: '180 − 115 = 65°.' },
   { id: 75, domain: 'D4', difficulty: 'Medium', formula: 'A = s²√3/4 (equilateral triangle)', question: 'Equilateral triangle side = 4. Area?', options: ['8√3', '4√3', '2√3', '16√3'], correct: 1, explanation: 'A = (4²√3)/4 = (16√3)/4 = 4√3.' },
+
+  { id: 76, domain: 'D4', difficulty: 'Hard', formula: 'tan(θ) = opp/adj', question: 'Right triangle: adjacent=7, hypotenuse=25. Find tan(θ).', options: ['7/25', '24/7', '7/24', '25/7'], correct: 1, explanation: 'First find opposite: √(625−49)=√576=24. tan=opp/adj=24/7.' },
+  { id: 77, domain: 'D4', difficulty: 'Hard', formula: 'Inscribed angle = ½ central angle', question: 'A central angle of 140° intercepts an arc. The inscribed angle intercepting the same arc is?', options: ['140°', '280°', '70°', '40°'], correct: 2, explanation: 'Inscribed angle theorem: inscribed angle = ½ × central angle = 70°.' },
+  { id: 78, domain: 'D4', difficulty: 'Hard', formula: 'Volume cone = (1/3)πr²h', question: 'Cone: diameter=8, height=9. Volume?', options: ['48π', '72π', '96π', '24π'], correct: 0, explanation: 'r=4. V=(1/3)π(16)(9)=48π.' },
+  { id: 79, domain: 'D4', difficulty: 'Hard', formula: 'Sector area = (θ/360)πr²', question: 'Circle r=12. Sector area is 24π. Find the central angle.', options: ['30°', '90°', '45°', '60°'], correct: 3, explanation: '24π=(θ/360)π(144) → θ/360=24/144=1/6 → θ=60°.' },
+  { id: 80, domain: 'D4', difficulty: 'Hard', formula: 'Midpoint, distance, parallel/perpendicular slopes', question: 'Points A(1,3) and B(7,11). What is the slope of the perpendicular bisector of AB?', options: ['4/3', '−3/4', '3/4', '−4/3'], correct: 1, explanation: 'Slope AB=(11−3)/(7−1)=8/6=4/3. Perp slope=−3/4.' },
 ];
 
 const TIMER_DURATION = 45;
