@@ -16,14 +16,14 @@ const QUESTIONS = [
   // ── D1 ALGEBRA ────────────────────────────────────────────────────────────
   { id: 1, domain: 'D1', difficulty: 'Easy', question: 'Which is the correct formula for slope?', options: ['m = (y₂-y₁)/(x₂-x₁)', 'm = (x₂-x₁)/(y₂-y₁)', 'm = (y₂+y₁)/(x₂+x₁)', 'm = (y₂-x₂)/(y₁-x₁)'], correct: 0, explanation: 'Slope = rise over run = change in y divided by change in x. Option B flips the fraction. Option C uses addition instead of subtraction.' },
   { id: 2, domain: 'D1', difficulty: 'Easy', question: 'Which is the slope-intercept form of a line?', options: ['y = bx + m', 'y = mx + b', 'x = my + b', 'y = m(x - b)'], correct: 1, explanation: 'y = mx + b is slope-intercept form where m is slope and b is y-intercept. Option A swaps m and b. Option C solves for x instead of y.' },
-  { id: 3, domain: 'D1', difficulty: 'Medium', question: 'A line passes through (1,2) and (3,6). Which formula correctly finds its slope?', options: ['m = (3-1)/(6-2) = ½', 'm = (6+2)/(3+1) = 2', 'm = (6-2)/(3-1) = 2', 'm = (1-3)/(2-6) = 0.5'], correct: 2, explanation: 'Slope = (y₂-y₁)/(x₂-x₁) = (6-2)/(3-1) = 4/2 = 2. Option A inverts the fraction. Option B uses addition — wrong operation.' },
+  { id: 3, domain: 'D1', difficulty: 'Medium', question: 'A line passes through (1,2) and (3,6). Which formula correctly finds its slope?', options: ['m = (3-1)/(6-2) = ½', 'm = (6+2)/(3+1) = 2', 'm = (6-2)/(3-1) = 2', 'm = (1-3)/(2-6) = 0.5'], correct: 2, explanation: 'Slope = (y₂-y₁)/(x₂-x₁) = (6-2)/(3-1) = 4/2 = 2. Option A inverts the fraction. Option B uses addition -- wrong operation.' },
   { id: 4, domain: 'D1', difficulty: 'Easy', question: 'Which is the correct point-slope formula?', options: ['y + y₁ = m(x + x₁)', 'y - y₁ = m(x + x₁)', 'y + x₁ = m(x + y₁)', 'y - y₁ = m(x - x₁)'], correct: 3, explanation: 'Point-slope form: y - y₁ = m(x - x₁). Option A uses addition on both sides. Option B mixes subtraction and addition incorrectly.' },
   { id: 5, domain: 'D1', difficulty: 'Medium', question: 'Which formula finds the distance between two points?', options: ['d = √((x₂-x₁)² + (y₂-y₁)²)', 'd = (x₂-x₁)² + (y₂-y₁)²', 'd = √((x₂+x₁)² + (y₂+y₁)²)', 'd = (x₂-x₁) + (y₂-y₁)'], correct: 0, explanation: 'Distance = square root of the sum of squared differences. Option B is missing the square root. Option C uses addition instead of subtraction inside.' },
   { id: 6, domain: 'D1', difficulty: 'Easy', question: 'Which is the correct midpoint formula?', options: ['M = ((x₁-x₂)/2, (y₁-y₂)/2)', 'M = ((x₁+x₂)/2, (y₁+y₂)/2)', 'M = ((x₁+x₂), (y₁+y₂))', 'M = (x₁x₂, y₁y₂)'], correct: 1, explanation: 'Midpoint = average of x-coordinates and average of y-coordinates. Option A subtracts instead of adding. Option C forgets to divide by 2.' },
   { id: 7, domain: 'D1', difficulty: 'Hard', question: 'Line 1 has slope 3. A parallel line has which slope?', options: ['m = -3', 'm = -1/3', 'm = 3', 'm = 1/3'], correct: 2, explanation: 'Parallel lines have EQUAL slopes. m = 3. Option A is the negative. Option B is the negative reciprocal (perpendicular slope).' },
   { id: 8, domain: 'D1', difficulty: 'Hard', question: 'Line 1 has slope 2. A perpendicular line has which slope?', options: ['m = 2', 'm = 1/2', 'm = -2', 'm = -1/2'], correct: 3, explanation: 'Perpendicular slopes are negative reciprocals: m₁ × m₂ = -1. So m = -1/2. Option A is the same slope (parallel). Option B misses the negative sign.' },
   // ── D2 ADVANCED MATH ──────────────────────────────────────────────────────
-  { id: 9, domain: 'D2', difficulty: 'Easy', question: 'Which is the correct quadratic formula?', options: ['x = (-b ± √(b²-4ac)) / 2a', 'x = (-b ± √(b²+4ac)) / 2a', 'x = (b ± √(b²-4ac)) / 2a', 'x = (-b + √(b²-4ac)) / a'], correct: 0, explanation: 'The quadratic formula is x = (-b ± √(b²-4ac))/2a. Option B has + inside the radical — wrong. Option C is missing the negative before b.' },
+  { id: 9, domain: 'D2', difficulty: 'Easy', question: 'Which is the correct quadratic formula?', options: ['x = (-b ± √(b²-4ac)) / 2a', 'x = (-b ± √(b²+4ac)) / 2a', 'x = (b ± √(b²-4ac)) / 2a', 'x = (-b + √(b²-4ac)) / a'], correct: 0, explanation: 'The quadratic formula is x = (-b ± √(b²-4ac))/2a. Option B has + inside the radical -- wrong. Option C is missing the negative before b.' },
   { id: 10, domain: 'D2', difficulty: 'Easy', question: 'Which is the correct discriminant formula?', options: ['Δ = b² + 4ac', 'Δ = b² - 4ac', 'Δ = 2b² - 4ac', 'Δ = √(b² - 4ac)'], correct: 1, explanation: 'Discriminant Δ = b² - 4ac. It determines number of real roots. Option A uses + instead of -. Option C incorrectly doubles b².' },
   { id: 11, domain: 'D2', difficulty: 'Medium', question: 'For y = 2x² - 8x + 3, which formula finds the vertex x-coordinate?', options: ['x = b/2a = -2', 'x = -b/a = 4', 'x = -b/2a = 2', 'x = -2a/b = 0.5'], correct: 2, explanation: 'Vertex x = -b/2a = -(-8)/2(2) = 8/4 = 2. Option A is missing the negative. Option B forgets to divide by 2.' },
   { id: 12, domain: 'D2', difficulty: 'Easy', question: 'Which is the vertex form of a quadratic?', options: ['y = a(x+h)² + k', 'y = a(x-h)² - k', 'y = (x-h)² + ak', 'y = a(x-h)² + k'], correct: 3, explanation: 'Vertex form is y = a(x-h)² + k where (h,k) is the vertex. Option A uses + so vertex would be at -h. Option B has -k which shifts the vertex incorrectly.' },
@@ -347,7 +347,7 @@ export default function FormulaForgeScreen() {
           <View style={styles.historyCard}>
             <Text style={styles.historyTitle}>📈 Your History</Text>
             <Text style={styles.historySub}>Play more games to see your score history!</Text>
-            <Text style={styles.historyRank}>Game #1 — Score: {finalScore}</Text>
+            <Text style={styles.historyRank}>Game #1 -- Score: {finalScore}</Text>
           </View>
           {isDailyChallenge ? (
             <TouchableOpacity style={styles.continueBtn} onPress={async () => {
@@ -493,7 +493,7 @@ export default function FormulaForgeScreen() {
             <View style={styles.forgeLabelLine} />
           </View>
 
-          {/* FORMULA CARDS — 3 options */}
+          {/* FORMULA CARDS -- 3 options */}
           <View style={styles.formulaCards}>
             {q.options.map((option, index) => {
               let bgColor = '#2A1E0F';

@@ -105,7 +105,7 @@ const QUESTIONS = [
   { id: 63, domain: 'D2', difficulty: 'Medium', question: 'Simplify: √72', options: ['8√2', '9√2', '6√2', '6√3'], correct: 2, explanation: '√72 = √(36·2) = 6√2.' },
   { id: 64, domain: 'D2', difficulty: 'Hard', question: 'If f(x) = 3x − 2, what is f⁻¹(x)?', options: ['(x−2)/3', '3x+2', '(x+2)/3', '1/(3x−2)'], correct: 2, explanation: 'Swap x and y: x = 3y−2 → y = (x+2)/3.' },
   { id: 65, domain: 'D3', difficulty: 'Easy', question: '3 is what % of 12?', options: ['25%', '30%', '20%', '40%'], correct: 0, explanation: '(3/12)×100 = 25%.' },
-  { id: 66, domain: 'D3', difficulty: 'Easy', question: 'Mode of: 2, 4, 4, 5, 7, 7, 7?', options: ['4', '5', '7', '2'], correct: 2, explanation: '7 appears 3 times — more than any other.' },
+  { id: 66, domain: 'D3', difficulty: 'Easy', question: 'Mode of: 2, 4, 4, 5, 7, 7, 7?', options: ['4', '5', '7', '2'], correct: 2, explanation: '7 appears 3 times -- more than any other.' },
   { id: 67, domain: 'D3', difficulty: 'Medium', question: 'Standard deviation measures:', options: ['Average value', 'Spread of data', 'Highest value', 'Data range'], correct: 1, explanation: 'Standard deviation quantifies how spread out values are from the mean.' },
   { id: 68, domain: 'D3', difficulty: 'Medium', question: 'A bag has 3 red, 5 blue balls. P(red)?', options: ['3/5', '5/8', '3/8', '1/3'], correct: 2, explanation: '3 red out of 8 total = 3/8.' },
   { id: 69, domain: 'D4', difficulty: 'Easy', question: 'Perimeter of rectangle 5×8?', options: ['40', '13', '26', '20'], correct: 2, explanation: 'P = 2(5+8) = 26.' },
@@ -452,7 +452,7 @@ export default function RapidFireScreen() {
           <View style={styles.historyCard}>
             <Text style={styles.historyTitle}>🎯 Mission History</Text>
             <Text style={styles.historySub}>Complete more missions to see history!</Text>
-            <Text style={styles.historyRank}>Mission #1 — Score: {finalScore}</Text>
+            <Text style={styles.historyRank}>Mission #1 -- Score: {finalScore}</Text>
           </View>
           {isDailyChallenge ? (
             <TouchableOpacity style={styles.continueBtn} onPress={async () => {

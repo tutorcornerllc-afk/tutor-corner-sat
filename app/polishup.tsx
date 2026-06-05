@@ -67,7 +67,7 @@ const QUESTIONS = [
   { id: 56, domain: 'D4', difficulty: 'Hard', instruction: 'Tap the redundant or unnecessary word', sentence: 'The new innovation changed the way we communicate globally.', words: ['The', 'new', 'innovation', 'changed', 'the', 'way', 'we', 'communicate', 'globally.'], errorIndex: 1, explanation: '"Innovation" by definition means something new. "New" is redundant.' },
   { id: 57, domain: 'D4', difficulty: 'Hard', instruction: 'Tap the redundant or unnecessary word', sentence: 'At this point in time, the economy is showing signs of recovery.', words: ['At', 'this', 'point', 'in', 'time,', 'the', 'economy', 'is', 'showing', 'signs', 'of', 'recovery.'], errorIndex: 3, explanation: '"At this point in time" = "At this point" or "currently." "In time" is redundant filler.' },
   { id: 58, domain: 'D4', difficulty: 'Easy', instruction: 'Tap the redundant or unnecessary word', sentence: 'The two twins were inseparable throughout their childhood.', words: ['The', 'two', 'twins', 'were', 'inseparable', 'throughout', 'their', 'childhood.'], errorIndex: 1, explanation: '"Twins" already means two. "Two" is redundant.' },
-  { id: 59, domain: 'D4', difficulty: 'Medium', instruction: 'Tap the redundant or unnecessary word', sentence: 'She made a final decision about her college plans.', words: ['She', 'made', 'a', 'final', 'decision', 'about', 'her', 'college', 'plans.'], errorIndex: 3, explanation: 'A "decision" is final by definition — once made, it's decided. "Final" is redundant.' },
+  { id: 59, domain: 'D4', difficulty: 'Medium', instruction: 'Tap the redundant or unnecessary word', sentence: 'She made a final decision about her college plans.', words: ['She', 'made', 'a', 'final', 'decision', 'about', 'her', 'college', 'plans.'], errorIndex: 3, explanation: 'A "decision" is final by definition -- once made, it's decided. "Final" is redundant.' },
   { id: 60, domain: 'D4', difficulty: 'Hard', instruction: 'Tap the redundant or unnecessary word', sentence: 'He descended down from the mountain after the storm passed.', words: ['He', 'descended', 'down', 'from', 'the', 'mountain', 'after', 'the', 'storm', 'passed.'], errorIndex: 2, explanation: '"Descended" means went down. "Down" is redundant.' },
 
   { id: 51, domain: 'D4', difficulty: 'Easy', instruction: 'Tap the redundant or unnecessary word', sentence: 'He added an additional comment at the end of the meeting.', words: ['He', 'added', 'an', 'additional', 'comment', 'at', 'the', 'end', 'of', 'the', 'meeting.'], errorIndex: 3, explanation: '"Added" already implies something new is being included. "Additional" is redundant.' },
@@ -78,7 +78,7 @@ const QUESTIONS = [
   { id: 56, domain: 'D4', difficulty: 'Hard', instruction: 'Tap the redundant or unnecessary word', sentence: 'The new innovation changed the way we communicate globally.', words: ['The', 'new', 'innovation', 'changed', 'the', 'way', 'we', 'communicate', 'globally.'], errorIndex: 1, explanation: '"Innovation" by definition means something new. "New" is redundant.' },
   { id: 57, domain: 'D4', difficulty: 'Hard', instruction: 'Tap the redundant or unnecessary word', sentence: 'At this point in time, the economy is showing signs of recovery.', words: ['At', 'this', 'point', 'in', 'time,', 'the', 'economy', 'is', 'showing', 'signs', 'of', 'recovery.'], errorIndex: 3, explanation: '"At this point in time" = "At this point" or "currently." "In time" is redundant filler.' },
   { id: 58, domain: 'D4', difficulty: 'Easy', instruction: 'Tap the redundant or unnecessary word', sentence: 'The two twins were inseparable throughout their childhood.', words: ['The', 'two', 'twins', 'were', 'inseparable', 'throughout', 'their', 'childhood.'], errorIndex: 1, explanation: '"Twins" already means two. "Two" is redundant.' },
-  { id: 59, domain: 'D4', difficulty: 'Medium', instruction: 'Tap the redundant or unnecessary word', sentence: 'She made a final decision about her college plans.', words: ['She', 'made', 'a', 'final', 'decision', 'about', 'her', 'college', 'plans.'], errorIndex: 3, explanation: 'A "decision" is final by definition — once made, it's decided. "Final" is redundant.' },
+  { id: 59, domain: 'D4', difficulty: 'Medium', instruction: 'Tap the redundant or unnecessary word', sentence: 'She made a final decision about her college plans.', words: ['She', 'made', 'a', 'final', 'decision', 'about', 'her', 'college', 'plans.'], errorIndex: 3, explanation: 'A "decision" is final by definition -- once made, it's decided. "Final" is redundant.' },
   { id: 60, domain: 'D4', difficulty: 'Hard', instruction: 'Tap the redundant or unnecessary word', sentence: 'He descended down from the mountain after the storm passed.', words: ['He', 'descended', 'down', 'from', 'the', 'mountain', 'after', 'the', 'storm', 'passed.'], errorIndex: 2, explanation: '"Descended" means went down. "Down" is redundant.' },
 
   { id: 61, domain: 'D4', difficulty: 'Hard', instruction: 'Tap the redundant or unnecessary word', sentence: 'The autopsy revealed the cause of death was a fatal overdose.', words: ['The', 'autopsy', 'revealed', 'the', 'cause', 'of', 'death', 'was', 'a', 'fatal', 'overdose.'], errorIndex: 9, explanation: '"Overdose" that causes death is by definition fatal. "Fatal" is redundant.' },
@@ -267,7 +267,7 @@ export default function PolishUpScreen() {
           <View style={styles.historyCard}>
             <Text style={styles.historyTitle}>📈 Your History</Text>
             <Text style={styles.historySub}>Play more games to see your score history!</Text>
-            <Text style={styles.historyRank}>Game #1 — Score: {finalScore}</Text>
+            <Text style={styles.historyRank}>Game #1 -- Score: {finalScore}</Text>
           </View>
           {isDailyChallenge ? (
             <TouchableOpacity style={styles.continueBtn} onPress={async () => {
@@ -348,7 +348,7 @@ export default function PolishUpScreen() {
           {/* Gem Animation */}
           <View style={styles.gemContainer}>
             <Animated.Text style={[styles.gemEmoji, { transform: [{ scale: gemScale }] }]}>💎</Animated.Text>
-            <Text style={styles.gemLabel}>Polish the sentence — remove the unnecessary word!</Text>
+            <Text style={styles.gemLabel}>Polish the sentence -- remove the unnecessary word!</Text>
           </View>
 
           {/* Domain Badge */}

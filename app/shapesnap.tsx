@@ -350,7 +350,7 @@ export default function ShapeSnapScreen() {
           <View style={styles.historyCard}>
             <Text style={styles.historyTitle}>📈 Your History</Text>
             <Text style={styles.historySub}>Play more games to see your score history!</Text>
-            <Text style={styles.historyRank}>Game #1 — Score: {finalScore}</Text>
+            <Text style={styles.historyRank}>Game #1 -- Score: {finalScore}</Text>
           </View>
           {isDailyChallenge ? (
             <TouchableOpacity style={styles.continueBtn} onPress={async () => {

@@ -34,7 +34,7 @@ const QUESTIONS = [
 
   // ── D3 MEDIUM ─────────────────────────────────────────────────────────────
   { id: 18, domain: 'D3', difficulty: 'Medium', question: 'Class A: 20 students avg 85. Class B: 30 students avg 75. Combined average?', options: ['80', '79', '77', '82'], correct: 1, explanation: 'Weighted avg = (20×85+30×75)/50 = 3950/50 = 79.' },
-  { id: 19, domain: 'D3', difficulty: 'Medium', question: 'Data: 2, 5, 6, 8, 9, 10, 14. What is the median?', options: ['7', '9', '8', '6'], correct: 2, explanation: '7 values — median is 4th value = 8.' },
+  { id: 19, domain: 'D3', difficulty: 'Medium', question: 'Data: 2, 5, 6, 8, 9, 10, 14. What is the median?', options: ['7', '9', '8', '6'], correct: 2, explanation: '7 values -- median is 4th value = 8.' },
   { id: 20, domain: 'D3', difficulty: 'Medium', question: 'P(A)=0.4, P(B)=0.3, independent. P(A and B)?', options: ['0.7', '0.1', '0.34', '0.12'], correct: 3, explanation: 'P(A and B) = 0.4 × 0.3 = 0.12.' },
   { id: 21, domain: 'D3', difficulty: 'Medium', question: 'Population grew 8,000 to 10,000. Percent increase?', options: ['25%', '20%', '30%', '15%'], correct: 0, explanation: '(2000/8000) × 100 = 25%.' },
   { id: 22, domain: 'D3', difficulty: 'Medium', question: 'Compound interest: $2000 at 10% for 2 years. Amount?', options: ['$2400', '$2420', '$2200', '$2440'], correct: 1, explanation: 'A = 2000(1.1)² = $2420.' },
@@ -76,7 +76,7 @@ const QUESTIONS = [
 
   { id: 51, domain: 'D3', difficulty: 'Easy', question: 'Data: 10, 20, 30, 40, 50. What is the mean?', options: ['25', '40', '35', '30'], correct: 3, explanation: 'Mean = (10+20+30+40+50)/5 = 150/5 = 30.' },
   { id: 52, domain: 'D3', difficulty: 'Easy', question: 'Data: 1, 3, 5, 7, 9. What is the median?', options: ['3', '7', '5', '9'], correct: 2, explanation: 'Middle value of 5 sorted numbers is the 3rd = 5.' },
-  { id: 53, domain: 'D3', difficulty: 'Easy', question: 'Data: 2, 2, 3, 5, 8. What is the mode?', options: ['3', '5', '8', '2'], correct: 3, explanation: '2 appears twice — more than any other value.' },
+  { id: 53, domain: 'D3', difficulty: 'Easy', question: 'Data: 2, 2, 3, 5, 8. What is the mode?', options: ['3', '5', '8', '2'], correct: 3, explanation: '2 appears twice -- more than any other value.' },
   { id: 54, domain: 'D3', difficulty: 'Easy', question: 'Data: 4, 8, 15, 23. What is the range?', options: ['11', '15', '19', '8'], correct: 2, explanation: 'Range = 23 − 4 = 19.' },
   { id: 55, domain: 'D3', difficulty: 'Medium', question: 'A student scores 70, 80, 90, 100 on four tests. What score is needed on the 5th to average 85?', options: ['80', '95', '85', '90'], correct: 2, explanation: '85×5 = 425 total needed. 70+80+90+100 = 340. 425−340 = 85.' },
   { id: 56, domain: 'D3', difficulty: 'Medium', question: 'P(rolling a 4 on a fair die)?', options: ['1/3', '1/6', '2/6', '1/4'], correct: 1, explanation: '1 favorable outcome out of 6 = 1/6.' },
@@ -100,12 +100,12 @@ const QUESTIONS = [
   { id: 73, domain: 'D3', difficulty: 'Hard', question: 'Sample: 12, 15, 18, 21, 24. If 24 is replaced with 100, which measure changes most?', options: ['Median', 'Mode', 'Mean', 'Range is unchanged'], correct: 2, explanation: 'Mean is most sensitive to extreme values (outliers). Median barely shifts.' },
   { id: 74, domain: 'D3', difficulty: 'Hard', question: 'Heights are normally distributed: mean 68in, SD 3in. What % of people are between 65 and 71 inches?', options: ['50%', '95%', '68%', '99.7%'], correct: 2, explanation: '65 and 71 are each 1 SD from mean. The 68-95-99.7 rule: 68% within 1 SD.' },
   { id: 75, domain: 'D2', difficulty: 'Hard', question: 'A function f(x) = 3(0.5)^x. As x increases, f(x):', options: ['Increases without bound', 'Stays constant', 'Approaches 0 but never reaches it', 'Becomes negative'], correct: 2, explanation: 'Exponential decay with base 0.5<1. f(x) approaches 0 asymptotically.' },
-  { id: 76, domain: 'D3', difficulty: 'Hard', question: 'Median annual income of 9 employees is $52,000. CEO earns $2M. New median with CEO included?', options: ['Still $52,000', 'Much higher than $52,000', '$126,000', '$1,026,000'], correct: 0, explanation: 'Adding one high outlier shifts the middle value (median) minimally. With 10 values median is avg of 5th and 6th — still near $52,000.' },
+  { id: 76, domain: 'D3', difficulty: 'Hard', question: 'Median annual income of 9 employees is $52,000. CEO earns $2M. New median with CEO included?', options: ['Still $52,000', 'Much higher than $52,000', '$126,000', '$1,026,000'], correct: 0, explanation: 'Adding one high outlier shifts the middle value (median) minimally. With 10 values median is avg of 5th and 6th -- still near $52,000.' },
   { id: 77, domain: 'D3', difficulty: 'Hard', question: 'Two events A and B: P(A)=0.4, P(B)=0.3, P(A and B)=0.12. Are they independent?', options: ['Yes, because P(A)×P(B)=P(A and B)', 'No, because they overlap', 'Yes, because 0.12 is small', 'No, because P(A)≠P(B)'], correct: 0, explanation: 'Independent if P(A)×P(B)=P(A∩B): 0.4×0.3=0.12 ✓. They are independent.' },
   { id: 78, domain: 'D1', difficulty: 'Hard', question: 'A scatter plot shows residuals randomly scattered around 0. This indicates:', options: ['The model is a poor fit', 'A linear model is appropriate', 'There are outliers', 'The correlation is negative'], correct: 1, explanation: 'Randomly scattered residuals around 0 indicate a linear model is a good fit for the data.' },
   { id: 79, domain: 'D3', difficulty: 'Hard', question: 'In a sample of 200, 45% prefer brand A (margin of error ±4%). Which is a valid conclusion?', options: ['Exactly 45% of population prefers A', 'Between 41% and 49% of population likely prefers A', 'Brand A is more popular than all others', 'The sample is too small to conclude anything'], correct: 1, explanation: 'The confidence interval is 45%±4% = [41%, 49%]. We can say the true value is likely in this range.' },
   { id: 80, domain: 'D2', difficulty: 'Hard', question: 'Linear model predicts test score = 50 + 8(hours studied). What does the slope 8 represent?', options: ['A student who studies 0 hours scores 8', 'For each additional hour studied, predicted score increases by 8', 'The average test score is 8', 'Studying causes an 8% improvement'], correct: 1, explanation: 'The slope in a linear model represents the predicted change in y for each 1-unit increase in x.' },
-  { id: 81, domain: 'D3', difficulty: 'Hard', question: 'A survey of 500 people has 60% response rate. The biggest concern about validity is:', options: ['Sample size too small', 'Non-response bias — non-responders may differ systematically', 'The questions were too hard', 'Respondents answered incorrectly'], correct: 1, explanation: 'Non-response bias: if non-responders have different opinions than responders, results won't represent the full population.' },
+  { id: 81, domain: 'D3', difficulty: 'Hard', question: 'A survey of 500 people has 60% response rate. The biggest concern about validity is:', options: ['Sample size too small', 'Non-response bias -- non-responders may differ systematically', 'The questions were too hard', 'Respondents answered incorrectly'], correct: 1, explanation: 'Non-response bias: if non-responders have different opinions than responders, results won't represent the full population.' },
 ];
 
 const TIMER_DURATION = 45;
@@ -128,7 +128,7 @@ function RaceCar({
   const emoji = CAR_EMOJIS[index];
 
   useEffect(() => {
-    // Gentle engine wobble — same for all cars
+    // Gentle engine wobble -- same for all cars
     Animated.loop(
       Animated.sequence([
         Animated.timing(wobbleY, { toValue: -2, duration: 280, useNativeDriver: true }),
@@ -156,7 +156,7 @@ function RaceCar({
         Animated.spring(scaleAnim, { toValue: 1.3, useNativeDriver: true, tension: 280, friction: 5 }),
       ]).start();
     } else if (isSelected && !isCorrect) {
-      // ❌ Tapped wrong car — violent shake then shrink (broken)
+      // ❌ Tapped wrong car -- violent shake then shrink (broken)
       Animated.sequence([
         Animated.timing(wobbleY, { toValue: -10, duration: 55, useNativeDriver: true }),
         Animated.timing(wobbleY, { toValue: 10, duration: 55, useNativeDriver: true }),
@@ -404,7 +404,7 @@ export default function DataDashScreen() {
           <View style={styles.historyCard}>
             <Text style={styles.historyTitle}>🏁 Race History</Text>
             <Text style={styles.historySub}>Race more to see your history!</Text>
-            <Text style={styles.historyRank}>Race #1 — Score: {finalScore}</Text>
+            <Text style={styles.historyRank}>Race #1 -- Score: {finalScore}</Text>
           </View>
           {isDailyChallenge ? (
             <TouchableOpacity style={styles.continueBtn} onPress={async () => {

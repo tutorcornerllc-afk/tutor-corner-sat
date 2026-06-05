@@ -46,7 +46,7 @@ const QUESTIONS = [
   { id: 24, domain: 'D3', difficulty: 'Medium', type: 'data→stat', question: 'Pie chart: Category A = 40%, B = 35%, C = 25%. Total sales = $200. How much is Category A?', graph: { type: 'pie', values: [40, 35, 25], labels: ['A', 'B', 'C'] }, options: ['$80', '$70', '$40', '$100'], correct: 0, explanation: '40% of $200 = 0.40 × 200 = $80.' },
   { id: 25, domain: 'D3', difficulty: 'Medium', type: 'data→stat', question: 'A bar chart shows a 25% increase from Year 1 (80) to Year 2. What is Year 2?', graph: { type: 'bar', values: [80, 100], labels: ['Y1', 'Y2'] }, options: ['105', '90', '100', '125'], correct: 2, explanation: '25% increase: 80 × 1.25 = 100.' },
   // ── HARD: Complex analysis ────────────────────────────────────────────────
-  { id: 26, domain: 'D3', difficulty: 'Hard', type: 'boxplot→stat', question: 'Box plot: Min=5, Q1=15, Median=30, Q3=55, Max=95. Are there outliers above Q3?', graph: { type: 'boxplot', min: 5, q1: 15, median: 30, q3: 55, max: 95 }, options: ['Yes — max=95 is above Q3', 'No — upper fence = 115, max=95 ≤ 115', 'Yes — any value above Q3 is an outlier', 'No — the range is only 90'], correct: 1, explanation: 'Upper fence = Q3 + 1.5×IQR = 55 + 1.5×40 = 55 + 60 = 115. Max=95 < 115, so no outliers.' },
+  { id: 26, domain: 'D3', difficulty: 'Hard', type: 'boxplot→stat', question: 'Box plot: Min=5, Q1=15, Median=30, Q3=55, Max=95. Are there outliers above Q3?', graph: { type: 'boxplot', min: 5, q1: 15, median: 30, q3: 55, max: 95 }, options: ['Yes -- max=95 is above Q3', 'No -- upper fence = 115, max=95 ≤ 115', 'Yes -- any value above Q3 is an outlier', 'No -- the range is only 90'], correct: 1, explanation: 'Upper fence = Q3 + 1.5×IQR = 55 + 1.5×40 = 55 + 60 = 115. Max=95 < 115, so no outliers.' },
   { id: 27, domain: 'D2', difficulty: 'Hard', type: 'equation→graph', question: 'y = -(x+1)² + 4. What are the x-intercepts?', graph: { type: 'parabola', a: -1, h: -1, k: 4 }, options: ['x = -1 and x = 4', 'x = 2 and x = -4', 'x = 1 and x = -3', 'x = 0 and x = -2'], correct: 2, explanation: 'Set y=0: -(x+1)²+4=0, (x+1)²=4, x+1=±2, x=1 or x=-3.' },
   { id: 28, domain: 'D3', difficulty: 'Hard', type: 'data→stat', question: 'Scatter shows strong positive correlation. r ≈ 0.92. Which statement is correct?', graph: { type: 'scatter', correlation: 'strong positive' }, options: ['As x increases, y increases strongly', 'Correlation means x causes y', 'r=0.92 means 92% of points are correct', 'There is no linear relationship'], correct: 0, explanation: 'r=0.92 means strong positive relationship. But correlation ≠ causation. r² = 0.85 means 85% of variance explained.' },
   { id: 29, domain: 'D2', difficulty: 'Hard', type: 'equation→graph', question: 'f(x) = 2x² - 8x + 6. What is the vertex?', graph: { type: 'parabola', a: 2, h: 2, k: -2 }, options: ['(-2, 2)', '(4, 6)', '(2, -2)', '(0, 6)'], correct: 2, explanation: 'Vertex x = -b/2a = 8/4 = 2. y = 2(4) - 16 + 6 = 8 - 16 + 6 = -2. Vertex = (2, -2).' },
@@ -669,7 +669,7 @@ export default function GraphMatchScreen() {
           <View style={styles.historyCard}>
             <Text style={styles.historyTitle}>📈 Your History</Text>
             <Text style={styles.historySub}>Play more games to see your score history!</Text>
-            <Text style={styles.historyRank}>Game #1 — Score: {finalScore}</Text>
+            <Text style={styles.historyRank}>Game #1 -- Score: {finalScore}</Text>
           </View>
           {isDailyChallenge ? (
             <TouchableOpacity style={styles.continueBtn} onPress={async () => {
