@@ -68,9 +68,42 @@ const QUESTIONS = [
   { id: 48, domain: 'D4', difficulty: 'Hard', question: 'What is the relationship between radians and degrees?', options: ['360° = π radians', '180° = π radians', '1° = π radians', '90° = π radians'], correct: 1, explanation: 'A semicircle is 180° or π radians. Therefore, 180° = π. Option A is incorrect because 360° = 2π.' },
   { id: 49, domain: 'D4', difficulty: 'Medium', question: 'Which formula gives the area of a rhombus?', options: ['d₁d₂', 'A = ½(d₁ + d₂)', 'A = ½d₁d₂', 'A = s²'], correct: 2, explanation: 'Area = ½ × product of the diagonals. Option A forgets the ½. Option D is only for a square.' },
   { id: 50, domain: 'D4', difficulty: 'Easy', question: 'What is the sum of the exterior angles of any convex polygon?', options: ['180°', '(n-2) × 180°', 'n × 360°', '360°'], correct: 3, explanation: 'Regardless of the number of sides, the exterior angles of any convex polygon always sum to 360°. Option B is for interior angles.' },
+
+  { id: 51, domain: 'D1', difficulty: 'Easy', question: 'Which is the quadratic formula?', options: ['x = (−b ± √(b²+4ac)) / 2a', 'x = (−b ± √(b²−4ac)) / 2a', 'x = b² − 4ac', 'x = −b/2a'], correct: 1, explanation: 'Quadratic formula: x = (−b ± √(b²−4ac)) / 2a. The discriminant is b²−4ac.' },
+  { id: 52, domain: 'D1', difficulty: 'Easy', question: 'Which correctly shows the distance formula?', options: ['d = √((x₁+x₂)² + (y₁+y₂)²)', 'd = √((x₂−x₁)² + (y₂−y₁)²)', 'd = (x₂−x₁) + (y₂−y₁)', 'd = |x₂−x₁| × |y₂−y₁|'], correct: 1, explanation: 'Distance = √((Δx)² + (Δy)²). Sum the squares of the differences.' },
+  { id: 53, domain: 'D1', difficulty: 'Medium', question: 'Which is the midpoint formula?', options: ['M = (x₂−x₁, y₂−y₁)', 'M = (x₁×x₂, y₁×y₂)', 'M = ((x₁+x₂)/2, (y₁+y₂)/2)', 'M = (x₁/x₂, y₁/y₂)'], correct: 2, explanation: 'Midpoint = average of x-coordinates, average of y-coordinates.' },
+  { id: 54, domain: 'D2', difficulty: 'Medium', question: 'Which is the correct exponential growth formula?', options: ['A = P(1 − r)^t', 'A = P + rt', 'A = P(1 + r)^t', 'A = Pe^(−rt)'], correct: 2, explanation: 'Exponential growth: A = P(1+r)^t where P = principal, r = rate, t = time.' },
+  { id: 55, domain: 'D2', difficulty: 'Medium', question: 'For f(x) = x², which correctly shows the vertex form?', options: ['f(x) = a(x−h) + k', 'f(x) = ax² + bx + c', 'f(x) = a(x−h)² + k', 'f(x) = (x+h)² − k'], correct: 2, explanation: 'Vertex form: f(x) = a(x−h)² + k, where (h,k) is the vertex.' },
+  { id: 56, domain: 'D1', difficulty: 'Hard', question: 'Which correctly represents the standard form of a linear equation?', options: ['y = mx + b', 'Ax + By = C', 'y − y₁ = m(x − x₁)', 'y/x = m'], correct: 1, explanation: 'Standard form is Ax + By = C where A, B, C are integers and A ≥ 0.' },
+  { id: 57, domain: 'D4', difficulty: 'Easy', question: 'Which formula gives the area of a trapezoid?', options: ['A = bh', 'A = ½(b₁+b₂)h', 'A = πr²', 'A = ½bh'], correct: 1, explanation: 'Trapezoid area = ½ × (sum of parallel sides) × height.' },
+  { id: 58, domain: 'D4', difficulty: 'Medium', question: 'Which formula is the law of cosines?', options: ['c² = a² + b²', 'c² = a² + b² − 2ab·sin(C)', 'c/sin(C) = a/sin(A)', 'c² = a² + b² − 2ab·cos(C)'], correct: 3, explanation: 'Law of cosines: c² = a² + b² − 2ab·cos(C). Option A is only Pythagoras.' },
+  { id: 59, domain: 'D2', difficulty: 'Hard', question: 'Which formula gives the sum of a geometric series?', options: ['S = n(a₁+aₙ)/2', 'S = a₁(1−rⁿ)/(1−r)', 'S = a₁/(1+r)', 'S = n²/2'], correct: 1, explanation: 'Geometric series sum: S = a₁(1−rⁿ)/(1−r). Option A is arithmetic series.' },
+  { id: 60, domain: 'D1', difficulty: 'Easy', question: 'Point-slope form of a line is:', options: ['y = mx + b', 'Ax + By = C', 'y − y₁ = m(x − x₁)', 'x = my + b'], correct: 2, explanation: 'Point-slope form uses a known point (x₁,y₁) and slope m.' },
+  { id: 61, domain: 'D3', difficulty: 'Medium', question: 'Which formula gives the number of permutations of n items taken r at a time?', options: ['n! / r!', 'n! / (n−r)!', 'n! / (r!(n−r)!)', 'r! / n!'], correct: 1, explanation: 'Permutation: P(n,r) = n!/(n−r)!. Combination uses r! in denominator too.' },
+  { id: 62, domain: 'D1', difficulty: 'Medium', question: 'A line has slope −3 and passes through (0, 5). Which equation is correct?', options: ['y = 5x − 3', 'y = 3x + 5', 'y = −3x + 5', 'y = −3x − 5'], correct: 2, explanation: 'y = mx + b with m = −3 and b = 5 gives y = −3x + 5.' },
+  { id: 63, domain: 'D2', difficulty: 'Hard', question: 'The discriminant b²−4ac = 0 means the quadratic has:', options: ['No real solutions', 'Two different real solutions', 'One repeated real solution', 'Two complex solutions'], correct: 2, explanation: 'Discriminant = 0: exactly one solution (a repeated root), touching x-axis once.' },
+
+  { id: 64, domain: 'D3', difficulty: 'Medium', question: 'Which correctly shows the combination formula C(n,r)?', options: ['n!/(n−r)!', 'n!×r!', 'n!/(r!(n−r)!)', '(n−r)!/n!'], correct: 2, explanation: 'Combinations: C(n,r) = n! / (r!(n−r)!). Order does not matter.' },
+  { id: 65, domain: 'D2', difficulty: 'Hard', question: 'Which is the correct formula for the sum of an arithmetic series?', options: ['S = a₁rⁿ', 'S = n(a₁+aₙ)/2', 'S = a₁(1−r)/(1−rⁿ)', 'S = na₁'], correct: 1, explanation: 'Arithmetic series sum = n × (first + last term) / 2.' },
+  { id: 66, domain: 'D1', difficulty: 'Easy', question: 'Which correctly shows standard form for a circle centered at (h,k)?', options: ['(x+h)² + (y+k)² = r', '(x−h)² + (y−k)² = r²', 'x² + y² = r²', '(x−h) + (y−k) = r²'], correct: 1, explanation: 'Circle: (x−h)² + (y−k)² = r². Note: r² not r on the right.' },
+  { id: 67, domain: 'D2', difficulty: 'Medium', question: 'Compound interest formula A = P(1 + r/n)^(nt). If $1000 at 6%/yr compounded monthly for 1 yr, which values are correct?', options: ['P=1000, r=0.06, n=1, t=12', 'P=1000, r=6, n=12, t=1', 'P=1000, r=0.06, n=12, t=1', 'P=1000, r=0.6, n=12, t=1'], correct: 2, explanation: 'r is the decimal rate (6%=0.06), n=12 (monthly), t=1 year.' },
+  { id: 68, domain: 'D1', difficulty: 'Hard', question: 'Which correctly gives the x-coordinate of a parabola's vertex from y=ax²+bx+c?', options: ['x = b/2a', 'x = −b/a', 'x = −b/2a', 'x = 2a/b'], correct: 2, explanation: 'Vertex x = −b/(2a). This is derived by completing the square.' },
+  { id: 69, domain: 'D3', difficulty: 'Easy', question: 'Which formula gives the probability of complementary event P(A')?', options: ['P(A) − 1', '1 + P(A)', '1 − P(A)', 'P(A)/2'], correct: 2, explanation: 'P(A') = 1 − P(A). All probabilities sum to 1.' },
+  { id: 70, domain: 'D4', difficulty: 'Medium', question: 'Law of sines: a/sin(A) = b/sin(B). If a=6, A=30°, B=45°, find b.', options: ['6√2', '3√2', '6√3', '3√6'], correct: 0, explanation: 'b = 6×sin(45°)/sin(30°) = 6×(√2/2)/(1/2) = 6√2.' },
 ];
 
 const TIMER_DURATION = 45;
+
+
+// Shuffle options array and update correct index accordingly
+function shuffleOptions<T extends { options: string[]; correct: number }>(q: T): T {
+  const idx = [0, 1, 2, 3];
+  for (let i = 3; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [idx[i], idx[j]] = [idx[j], idx[i]];
+  }
+  return { ...q, options: idx.map(i => q.options[i]), correct: idx.indexOf(q.correct) };
+}
 
 export default function FormulaForgeScreen() {
   const router = useRouter();
@@ -90,7 +123,7 @@ export default function FormulaForgeScreen() {
   const [answers, setAnswers] = useState<any[]>([]);
   const [questionStartTime, setQuestionStartTime] = useState(Date.now());
   const [questionsAnswered, setQuestionsAnswered] = useState(0);
-  const [shuffledQ] = useState(() => [...QUESTIONS].sort(() => Math.random() - 0.5).slice(0, 10));
+  const [shuffledQ] = useState(() => [...QUESTIONS].sort(() => Math.random() - 0.5).slice(0, 10).map(shuffleOptions));
 
   const timerRef = useRef<any>(null);
   const shakeAnim = useRef(new Animated.Value(0)).current;

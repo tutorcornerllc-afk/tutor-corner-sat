@@ -73,6 +73,28 @@ const QUESTIONS = [
   // ── D4 GEOMETRY ───────────────────────────────────────────────────────────
   { id: 49, domain: 'D4', difficulty: 'Medium', question: 'Cylinder r=4, h=5. Volume? (π≈3.14)', options: ['125.6', '502.4', '62.8', '251.2'], correct: 3, explanation: 'V = πr²h = 3.14×16×5 = 251.2.' },
   { id: 50, domain: 'D4', difficulty: 'Easy', question: 'Right triangle legs: 6 and 8. Hypotenuse?', options: ['12', '10', '14', '9'], correct: 1, explanation: 'c = √(36+64) = √100 = 10.' },
+
+  { id: 51, domain: 'D3', difficulty: 'Easy', question: 'Data: 10, 20, 30, 40, 50. What is the mean?', options: ['25', '40', '35', '30'], correct: 3, explanation: 'Mean = (10+20+30+40+50)/5 = 150/5 = 30.' },
+  { id: 52, domain: 'D3', difficulty: 'Easy', question: 'Data: 1, 3, 5, 7, 9. What is the median?', options: ['3', '7', '5', '9'], correct: 2, explanation: 'Middle value of 5 sorted numbers is the 3rd = 5.' },
+  { id: 53, domain: 'D3', difficulty: 'Easy', question: 'Data: 2, 2, 3, 5, 8. What is the mode?', options: ['3', '5', '8', '2'], correct: 3, explanation: '2 appears twice — more than any other value.' },
+  { id: 54, domain: 'D3', difficulty: 'Easy', question: 'Data: 4, 8, 15, 23. What is the range?', options: ['11', '15', '19', '8'], correct: 2, explanation: 'Range = 23 − 4 = 19.' },
+  { id: 55, domain: 'D3', difficulty: 'Medium', question: 'A student scores 70, 80, 90, 100 on four tests. What score is needed on the 5th to average 85?', options: ['80', '95', '85', '90'], correct: 2, explanation: '85×5 = 425 total needed. 70+80+90+100 = 340. 425−340 = 85.' },
+  { id: 56, domain: 'D3', difficulty: 'Medium', question: 'P(rolling a 4 on a fair die)?', options: ['1/3', '1/6', '2/6', '1/4'], correct: 1, explanation: '1 favorable outcome out of 6 = 1/6.' },
+  { id: 57, domain: 'D3', difficulty: 'Medium', question: 'P(flipping heads twice in a row)?', options: ['1/4', '1/2', '1/3', '1/8'], correct: 0, explanation: '1/2 × 1/2 = 1/4.' },
+  { id: 58, domain: 'D3', difficulty: 'Medium', question: 'Data set: 5, 5, 5, 10, 20. Which measure is most affected by the outlier 20?', options: ['Mode', 'Median', 'Mean', 'None'], correct: 2, explanation: 'The mean is pulled up significantly by the outlier. Mode and median barely change.' },
+  { id: 59, domain: 'D3', difficulty: 'Hard', question: 'Variance of: 2, 4, 4, 4, 5, 5, 7, 9 (mean = 5)?', options: ['3', '4', '2', '5'], correct: 1, explanation: 'Variance = [(9+1+1+1+0+0+4+16)/8] = 32/8 = 4.' },
+  { id: 60, domain: 'D3', difficulty: 'Hard', question: 'A class of 30: 60% scored above 80. How many scored 80 or below?', options: ['12', '18', '20', '15'], correct: 0, explanation: '40% scored ≤80. 0.40 × 30 = 12.' },
+  { id: 61, domain: 'D3', difficulty: 'Easy', question: 'A jar has 4 red, 6 blue marbles. P(blue)?', options: ['2/5', '3/5', '4/10', '2/3'], correct: 1, explanation: '6 blue out of 10 total = 6/10 = 3/5.' },
+  { id: 62, domain: 'D3', difficulty: 'Medium', question: 'Survey: 40 like cats, 60 like dogs, 20 like both. How many like at least one?', options: ['100', '80', '120', '60'], correct: 1, explanation: '40 + 60 − 20 = 80 (subtract overlap).' },
+  { id: 63, domain: 'D1', difficulty: 'Easy', question: 'Line of best fit passes through (0,2) and (4,10). What is the slope?', options: ['3', '4', '2', '2.5'], correct: 2, explanation: '(10−2)/(4−0) = 8/4 = 2.' },
+  { id: 64, domain: 'D1', difficulty: 'Medium', question: 'Scatter plot shows r = −0.9. This means:', options: ['Strong positive correlation', 'No correlation', 'Weak negative correlation', 'Strong negative correlation'], correct: 3, explanation: 'r close to −1 indicates a strong negative correlation.' },
+  { id: 65, domain: 'D2', difficulty: 'Medium', question: 'Population grows from 500 to 600. What is the % increase?', options: ['16.7%', '25%', '20%', '15%'], correct: 2, explanation: '(600−500)/500 × 100 = 20%.' },
+  { id: 66, domain: 'D2', difficulty: 'Hard', question: 'Investment doubles every 10 years. How many years to go from $1000 to $8000?', options: ['20 years', '40 years', '30 years', '25 years'], correct: 2, explanation: '$1000→$2000→$4000→$8000 = 3 doublings × 10 years = 30 years.' },
+  { id: 67, domain: 'D3', difficulty: 'Easy', question: 'What type of association: as study time increases, grades increase?', options: ['Negative', 'No association', 'Nonlinear', 'Positive'], correct: 3, explanation: 'Both variables move in the same direction = positive association.' },
+  { id: 68, domain: 'D3', difficulty: 'Medium', question: '20 people, 12 like pizza, 8 like sushi, 4 like both. How many like only pizza?', options: ['12', '4', '8', '16'], correct: 2, explanation: '12 total pizza − 4 both = 8 like only pizza.' },
+  { id: 69, domain: 'D3', difficulty: 'Hard', question: 'Box plot: Q1=20, median=30, Q3=45. IQR = ?', options: ['25', '10', '15', '30'], correct: 0, explanation: 'IQR = Q3 − Q1 = 45 − 20 = 25.' },
+  { id: 70, domain: 'D3', difficulty: 'Hard', question: 'z-score of 2 means the data point is:', options: ['2% above mean', '2 standard deviations above mean', '2 units above mean', 'Twice the mean'], correct: 1, explanation: 'z-score measures how many standard deviations a value is from the mean.' },
+  { id: 71, domain: 'D1', difficulty: 'Hard', question: 'Residual = actual − predicted. Actual = 85, predicted = 80. Residual = ?', options: ['165', '−5', '5', '0'], correct: 2, explanation: 'Residual = 85 − 80 = 5. Positive residual means actual > predicted.' },
 ];
 
 const TIMER_DURATION = 45;
@@ -183,6 +205,17 @@ function RaceCar({
 }
 
 // ─── MAIN SCREEN ─────────────────────────────────────────────────────────────
+
+// Shuffle options array and update correct index accordingly
+function shuffleOptions<T extends { options: string[]; correct: number }>(q: T): T {
+  const idx = [0, 1, 2, 3];
+  for (let i = 3; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [idx[i], idx[j]] = [idx[j], idx[i]];
+  }
+  return { ...q, options: idx.map(i => q.options[i]), correct: idx.indexOf(q.correct) };
+}
+
 export default function DataDashScreen() {
   const router = useRouter();
   const params = useLocalSearchParams();
@@ -201,7 +234,7 @@ export default function DataDashScreen() {
   const [answers, setAnswers] = useState<any[]>([]);
   const [questionStartTime, setQuestionStartTime] = useState(Date.now());
   const [questionsAnswered, setQuestionsAnswered] = useState(0);
-  const [shuffledQ] = useState(() => [...QUESTIONS].sort(() => Math.random() - 0.5).slice(0, 10));
+  const [shuffledQ] = useState(() => [...QUESTIONS].sort(() => Math.random() - 0.5).slice(0, 10).map(shuffleOptions));
   const [carKey, setCarKey] = useState(0);
 
   const timerRef = useRef<any>(null);

@@ -72,6 +72,25 @@ const QUESTIONS = [
   { id: 48, domain: 'D3', difficulty: 'Hard', type: 'data→stat', question: 'Data: 4, 4, 7, 9, 10, 10, 12. What is the median?', graph: { type: 'bar', values: [4, 4, 7, 9, 10, 10, 12], labels: ['1', '2', '3', '4', '5', '6', '7'] }, options: ['7', '10', '9', '8'], correct: 2, explanation: '7 values, median = 4th value = 9.' },
   { id: 49, domain: 'D2', difficulty: 'Hard', type: 'equation→graph', question: 'y = (x+3)(x-1). What are the zeros of this function?', graph: { type: 'parabola', a: 1, h: -1, k: -4 }, options: ['x = 3 and x = -1', 'x = -3 and x = 1', 'x = -3 and x = -1', 'x = 0 and x = 3'], correct: 1, explanation: 'Set y=0: (x+3)=0 → x=-3; (x-1)=0 → x=1. Zeros at x=-3 and x=1.' },
   { id: 50, domain: 'D3', difficulty: 'Hard', type: 'boxplot→stat', question: 'Box plot shows median at 45. The mean is 60. What does this suggest?', graph: { type: 'boxplot', min: 20, q1: 35, median: 45, q3: 65, max: 120 }, options: ['Left-skewed (mean < median)', 'Symmetric distribution', 'Right-skewed (mean > median)', 'Uniform distribution'], correct: 2, explanation: 'When mean > median, data is right-skewed (pulled up by high outliers). Mean=60 > Median=45 confirms right skew.' },
+
+  { id: 54, domain: 'D1', difficulty: 'Easy', type: 'equation→description', question: 'Which equation has slope −1 and y-intercept 3?', graph: { type: 'line', slope: -1, intercept: 3 }, options: ['y = x + 3', 'y = −x − 3', 'y = 3x − 1', 'y = −x + 3'], correct: 3, explanation: 'y = mx+b with m=−1, b=3 → y = −x+3.' },
+  { id: 55, domain: 'D1', difficulty: 'Easy', type: 'description→equation', question: 'A horizontal line through y = 5. Which equation?', graph: { type: 'line', slope: 0, intercept: 5 }, options: ['x = 5', 'y = 5x', 'y = 5', 'y = 0'], correct: 2, explanation: 'Horizontal lines have slope 0: y = 5.' },
+  { id: 56, domain: 'D1', difficulty: 'Medium', type: 'equation→description', question: 'y = 3x − 2. Where does this line cross the x-axis?', graph: { type: 'line', slope: 3, intercept: -2 }, options: ['(0, −2)', '(2/3, 0)', '(2, 0)', '(−2/3, 0)'], correct: 1, explanation: 'Set y=0: 0=3x−2 → x=2/3. X-intercept is (2/3, 0).' },
+  { id: 57, domain: 'D2', difficulty: 'Medium', type: 'equation→description', question: 'Which describes y = x²?', graph: { type: 'parabola', a: 1, h: 0, k: 0 }, options: ['Line with slope 1', 'Parabola opening down, vertex at origin', 'Parabola opening up, vertex at origin', 'Circle centered at origin'], correct: 2, explanation: 'y = x² is an upward-opening parabola with vertex at (0,0).' },
+  { id: 58, domain: 'D2', difficulty: 'Medium', type: 'equation→description', question: 'y = −x² + 4. Where is the vertex?', graph: { type: 'parabola', a: -1, h: 0, k: 4 }, options: ['(4, 0)', '(0, −4)', '(0, 4)', '(−4, 0)'], correct: 2, explanation: 'y = a(x−h)²+k form: h=0, k=4. Vertex at (0,4).' },
+  { id: 59, domain: 'D1', difficulty: 'Hard', type: 'features→equation', question: 'Line passes through (−3, 0) and (0, 6). Which equation?', graph: { type: 'line', slope: 2, intercept: 6 }, options: ['y = 3x + 6', 'y = 2x + 6', 'y = 6x + 2', 'y = −2x + 6'], correct: 1, explanation: 'Slope = (6−0)/(0−(−3)) = 6/3 = 2. y-intercept = 6. y = 2x+6.' },
+  { id: 60, domain: 'D2', difficulty: 'Hard', type: 'equation→description', question: 'y = (x−2)² − 1. Which describes the vertex and direction?', graph: { type: 'parabola', a: 1, h: 2, k: -1 }, options: ['Vertex (2, −1), opens up', 'Vertex (−2, 1), opens up', 'Vertex (2, 1), opens down', 'Vertex (−2, −1), opens up'], correct: 0, explanation: 'Vertex form y=a(x−h)²+k: h=2, k=−1, a=1>0 so opens up.' },
+  { id: 61, domain: 'D1', difficulty: 'Easy', type: 'description→equation', question: 'A vertical line through x = −3. Which equation?', graph: { type: 'line', slope: null, intercept: -3 }, options: ['y = −3', 'y = −3x', 'x = −3', 'x = 3'], correct: 2, explanation: 'Vertical lines have undefined slope and are written as x = constant.' },
+  { id: 62, domain: 'D1', difficulty: 'Medium', type: 'equation→description', question: 'Two lines: y = 2x+1 and y = 2x−3. How do they relate?', graph: { type: 'line', slope: 2, intercept: 1 }, options: ['They are perpendicular', 'They intersect at one point', 'They are parallel', 'They are the same line'], correct: 2, explanation: 'Same slope (m=2) but different y-intercepts → parallel lines.' },
+  { id: 63, domain: 'D1', difficulty: 'Hard', type: 'features→equation', question: 'Line perpendicular to y = 3x+1 through (0,0). Which equation?', graph: { type: 'line', slope: -0.333, intercept: 0 }, options: ['y = 3x', 'y = −3x', 'y = −x/3', 'y = x/3'], correct: 2, explanation: 'Perpendicular slope = −1/3. Through (0,0): y = −x/3.' },
+
+  { id: 64, domain: 'D2', difficulty: 'Hard', type: 'equation→description', question: 'y = |x − 2|. Where is the vertex of this absolute value graph?', graph: { type: 'absolute', h: 2, k: 0 }, options: ['(0, 2)', '(−2, 0)', '(2, 0)', '(0, −2)'], correct: 2, explanation: 'y = |x − h| + k has vertex at (h, k). h=2, k=0 → vertex at (2,0).' },
+  { id: 65, domain: 'D1', difficulty: 'Medium', type: 'features→equation', question: 'A line is parallel to y = 4x − 1 and passes through (0, 3). Which equation?', graph: { type: 'line', slope: 4, intercept: 3 }, options: ['y = −4x + 3', 'y = 4x + 3', 'y = 4x − 3', 'y = (1/4)x + 3'], correct: 1, explanation: 'Parallel lines share slope. Slope = 4, y-intercept = 3 → y = 4x + 3.' },
+  { id: 66, domain: 'D1', difficulty: 'Hard', type: 'features→equation', question: 'A line perpendicular to y = −2x + 1 passes through (2, 5). Which equation?', graph: { type: 'line', slope: 0.5, intercept: 4 }, options: ['y = 2x + 1', 'y = (1/2)x + 4', 'y = −2x + 5', 'y = (1/2)x − 4'], correct: 1, explanation: 'Perp slope = 1/2. y − 5 = (1/2)(x−2) → y = x/2 + 4.' },
+  { id: 67, domain: 'D2', difficulty: 'Medium', type: 'equation→description', question: 'y = 2x² − 8x + 6. Does the parabola open up or down, and what is the vertex x-coordinate?', graph: { type: 'parabola', a: 2, h: 2, k: -2 }, options: ['Opens down, x=2', 'Opens up, x=4', 'Opens up, x=2', 'Opens down, x=−2'], correct: 2, explanation: 'a=2>0 so opens up. Vertex x = −(−8)/(2×2) = 8/4 = 2.' },
+  { id: 68, domain: 'D1', difficulty: 'Easy', type: 'description→equation', question: 'Which equation represents a line with undefined slope?', graph: { type: 'line', slope: null, intercept: 3 }, options: ['y = 3', 'y = 3x', 'x = 3', 'y = undefined'], correct: 2, explanation: 'Vertical lines have undefined slope and are written as x = constant.' },
+  { id: 69, domain: 'D1', difficulty: 'Medium', type: 'equation→description', question: 'System: y = x + 2 and y = −x + 4. Where do they intersect?', graph: { type: 'system', slope1: 1, intercept1: 2, slope2: -1, intercept2: 4 }, options: ['(1, 3)', '(3, 1)', '(2, 4)', '(0, 2)'], correct: 0, explanation: 'Set equal: x+2 = −x+4 → 2x=2 → x=1, y=3. Intersection at (1,3).' },
+  { id: 70, domain: 'D2', difficulty: 'Hard', type: 'equation→description', question: 'y = −2(x+1)² + 5. What is the maximum value of y?', graph: { type: 'parabola', a: -2, h: -1, k: 5 }, options: ['−2', '−1', '1', '5'], correct: 3, explanation: 'a=−2<0 so opens down (has maximum). Vertex k=5 is the maximum y value.' },
 ];
 
 const TIMER_DURATION = 45;
@@ -415,6 +434,17 @@ function MatrixDigit({ left, delay }: { left: number; delay: number }) {
 }
 
 // ─── MAIN SCREEN ─────────────────────────────────────────────────────────────
+
+// Shuffle options array and update correct index accordingly
+function shuffleOptions<T extends { options: string[]; correct: number }>(q: T): T {
+  const idx = [0, 1, 2, 3];
+  for (let i = 3; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [idx[i], idx[j]] = [idx[j], idx[i]];
+  }
+  return { ...q, options: idx.map(i => q.options[i]), correct: idx.indexOf(q.correct) };
+}
+
 export default function GraphMatchScreen() {
   const router = useRouter();
   const params = useLocalSearchParams();

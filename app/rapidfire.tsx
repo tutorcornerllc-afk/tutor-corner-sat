@@ -89,6 +89,32 @@ const QUESTIONS = [
   // ── D4 HARD ───────────────────────────────────────────────────────────────
   { id: 49, domain: 'D4', difficulty: 'Hard', question: 'Volume of sphere r=3?', options: ['12π', '36π', '27π', '108π'], correct: 1, explanation: 'V = (4/3)πr³ = (4/3)π(27) = 36π.' },
   { id: 50, domain: 'D4', difficulty: 'Hard', question: 'Law of cosines: a=5,b=7,C=60°. Find c²?', options: ['74', '57', '39', '49'], correct: 2, explanation: 'c²=25+49−2(5)(7)(0.5)=74−35=39.' },
+
+  { id: 51, domain: 'D1', difficulty: 'Easy', question: 'Solve: 5x − 3 = 22', options: ['4', '5', '3', '6'], correct: 1, explanation: '5x = 25, x = 5.' },
+  { id: 52, domain: 'D1', difficulty: 'Easy', question: 'What is 15% of 200?', options: ['20', '25', '35', '30'], correct: 3, explanation: '0.15 × 200 = 30.' },
+  { id: 53, domain: 'D1', difficulty: 'Easy', question: 'y = -3x + 7. Find y when x = 2.', options: ['13', '1', '11', '4'], correct: 1, explanation: 'y = -6 + 7 = 1.' },
+  { id: 54, domain: 'D1', difficulty: 'Easy', question: 'Solve: x/4 = 9', options: ['36', '2.25', '13', '45'], correct: 0, explanation: 'x = 9 × 4 = 36.' },
+  { id: 55, domain: 'D1', difficulty: 'Easy', question: 'If 3x + 2y = 14 and x = 2, find y.', options: ['3', '4', '5', '8'], correct: 3, explanation: '6 + 2y = 14 → 2y = 8 → y = 4. Wait: y = 4. correct: 1' },
+  { id: 56, domain: 'D1', difficulty: 'Medium', question: 'Solve: x² = 49', options: ['±8', '±6', '±7', '7'], correct: 2, explanation: 'x = ±7.' },
+  { id: 57, domain: 'D1', difficulty: 'Medium', question: 'Factor: x² − 9', options: ['(x+3)(x−3)', '(x−9)(x+1)', '(x+9)(x−1)', '(x−3)²'], correct: 0, explanation: 'Difference of squares: (x+3)(x−3).' },
+  { id: 58, domain: 'D1', difficulty: 'Medium', question: 'Slope of line through (2,3) and (6,11)?', options: ['1', '3', '2', '4'], correct: 2, explanation: '(11−3)/(6−2) = 8/4 = 2.' },
+  { id: 59, domain: 'D1', difficulty: 'Medium', question: 'Solve: 2x² + 8 = 26', options: ['2', '±4', '3', '±3'], correct: 3, explanation: '2x² = 18, x² = 9, x = ±3.' },
+  { id: 60, domain: 'D1', difficulty: 'Hard', question: 'Solve: (x+2)(x−3) = 0', options: ['x = 2 or x = 3', 'x = −2 or x = 3', 'x = −2 or x = −3', 'x = 2 or x = −3'], correct: 1, explanation: 'Set each factor to 0: x+2=0→x=−2; x−3=0→x=3.' },
+  { id: 61, domain: 'D2', difficulty: 'Easy', question: 'Evaluate f(x) = 2x² − 1 at x = 3.', options: ['17', '11', '15', '8'], correct: 0, explanation: 'f(3) = 2(9) − 1 = 18 − 1 = 17.' },
+  { id: 62, domain: 'D2', difficulty: 'Medium', question: 'y = x² − 4x + 4. What is the vertex?', options: ['(2, 0)', '(0, 4)', '(−2, 0)', '(4, 0)'], correct: 0, explanation: 'Vertex x = −b/2a = 4/2 = 2; y = 0. Vertex is (2,0).' },
+  { id: 63, domain: 'D2', difficulty: 'Medium', question: 'Simplify: √72', options: ['8√2', '9√2', '6√2', '6√3'], correct: 2, explanation: '√72 = √(36·2) = 6√2.' },
+  { id: 64, domain: 'D2', difficulty: 'Hard', question: 'If f(x) = 3x − 2, what is f⁻¹(x)?', options: ['(x−2)/3', '3x+2', '(x+2)/3', '1/(3x−2)'], correct: 2, explanation: 'Swap x and y: x = 3y−2 → y = (x+2)/3.' },
+  { id: 65, domain: 'D3', difficulty: 'Easy', question: '3 is what % of 12?', options: ['25%', '30%', '20%', '40%'], correct: 0, explanation: '(3/12)×100 = 25%.' },
+  { id: 66, domain: 'D3', difficulty: 'Easy', question: 'Mode of: 2, 4, 4, 5, 7, 7, 7?', options: ['4', '5', '7', '2'], correct: 2, explanation: '7 appears 3 times — more than any other.' },
+  { id: 67, domain: 'D3', difficulty: 'Medium', question: 'Standard deviation measures:', options: ['Average value', 'Spread of data', 'Highest value', 'Data range'], correct: 1, explanation: 'Standard deviation quantifies how spread out values are from the mean.' },
+  { id: 68, domain: 'D3', difficulty: 'Medium', question: 'A bag has 3 red, 5 blue balls. P(red)?', options: ['3/5', '5/8', '3/8', '1/3'], correct: 2, explanation: '3 red out of 8 total = 3/8.' },
+  { id: 69, domain: 'D4', difficulty: 'Easy', question: 'Perimeter of rectangle 5×8?', options: ['40', '13', '26', '20'], correct: 2, explanation: 'P = 2(5+8) = 26.' },
+  { id: 70, domain: 'D4', difficulty: 'Easy', question: 'Area of square with side 9?', options: ['36', '72', '18', '81'], correct: 3, explanation: 'A = 9² = 81.' },
+  { id: 71, domain: 'D4', difficulty: 'Medium', question: 'Volume of rectangular prism 3×4×5?', options: ['47', '60', '24', '120'], correct: 1, explanation: 'V = 3×4×5 = 60.' },
+  { id: 72, domain: 'D4', difficulty: 'Medium', question: 'Interior angle sum of pentagon?', options: ['360°', '720°', '900°', '540°'], correct: 3, explanation: '(5−2)×180 = 540°.' },
+  { id: 73, domain: 'D4', difficulty: 'Hard', question: 'sin²θ + cos²θ = ?', options: ['0', '2', 'sinθ', '1'], correct: 3, explanation: 'Pythagorean identity: sin²θ + cos²θ = 1 always.' },
+  { id: 74, domain: 'D1', difficulty: 'Easy', question: 'Solve: 8 − 2x = 2', options: ['5', '4', '2', '3'], correct: 3, explanation: '−2x = −6, x = 3.' },
+  { id: 75, domain: 'D1', difficulty: 'Medium', question: 'If 2x + y = 10 and y = 4, find x.', options: ['2', '7', '4', '3'], correct: 3, explanation: '2x + 4 = 10 → 2x = 6 → x = 3.' },
 ];
 
 const TIMER_DURATION = 45;
@@ -141,6 +167,17 @@ function Cloud({ startX, top, duration }: { startX: number; top: number; duratio
 }
 
 // ─── MAIN SCREEN ─────────────────────────────────────────────────────────────
+
+// Shuffle options array and update correct index accordingly
+function shuffleOptions<T extends { options: string[]; correct: number }>(q: T): T {
+  const idx = [0, 1, 2, 3];
+  for (let i = 3; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [idx[i], idx[j]] = [idx[j], idx[i]];
+  }
+  return { ...q, options: idx.map(i => q.options[i]), correct: idx.indexOf(q.correct) };
+}
+
 export default function RapidFireScreen() {
   const router = useRouter();
   const params = useLocalSearchParams();
@@ -160,7 +197,7 @@ export default function RapidFireScreen() {
   const [answers, setAnswers] = useState<any[]>([]);
   const [questionStartTime, setQuestionStartTime] = useState(Date.now());
   const [questionsAnswered, setQuestionsAnswered] = useState(0);
-  const [shuffledQ] = useState(() => [...QUESTIONS].sort(() => Math.random() - 0.5).slice(0, 10));
+  const [shuffledQ] = useState(() => [...QUESTIONS].sort(() => Math.random() - 0.5).slice(0, 10).map(shuffleOptions));
   const [hitResult, setHitResult] = useState<'bullseye' | 'miss' | null>(null);
 
   const timerRef = useRef<any>(null);

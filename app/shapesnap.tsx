@@ -67,9 +67,47 @@ const QUESTIONS = [
   { id: 48, domain: 'D4', difficulty: 'Hard', formula: 'Sector + triangle area', question: 'A sector with radius 4 and central angle 90° is cut from a circle. What is the area of the remaining shape (the major sector)?', options: ['4π', '8π', '12π', '16π'], correct: 2, explanation: 'Full circle area = 16π. Minor sector area = (90/360)×16π = 4π. Major sector = 16π - 4π = 12π' },
   { id: 49, domain: 'D4', difficulty: 'Hard', formula: 'Heron\'s formula', question: 'A triangle has sides 5, 12, and 13. What is its area?', options: ['60', '26', '65', '30'], correct: 3, explanation: 'Since 5² + 12² = 25 + 144 = 169 = 13², this is a right triangle. Area = ½(5)(12) = 30' },
   { id: 50, domain: 'D4', difficulty: 'Hard', formula: 'V cylinder - V cone', question: 'A cylinder has radius 3 and height 8. A cone with same radius and height is removed from inside. What is the remaining volume?', options: ['48π', '72π', '24π', '96π'], correct: 0, explanation: 'V_cylinder = π(9)(8) = 72π. V_cone = (1/3)π(9)(8) = 24π. Remaining = 72π - 24π = 48π' },
+
+  { id: 51, domain: 'D4', difficulty: 'Easy', formula: 'A = lw', question: 'Rectangle length 12, width 5. Area?', options: ['60', '34', '17', '24'], correct: 0, explanation: 'A = 12 × 5 = 60.' },
+  { id: 52, domain: 'D4', difficulty: 'Easy', formula: 'V = lwh', question: 'Box 4×3×6. Volume?', options: ['36', '72', '54', '48'], correct: 1, explanation: 'V = 4×3×6 = 72.' },
+  { id: 53, domain: 'D4', difficulty: 'Easy', formula: 'A = ½bh', question: 'Triangle base 10, height 6. Area?', options: ['60', '30', '16', '20'], correct: 1, explanation: 'A = ½(10)(6) = 30.' },
+  { id: 54, domain: 'D4', difficulty: 'Medium', formula: 'a²+b²=c²', question: 'Right triangle: one leg 8, hypotenuse 10. Other leg?', options: ['4', '7', '6', '9'], correct: 2, explanation: 'b = √(100−64) = √36 = 6.' },
+  { id: 55, domain: 'D4', difficulty: 'Medium', formula: 'A = πr²', question: 'Circle diameter = 10. Area?', options: ['10π', '25π', '20π', '100π'], correct: 1, explanation: 'r = 5. A = π(25) = 25π.' },
+  { id: 56, domain: 'D4', difficulty: 'Medium', formula: 'C = 2πr', question: 'Circle area = 36π. Circumference?', options: ['6π', '36π', '18π', '12π'], correct: 3, explanation: 'r² = 36 → r = 6. C = 2π(6) = 12π.' },
+  { id: 57, domain: 'D4', difficulty: 'Medium', formula: 'V = πr²h', question: 'Cylinder r=5, h=4. Volume?', options: ['80π', '40π', '100π', '20π'], correct: 2, explanation: 'V = π(25)(4) = 100π.' },
+  { id: 58, domain: 'D4', difficulty: 'Hard', formula: 'V = (4/3)πr³', question: 'Sphere r=3. Volume?', options: ['9π', '12π', '36π', '108π'], correct: 2, explanation: 'V = (4/3)π(27) = 36π.' },
+  { id: 59, domain: 'D4', difficulty: 'Hard', formula: '30-60-90: sides x, x√3, 2x', question: '30-60-90 triangle. Short leg = 7. Hypotenuse?', options: ['7√2', '7√3', '14', '21'], correct: 2, explanation: 'Hypotenuse = 2x = 14.' },
+  { id: 60, domain: 'D4', difficulty: 'Hard', formula: '45-45-90: sides x, x, x√2', question: '45-45-90 triangle. Leg = 6. Hypotenuse?', options: ['12', '6√3', '3√2', '6√2'], correct: 3, explanation: 'Hypotenuse = 6√2.' },
+  { id: 61, domain: 'D4', difficulty: 'Easy', formula: 'Angles in triangle = 180°', question: 'Triangle angles: 40°, 75°. Third angle?', options: ['55°', '65°', '70°', '45°'], correct: 1, explanation: '180 − 40 − 75 = 65°.' },
+  { id: 62, domain: 'D4', difficulty: 'Medium', formula: 'SA = 2πr² + 2πrh', question: 'Cylinder r=3, h=5. Lateral surface area (2πrh)?', options: ['15π', '30π', '45π', '18π'], correct: 1, explanation: 'Lateral SA = 2π(3)(5) = 30π.' },
+  { id: 63, domain: 'D4', difficulty: 'Easy', formula: 'P = 4s (square)', question: 'Square side = 9. Perimeter?', options: ['18', '81', '27', '36'], correct: 3, explanation: 'P = 4×9 = 36.' },
+  { id: 64, domain: 'D4', difficulty: 'Medium', formula: 'Sector area = (θ/360)πr²', question: 'Circle r=6, sector angle=90°. Sector area?', options: ['6π', '9π', '36π', '12π'], correct: 1, explanation: '(90/360)×π×36 = 9π.' },
+  { id: 65, domain: 'D4', difficulty: 'Hard', formula: 'sin = opp/hyp, cos = adj/hyp, tan = opp/adj', question: 'Right triangle: opposite=5, hypotenuse=13. sin(θ) = ?', options: ['12/13', '5/13', '5/12', '13/5'], correct: 1, explanation: 'sin = opp/hyp = 5/13.' },
+
+  { id: 66, domain: 'D4', difficulty: 'Easy', formula: 'V = (1/3)Bh', question: 'Pyramid with square base 6×6 and height 9. Volume?', options: ['162', '324', '108', '81'], correct: 2, explanation: 'B = 36. V = (1/3)(36)(9) = 108.' },
+  { id: 67, domain: 'D4', difficulty: 'Medium', formula: 'Arc length = (θ/360)×2πr', question: 'Circle r=9, arc angle=120°. Arc length?', options: ['3π', '6π', '9π', '12π'], correct: 1, explanation: '(120/360)×2π(9) = (1/3)(18π) = 6π.' },
+  { id: 68, domain: 'D4', difficulty: 'Easy', formula: 'Similar triangles: sides proportional', question: 'Triangle A has sides 3,4,5. Similar Triangle B has shortest side 9. Longest side of B?', options: ['12', '15', '10', '20'], correct: 1, explanation: 'Scale factor = 9/3 = 3. Longest side = 5×3 = 15.' },
+  { id: 69, domain: 'D4', difficulty: 'Hard', formula: 'cos(θ) = adj/hyp', question: 'Right triangle: hypotenuse=13, adjacent=12. cos(θ) = ?', options: ['5/13', '13/12', '12/13', '5/12'], correct: 2, explanation: 'cos = adj/hyp = 12/13.' },
+  { id: 70, domain: 'D4', difficulty: 'Medium', formula: 'A = ½d₁d₂ (rhombus/kite)', question: 'Rhombus with diagonals 8 and 10. Area?', options: ['80', '18', '40', '20'], correct: 2, explanation: 'A = ½(8)(10) = 40.' },
+  { id: 71, domain: 'D4', difficulty: 'Medium', formula: 'Exterior angle = sum of remote interior angles', question: 'Triangle exterior angle = 110°. Remote interior angles are 60° and ?', options: ['70°', '50°', '40°', '60°'], correct: 1, explanation: 'Exterior angle = sum of remote interior angles: 110 = 60 + x → x = 50°.' },
+  { id: 72, domain: 'D4', difficulty: 'Hard', formula: 'Diagonal of square = s√2', question: 'Square diagonal = 10. Side length?', options: ['5√3', '10/√3', '5√2', '10'], correct: 2, explanation: 'd = s√2 → s = 10/√2 = 5√2.' },
+  { id: 73, domain: 'D4', difficulty: 'Easy', formula: 'Complementary angles sum to 90°', question: 'One angle is 34°. Its complement is?', options: ['146°', '56°', '66°', '46°'], correct: 1, explanation: '90 − 34 = 56°.' },
+  { id: 74, domain: 'D4', difficulty: 'Easy', formula: 'Supplementary angles sum to 180°', question: 'One angle is 115°. Its supplement is?', options: ['75°', '65°', '55°', '85°'], correct: 1, explanation: '180 − 115 = 65°.' },
+  { id: 75, domain: 'D4', difficulty: 'Medium', formula: 'A = s²√3/4 (equilateral triangle)', question: 'Equilateral triangle side = 4. Area?', options: ['8√3', '4√3', '2√3', '16√3'], correct: 1, explanation: 'A = (4²√3)/4 = (16√3)/4 = 4√3.' },
 ];
 
 const TIMER_DURATION = 45;
+
+
+// Shuffle options array and update correct index accordingly
+function shuffleOptions<T extends { options: string[]; correct: number }>(q: T): T {
+  const idx = [0, 1, 2, 3];
+  for (let i = 3; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [idx[i], idx[j]] = [idx[j], idx[i]];
+  }
+  return { ...q, options: idx.map(i => q.options[i]), correct: idx.indexOf(q.correct) };
+}
 
 export default function ShapeSnapScreen() {
   const router = useRouter();
@@ -89,7 +127,7 @@ export default function ShapeSnapScreen() {
   const [answers, setAnswers] = useState<any[]>([]);
   const [questionStartTime, setQuestionStartTime] = useState(Date.now());
   const [questionsAnswered, setQuestionsAnswered] = useState(0);
-  const [shuffledQ] = useState(() => [...QUESTIONS].sort(() => Math.random() - 0.5).slice(0, 10));
+  const [shuffledQ] = useState(() => [...QUESTIONS].sort(() => Math.random() - 0.5).slice(0, 10).map(shuffleOptions));
 
   const timerRef = useRef<any>(null);
   const shakeAnim = useRef(new Animated.Value(0)).current;
