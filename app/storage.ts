@@ -52,7 +52,7 @@ export async function validateAccessCode(code: string): Promise<{
     if (cached && lastCheck) {
       const daysSince = (Date.now() - parseInt(lastCheck)) / 86400000;
       if (daysSince < 7) {
-        return { valid: true, plan: 'offline', message: 'Offline — using cached access' };
+        return { valid: true, plan: 'offline', message: 'Offline -- using cached access' };
       }
     }
     return { valid: false, reason: 'network', message: 'No internet connection. Try again.' };
@@ -90,7 +90,7 @@ export async function checkSubscriptionOnline(): Promise<void> {
       }
     }
   } catch (e) {
-    // Offline — keep existing status, 7 day grace period
+    // Offline -- keep existing status, 7 day grace period
     const lastCheck = await AsyncStorage.getItem('last_validated');
     if (lastCheck) {
       const daysSince = (Date.now() - parseInt(lastCheck)) / 86400000;

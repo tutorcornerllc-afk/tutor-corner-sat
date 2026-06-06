@@ -1,4 +1,4 @@
-// Daily challenge wrap-up screen — replaced with a silent redirect to home.
+// Daily challenge wrap-up screen -- replaced with a silent redirect to home.
 // The previous celebration modal had display bugs (numbers not showing).
 // We still mark the daily as complete via storage; the user just lands back on the home tab.
 import { useEffect } from 'react';

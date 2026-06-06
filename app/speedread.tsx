@@ -237,7 +237,7 @@ const PASSAGES = [
       id: 9,
       domain: 'D2',
       difficulty: 'Easy',
-      text: 'Volcanoes release magma from beneath Earth’s surface. When magma reaches the surface, it is called lava. Eruptions can create new land.',
+      text: 'Volcanoes release magma from beneath Earth's surface. When magma reaches the surface, it is called lava. Eruptions can create new land.',
       questions: [
         {
           question: 'What is magma?',
@@ -697,7 +697,7 @@ const PASSAGES = [
     text: 'The sun is the primary source of energy for Earth. It provides light and heat necessary for life. Plants use this energy for photosynthesis.',
     questions: [
       {
-        question: 'What is Earth’s main energy source?',
+        question: 'What is Earth's main energy source?',
         options: ['Moon', 'Sun', 'Wind', 'Water'],
         correct: 1,
         explanation: 'The sun is the primary energy source.'
@@ -859,7 +859,7 @@ const PASSAGES = [
       questions: [
         {
           question: 'What causes day and night?',
-          options: ['Earth’s rotation', 'Earth’s orbit', 'The moon', 'Clouds'],
+          options: ['Earth's rotation', 'Earth's orbit', 'The moon', 'Clouds'],
           correct: 0,
           explanation: 'Rotation causes day and night.'
         },
@@ -1263,7 +1263,7 @@ const PASSAGES = [
       questions: [
         {
           question: 'What causes climate change in the passage?',
-          options: ['Wind patterns', 'Earth’s rotation', 'Ocean currents', 'Greenhouse gas emissions'],
+          options: ['Wind patterns', 'Earth's rotation', 'Ocean currents', 'Greenhouse gas emissions'],
           correct: 3,
           explanation: 'It is driven by greenhouse gas emissions.'
         },
@@ -1329,7 +1329,7 @@ const PASSAGES = [
         },
         {
           question: 'What changes over time?',
-          options: ['Moon phases', 'Moon’s size', 'Gravity', 'Orbit speed'],
+          options: ['Moon phases', 'Moon's size', 'Gravity', 'Orbit speed'],
           correct: 0,
           explanation: 'The moon appears to change phases.'
         }
@@ -1691,7 +1691,7 @@ export default function SpeedReadScreen() {
           <View style={styles.historyCard}>
             <Text style={styles.historyTitle}>📈 Your History</Text>
             <Text style={styles.historySub}>Play more games to see your score history!</Text>
-            <Text style={styles.historyRank}>Game #1 — Score: {finalScore}</Text>
+            <Text style={styles.historyRank}>Game #1 -- Score: {finalScore}</Text>
           </View>
           {isDailyChallenge ? (
             <TouchableOpacity style={styles.continueBtn} onPress={async () => {

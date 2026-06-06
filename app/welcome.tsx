@@ -119,7 +119,7 @@ export default function WelcomeScreen() {
         <Text style={styles.infoText}>
           Enter your details below and we'll email you a backup code.
           Use it to restore your progress if you ever switch devices.
-          This is optional — tap Skip to go straight to the app.
+          This is optional -- tap Skip to go straight to the app.
         </Text>
       </View>
 

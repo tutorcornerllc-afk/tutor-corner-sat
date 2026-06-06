@@ -51,13 +51,13 @@ async function playSound(name: string, volume: number = 1.0): Promise<void> {
       }
     });
   } catch {
-    // Always silent fail — never crash the game
+    // Always silent fail -- never crash the game
   }
 }
 
 // ─── PUBLIC FUNCTIONS ─────────────────────────────────────────────────────────
 
-/** Bubble pop on every answer tap — games only */
+/** Bubble pop on every answer tap -- games only */
 export async function playTapSound(): Promise<void> {
   await playSound('tap', 0.6);
 }

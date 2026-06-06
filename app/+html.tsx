@@ -25,7 +25,7 @@ export default function Root({ children }: PropsWithChildren) {
         {/* Favicons */}
         <link rel="icon" type="image/png" href="/favicon.ico" />
 
-        {/* iOS — Add to Home Screen */}
+        {/* iOS -- Add to Home Screen */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />

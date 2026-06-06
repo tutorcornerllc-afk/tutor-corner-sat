@@ -84,7 +84,7 @@ export default function InstallPrompt() {
               <Text style={s.body}>
                 {mode === 'native'
                   ? 'Add the app to your home screen for one-tap access. No App Store needed.'
-                  : 'Tap Install to add CornerMind to your iPhone home screen — no App Store needed.'}
+                  : 'Tap Install to add CornerMind to your iPhone home screen -- no App Store needed.'}
               </Text>
             </View>
             <Pressable onPress={dismiss} style={s.close} hitSlop={10} accessibilityLabel="Close">
@@ -114,7 +114,7 @@ export default function InstallPrompt() {
             <ScrollView showsVerticalScrollIndicator={false}>
               <Text style={s.modalTitle}>📲 Install CornerMind</Text>
               <Text style={s.modalSub}>
-                iPhone needs 3 quick taps — Apple doesn't allow apps to install themselves on iOS.
+                iPhone needs 3 quick taps -- Apple doesn't allow apps to install themselves on iOS.
               </Text>
 
               <View style={s.step}>
@@ -148,14 +148,14 @@ export default function InstallPrompt() {
                 <View style={s.stepContent}>
                   <Text style={s.stepTitle}>Tap "Add"</Text>
                   <Text style={s.stepBody}>
-                    The CornerMind icon will appear on your home screen — just like any app.
+                    The CornerMind icon will appear on your home screen -- just like any app.
                   </Text>
                 </View>
               </View>
 
               <View style={s.tipBox}>
                 <Text style={s.tipText}>
-                  💡 Tip: Make sure you're in <Text style={s.bold}>Safari</Text> — not Chrome,
+                  💡 Tip: Make sure you're in <Text style={s.bold}>Safari</Text> -- not Chrome,
                   Instagram, or any in-app browser. If you don't see the Share button, copy the URL
                   and open it in Safari.
                 </Text>

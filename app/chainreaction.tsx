@@ -609,7 +609,7 @@ export default function ChainReactionScreen() {
           <View style={styles.historyCard}>
             <Text style={styles.historyTitle}>⚡ Reaction History</Text>
             <Text style={styles.historySub}>Complete more reactions to see history!</Text>
-            <Text style={styles.historyRank}>Session #1 — Score: {score}</Text>
+            <Text style={styles.historyRank}>Session #1 -- Score: {score}</Text>
           </View>
           {isDailyChallenge ? (
             <TouchableOpacity style={styles.continueBtn} onPress={async () => {

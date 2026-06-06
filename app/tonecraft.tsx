@@ -501,7 +501,7 @@ export default function ToneCraftScreen() {
     return 'none';
   }
 
-  // Try Word — checks and adds to matched list, DOES NOT end question
+  // Try Word -- checks and adds to matched list, DOES NOT end question
   function handleTryWord() {
     const word = typedWord
       .toLowerCase()
@@ -525,13 +525,13 @@ export default function ToneCraftScreen() {
       setTypedWord('');
       setTimeout(() => inputRef.current?.focus(), 100);
     } else {
-      // Wrong word — clear and let them try again
+      // Wrong word -- clear and let them try again
       setTypedWord('');
       setTimeout(() => inputRef.current?.focus(), 100);
     }
   }
 
-  // Done — scores based on best matched word, ends question
+  // Done -- scores based on best matched word, ends question
   function handleDone(timedOut: boolean = false) {
     if (submitted) return;
     clearInterval(qTimerRef.current);
@@ -618,7 +618,7 @@ export default function ToneCraftScreen() {
       setScore(s => s + pts);
       showFloatingScore(`+${pts} ✅ Basic`);
     } else {
-      // No match — lose a life
+      // No match -- lose a life
       setLives(l => { const n = l - 1; if (n <= 0) setTimeout(() => endGame(), 1500); return n; });
       shakeScreen();
     }
@@ -746,7 +746,7 @@ export default function ToneCraftScreen() {
           <View style={styles.historyCard}>
             <Text style={styles.historyTitle}>📈 Your History</Text>
             <Text style={styles.historySub}>Play more games to see your history!</Text>
-            <Text style={styles.historyRank}>Game #1 — Score: {finalScore}</Text>
+            <Text style={styles.historyRank}>Game #1 -- Score: {finalScore}</Text>
           </View>
           {isDailyChallenge ? (
             <TouchableOpacity style={styles.continueBtn} onPress={async () => {
@@ -790,7 +790,7 @@ export default function ToneCraftScreen() {
   const resultLabel = matchResult === 'perfect' ? '🌟 PERFECT TONE! Keep going or tap Done!' :
     matchResult === 'good' ? '✅ GOOD MATCH! Try for better or tap Done!' :
     matchResult === 'basic' ? '👍 BASIC MATCH. Try a stronger word!' :
-    matchResult === 'none' ? '❌ NO MATCH — Try a different word' : null;
+    matchResult === 'none' ? '❌ NO MATCH -- Try a different word' : null;
 
   return (
     <KeyboardAvoidingView
@@ -916,10 +916,10 @@ export default function ToneCraftScreen() {
                 opacity: Animated.add(0.3, Animated.multiply(flashAnim, 0.7)) as any,
               }]}>
                 <Text style={[styles.flashFeedbackText, { color: flashColor }]}>
-                  {lastFlashResult === 'none' ? '❌ Not a match — try another word!' :
+                  {lastFlashResult === 'none' ? '❌ Not a match -- try another word!' :
                    lastFlashResult === 'perfect' ? '🌟 Perfect word! Keep going or tap Done!' :
                    lastFlashResult === 'good' ? '✅ Good word! Try for perfect or tap Done!' :
-                   '👍 Basic match — try a stronger word!'}
+                   '👍 Basic match -- try a stronger word!'}
                 </Text>
               </Animated.View>
             )}

@@ -54,7 +54,7 @@ const QUESTIONS: any[] = [
   { id: 8, domain: 'D1', difficulty: 'Easy', format: 'true-false',
     question: 'If a linear equation has a negative slope, the line always goes down from left to right.',
     correct: 'true',
-    explanation: 'True. A negative slope means as x increases, y decreases — the line always goes downward left to right.' },
+    explanation: 'True. A negative slope means as x increases, y decreases -- the line always goes downward left to right.' },
 
   { id: 9, domain: 'D1', difficulty: 'Medium', format: 'two-cards',
     question: 'A company breaks even when revenue equals cost. Revenue = 50x, Cost = 30x + 800. At what quantity do they break even?',
@@ -186,7 +186,7 @@ const QUESTIONS: any[] = [
   { id: 34, domain: 'D3', difficulty: 'Hard', format: 'four-pills',
     question: 'Price drops 20% then increases 25%. Net change from original?',
     options: ['5% increase', '5% decrease', '0% change', '10% increase'], correct: 2,
-    explanation: '0.8×1.25 = 1.00. Exactly back to original — 0% net change.' },
+    explanation: '0.8×1.25 = 1.00. Exactly back to original -- 0% net change.' },
 
   { id: 35, domain: 'D3', difficulty: 'Easy', format: 'true-false',
     question: 'If you flip a fair coin 10 times and get 8 heads, the next flip is more likely to be tails.',
@@ -206,7 +206,7 @@ const QUESTIONS: any[] = [
   { id: 38, domain: 'D3', difficulty: 'Medium', format: 'scroll-wheel',
     question: 'A runner completes a 26.2 mile marathon in 3.5 hours. Speed in mph to 1 decimal?',
     correctValue: 7,
-    explanation: 'Speed = 26.2÷3.5 ≈ 7.49 ≈ 7 mph (rounded). Or accept 7.5 — we use 7.' },
+    explanation: 'Speed = 26.2÷3.5 ≈ 7.49 ≈ 7 mph (rounded). Or accept 7.5 -- we use 7.' },
 
   { id: 39, domain: 'D3', difficulty: 'Easy', format: 'two-cards',
     question: 'A bag of chips has 250 calories. You eat 60% of the bag. Calories consumed?',
@@ -531,7 +531,7 @@ export default function StorySolveScreen() {
           <View style={styles.historyCard}>
             <Text style={styles.historyTitle}>📚 Story History</Text>
             <Text style={styles.historySub}>Solve more stories to see your history!</Text>
-            <Text style={styles.historyRank}>Story #1 — Score: {finalScore}</Text>
+            <Text style={styles.historyRank}>Story #1 -- Score: {finalScore}</Text>
           </View>
           {isDailyChallenge ? (
             <TouchableOpacity style={styles.continueBtn} onPress={async () => {

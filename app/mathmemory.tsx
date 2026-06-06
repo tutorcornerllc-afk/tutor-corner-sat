@@ -206,7 +206,7 @@ const QUESTIONS = [
     content: '5, 5, 8, 12, 12\n12, 15, 18',
     question: 'What was the MODE?',
     options: ['5', '8', '15', '12'], correct: 3,
-    explanation: '12 appears 3 times — the most frequent value.' },
+    explanation: '12 appears 3 times -- the most frequent value.' },
 
   { id: 33, domain: 'D3', difficulty: 'Hard', memorizeTime: 3,
     content: 'P(A) = 0.4\nP(B) = 0.3\nA, B independent',
@@ -661,7 +661,7 @@ export default function MathMemoryScreen() {
           <View style={styles.historyCard}>
             <Text style={styles.historyTitle}>🧠 Memory Log</Text>
             <Text style={styles.historySub}>Train more to see your history!</Text>
-            <Text style={styles.historyRank}>Session #1 — Score: {finalScore}</Text>
+            <Text style={styles.historyRank}>Session #1 -- Score: {finalScore}</Text>
           </View>
           {isDailyChallenge ? (
             <TouchableOpacity style={styles.continueBtn} onPress={async () => {
@@ -742,8 +742,8 @@ export default function MathMemoryScreen() {
         <Text style={[styles.phaseLabel, {
           color: phase === 'memorize' ? '#A78BFA' : phase === 'recall' ? '#E9D5FF' : selectedNode === q.correct ? '#10B981' : '#EF4444'
         }]}>
-          {phase === 'memorize' ? `🧠 MEMORIZE! — ${memorizeTime}s` :
-           phase === 'recall' ? '❓ RECALL — Tap the correct node!' :
+          {phase === 'memorize' ? `🧠 MEMORIZE! -- ${memorizeTime}s` :
+           phase === 'recall' ? '❓ RECALL -- Tap the correct node!' :
            selectedNode === q.correct ? '✅ REMEMBERED! 🧠' : '❌ FORGOTTEN!'}
         </Text>
 
